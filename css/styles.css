@@ -308,8 +308,6 @@ body {
    ========================================================================== */
 @media (max-width: 768px) {
   /* パフォーマンス向上のためスマホでは重いアニメーションや格子をオフ */
-  .page-bg { animation: none; }
-  .page-grid { display: none; }
   .pc-only { display: none !important; }
   .sp-only { display: flex; }
   
