@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>有限会社晃和運輸 | トップページ</title>
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    /* --- ヒーロー --- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-catch {
+      font-size: 4vw;
+      font-weight: 900;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+      background: linear-gradient(to right, #ffffff, #8892b0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin-bottom: 40px;
+      margin-left: 2.5rem; 
+    }
+
+    .keep-text { display: inline-block; }
+
+    .btn-main {
+      display: inline-flex;
+      align-items: center;
+      padding: 16px 40px;
+      background: transparent;
+      color: var(--accent-cyan);
+      border: 1px solid var(--accent-cyan);
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      margin-left: 2.5rem; 
+    }
+    .btn-main::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 0%; height: 100%;
+      background: var(--accent-cyan);
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+    .btn-main:hover { color: #000; }
+    .btn-main:hover::before { width: 100%; }
+
+    /* --- マーキー --- */
+    .marquee-container {
+      position: absolute;
+      bottom: 40px;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 0;
+    }
+
+    .marquee-text {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+      text-transform: uppercase;
+      animation: scrollText 30s linear infinite;
+    }
+
+    @keyframes scrollText {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* --- 導入セクション --- */
+    .business-intro { padding: 80px 0; background-color: rgba(5, 5, 5, 0.6); }
+    .business-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .intro-title { font-size: 2.5rem; font-weight: 900; line-height: 1.4; margin-bottom: 24px; max-width: 500px; }
+    .intro-desc { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; max-width: 600px; }
+    .intro-img img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+    /* --- サービスセクション --- */
+    .services { padding: 80px 0; background-color: rgba(30, 15, 15, 0.6); }
+    .services .section-title span { color: var(--accent-red); }
+    
+    .service-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .service-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 0; transition: all 0.4s ease; display: flex; flex-direction: column; overflow: hidden; backdrop-filter: blur(5px); }
+    .service-img { width: 100%; height: 220px; overflow: hidden; border-bottom: 1px solid var(--border-color); }
+    .service-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: transform 0.5s ease, opacity 0.5s ease; }
+    .service-card:hover .service-img img { transform: scale(1.05); opacity: 1; }
+    
+    .service-card:hover { 
+      background: rgba(255, 255, 255, 0.05); 
+      border-color: var(--accent-red); 
+      box-shadow: 0 0 20px rgba(255, 42, 95, 0.3); 
+      transform: translateY(-8px); 
+    }
+    .service-text { padding: 32px; position: relative; }
+    .service-card h3 { font-size: 1.3rem; margin-bottom: 16px; font-weight: 700; letter-spacing: 0.05em; }
+    .service-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; }
+
+    /* ★ 共通ボタンデザイン */
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 60px;
+      background: transparent;
+      color: var(--accent-cyan);
+      border: 1px solid var(--accent-cyan);
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .btn-outline::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 0%; height: 100%;
+      background: var(--accent-cyan);
+      transition: all 0.3s ease;
+      z-index: -1;
+    }
+    .btn-outline:hover { color: #000; }
+    .btn-outline:hover::before { width: 100%; }
+
+    .btn-outline.red-version { color: var(--accent-red); border-color: var(--accent-red); }
+    .btn-outline.red-version::before { background: var(--accent-red); }
+    .btn-outline.red-version:hover { color: #000; }
+
+    .btn-outline.green-version { color: var(--accent-green); border-color: var(--accent-green); }
+    .btn-outline.green-version::before { background: var(--accent-green); }
+    .btn-outline.green-version:hover { color: #000; }
+
+    .btn-outline.orange-version { color: var(--accent-orange); border-color: var(--accent-orange); }
+    .btn-outline.orange-version::before { background: var(--accent-orange); }
+    .btn-outline.orange-version:hover { color: #000; }
+
+    /* ★intro-titleをPCでもスマホでも絶対に2行に収める設定 */
+    .intro-title {
+     white-space: nowrap !important; /* HTMLの<br>以外での改行を完全に禁止 */
+     font-size: clamp(16px, 3.5vw, 36px) !important; /* 画面幅に合わせて文字を自動で縮小・拡大 */
+    }
+
+    /* --- 会社情報＆採用情報セクション --- */
+    .info-section { padding: 80px 0; background-color: rgba(10, 30, 20, 0.6); }
+    .info-title span { color: var(--accent-green) !important; }
+    .info-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .info-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 0; transition: all 0.4s ease; display: flex; flex-direction: column; overflow: hidden; backdrop-filter: blur(5px); }
+    .info-img { width: 100%; height: 260px; overflow: hidden; border-bottom: 1px solid var(--border-color); }
+    .info-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: transform 0.5s ease, opacity 0.5s ease; }
+    .info-card:hover .info-img img { transform: scale(1.05); opacity: 1; }
+    .info-card:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--accent-green); box-shadow: 0 0 20px rgba(0, 255, 136, 0.2); transform: translateY(-8px); }
+    .info-text { padding: 32px; position: relative; }
+    .info-card h3 { font-size: 1.5rem; margin-bottom: 16px; font-weight: 700; letter-spacing: 0.05em; }
+    .info-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 32px; }
+
+    /* --- お問い合わせセクション --- */
+    .contact-section { padding: 80px 0; background-color: rgba(30, 20, 5, 0.6); }
+    .contact-title span { color: var(--accent-orange) !important; }
+    
+    .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .contact-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 40px; text-align: center; transition: all 0.4s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+    .contact-card:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--accent-orange); box-shadow: 0 0 20px rgba(255, 157, 0, 0.2); transform: translateY(-8px); }
+    .contact-icon { margin-bottom: 16px; color: var(--accent-orange); }
+    .contact-card h3 { font-size: 1.5rem; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.05em; }
+    .contact-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px; }
+    .contact-btn { width: 100%; max-width: 280px; }
+
+    /* --- index.html専用 スマホレスポンシブ --- */
+    @media (max-width: 768px) {
+      .hero-sub { margin-left: 1.5rem; font-size: 0.95rem; }
+      .btn-main { margin-left: 1.5rem; }
+      .hero-catch { font-size: 2.2rem; }
+
+      .service-list { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; padding-bottom: 32px; width: 100%; }
+      .service-list::-webkit-scrollbar { height: 4px; }
+      .service-list::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 4px; }
+      .service-list::-webkit-scrollbar-thumb { background: var(--accent-cyan); border-radius: 4px; }
+      .service-card { flex: 0 0 85%; scroll-snap-align: start; }
+      
+      .info-list { grid-template-columns: 1fr; gap: 24px; }
+      .info-img { height: 200px; }
+
+      .business-intro-grid { display: flex; flex-direction: column; gap: 32px; }
+      .intro-title { order: 1; font-size: 1.8rem; margin-bottom: 0; }
+      .intro-img { order: 2; }
+      .intro-desc { order: 3; }
+      
+      .contact-grid { gap: 12px; }
+      .contact-card { padding: 24px 8px; }
+      .contact-icon svg { width: 28px; height: 28px; }
+      .contact-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
+      .contact-card p { font-size: 0.75rem; margin-bottom: 16px; }
+      .contact-btn { padding: 12px 0; font-size: 0.8rem; width: 100%; letter-spacing: normal; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-bg"></div>
+  <div class="page-grid"></div>
+  <div id="header-placeholder"></div>
+
+  <section class="hero">
+    <div class="container hero-content fade-up">
+      <h1 class="hero-catch">「安全で確実な物流」</h1>
+      <p class="hero-sub">
+        1972年の創業から変わらない、基本目標<br><br>
+        <span class="keep-text">「日常」を届ける</span><span class="keep-text">プロフェッショナルとして、</span><br>
+        <span class="keep-text">横浜市内を中心に、</span><span class="keep-text">2t車による貨物運送事業を行っています。</span>
+      </p>
+      <a href="#services" class="btn-main">事業内容を見る</a>
+    </div>
+    <div class="marquee-container">
+      <div class="marquee-text">
+        KOWA LOGISTICS in YOKOHAMA (SINCE 1972) KOWA LOGISTICS in YOKOHAMA (SINCE 1972)
+      </div>
+    </div>
+  </section>
+
+  <section class="business-intro">
+    <div class="container business-intro-grid">
+      <h2 class="intro-title fade-up">地域密着の運送会社<br>「運ぶ」に特化した機動力</h2>
+      <div class="intro-img fade-up">
+        <img src="images/TOP.jpg" alt="晃和運輸の車両群">
+      </div>
+      <div class="intro-desc fade-up">
+        <p>
+        晃和運輸は、学校給食などのルート配送から、日用品の店舗配送、家庭や法人向けの引越し・什器搬入まで幅広く手掛けています。<br>
+        お客様のあらゆる「運ぶ」というニーズに対し、2t車(約30台)の機動力と長年培った確かな信頼でお応えし、横浜のビジネスと暮らしを支え続けてまいります。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="container">
+      <h2 class="section-title fade-up">Services<span>事業内容</span></h2>
+      <div class="service-list fade-up">
+        <div class="service-card">
+          <div class="service-img"><img src="images/IND1.jpg" alt="食品・学校給食配送"></div>
+          <div class="service-text">
+            <h3>学校給食の配送</h3>
+            <p>配送時間・人員配置の管理を徹底し、遅延することなく学校へ食品品を配送します。<br>
+               品質・衛生管理のもと、商品を安心・安全にお届けします。食のインフラを担う「確かな輸送力」にぜひご期待ください。</p>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-img"><img src="images/IND2.jpg" alt="日用品・店舗ルート配送"></div>
+          <div class="service-text">
+            <h3>日用品・雑貨の配送</h3>
+            <p>ドラッグストアやスーパーマーケットへ、生活に必要な日用品を配送します。<br>
+               早朝の納品や、日々の物量変動にも臨機応変に対応し、地域の生活インフラを途切れさせることなくバックアップします。</p>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-img"><img src="images/IND3.jpg" alt="引越し・什器搬入"></div>
+          <div class="service-text">
+            <h3>引越・什器の搬入</h3>
+            <p>2t車の機動力を活かした引越や、店舗・オフィス什器の搬入作業を承ります。<br>
+               熟練のスタッフによる丁寧な作業で、ご指定の場所へあらゆる搬入ニーズにお応えします。</p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 64px;">
+        <a href="services.html" class="btn-outline red-version">詳細はこちら</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <div class="container">
+      <h2 class="section-title info-title fade-up">Corporate<span>会社・採用情報</span></h2>
+      
+      <div class="info-list fade-up">
+        <div class="info-card" id="会社情報">
+          <div class="info-img"><img src="images/IND4.jpg" alt="会社概要イメージ"></div>
+          <div class="info-text">
+            <h3>会社情報</h3>
+            <p>有限会社 晃和運輸の会社概要、沿刻、保有車両をご紹介します。<br>1972年の創業から築き上げた信頼の歴史がここにあります。</p>
+            <a href="company.html" class="btn-outline green-version">会社概要を見る</a>
+          </div>
+        </div>
+        
+        <div class="info-card" id="採用情報">
+          <div class="info-img"><img src="images/IND5.jpg" alt="採用情報イメージ"></div>
+          <div class="info-text">
+            <h3>採用情報</h3>
+            <p>現在、2t車ドライバーを募集中！当社の自慢は「30日間の夏休み」。<br>未経験からでも安心の待遇で、私生活も大切にできる最高のワークライフバランスが整っています。</p>
+            <a href="recruit.html" class="btn-outline green-version">採用情報を見る</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2 class="section-title contact-title fade-up">Contact<span>お問い合わせ</span></h2>
+      
+      <div class="contact-grid fade-up">
+        
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <h3>お電話</h3>
+          <p class="pc-only">営業時間<br>8:30 - 19:00</p>
+          <p class="sp-only">営業時間<br>8:30 - 19:00</p>
+          <a href="tel:045-954-3111" class="btn-outline orange-version contact-btn">045-954-3111</a>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <h3>WEB受付</h3>
+          <p class="pc-only">24時間受付中<br>ご相談・お見積りはこちら</p>
+          <p class="sp-only">24時間受付中<br>ご相談・お見積り</p>
+          <a href="contact.html" class="btn-outline orange-version contact-btn">フォームへ進む</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="js/common.js"></script>
+</body>
+</html>
