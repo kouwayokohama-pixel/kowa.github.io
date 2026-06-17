@@ -1,17 +1,17 @@
 // ==========================================================================
-// ★ ここに移動！ブラウザのスクロール記憶を「最優先で」リセット
+// ★ ブラウザのスクロール記憶を「最優先で」リセット
 // ==========================================================================
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
-// さらに念押し：ページが表示された瞬間に確実に一番上へ戻す
+window.scrollTo(0, 0);
 window.addEventListener('pageshow', function() {
   window.scrollTo(0, 0);
 });
 
 document.addEventListener("DOMContentLoaded", function() {
   
-// --- SEO・SNS共有用メタタグの動的追加 ---
+  // --- SEO・SNS共有用メタタグの動的追加 ---
   const head = document.querySelector('head');
   
   // OGP（SNSでシェアされた時に出るカード設定）
@@ -24,8 +24,6 @@ document.addEventListener("DOMContentLoaded", function() {
   metaOgDescription.setAttribute('property', 'og:description');
   metaOgDescription.setAttribute('content', '横浜市旭区を拠点に、給食配送や日用品配送を行う有限会社晃和運輸。創業1972年、確かな信頼と機動力で地域の物流を支えます。');
   head.appendChild(metaOgDescription);
-  
-  // サイトアイコン（ファビコン）の設定があればここに
 
   // ==========================================================================
   // 1. 共通ヘッダーHTMLの定義 と 挿入
@@ -33,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const headerHTML = `
   <header class="site-header" id="header">
     <div class="header-inner">
-      <a href="/contact" class="brand">KOWA <span class="accent-gold">Logistics</span></a>
+      <a href="/" class="brand">KOWA <span class="accent-gold">Logistics</span></a>
       
       <div class="header-right" id="header-right">
         <div class="header-contact pc-only">
@@ -76,12 +74,14 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // ==========================================================================
-  // 2. カレントページ判定 ＆ 共通フッターHTML（求人バナー合体版）の挿入
+  // 2. カレントページ判定 ＆ 共通フッターHTMLの挿入
   // ==========================================================================
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
-  const isRecruitPage = (currentPage === "recruit.html");
+  // ここで最初にURLからページ名を取得し、最初から「.html」を削って統一します
+  let currentPage = window.location.pathname.split("/").pop() || "index";
+  currentPage = currentPage.replace(".html", "");
 
-  // 採用ページ以外なら、右側に出すバナーのHTMLを用意する
+  const isRecruitPage = (currentPage === "recruit");
+
   const footerBannerHTML = isRecruitPage ? "" : `
         <div class="footer-right">
           <div class="footer-recruit-banner">
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
               <h3>JOIN OUR TEAM</h3>
               <p><strong style="color: var(--text-main); border-bottom: 1px solid var(--accent-orange);">平均勤続17.6年・夏季休暇30日の働きやすさ</strong><br>私たちと一緒に働きませんか？</p>
             </div>
-            <a href="recruit.html" class="footer-recruit-btn">採用情報を詳しく見る</a>
+            <a href="/recruit" class="footer-recruit-btn">採用情報を詳しく見る</a>
           </div>
         </div>
   `;
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <div class="footer-bottom">
         <p>© 2026 KOWA LOGISTICS. All Rights Reserved.</p>
         <p>
-          <a href="sitepolicy.html" class="footer-policy-link">プライバシーポリシー</a>
+          <a href="/sitepolicy" class="footer-policy-link">プライバシーポリシー</a>
           <span class="footer-policy-split" style="margin: 0 12px; color: rgba(255,255,255,0.1);">|</span>
           <span>Yokohama, Japan</span>
         </p>
@@ -136,11 +136,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // ==========================================================================
   // 3. メニューの自動色変え
   // ==========================================================================
-  // URLの最後を取得し、もし「.html」がついていたら消してスッキリさせる
-  let currentPage = window.location.pathname.split("/").pop();
-  currentPage = currentPage.replace(".html", "");
-
-  // 空っぽ（/）または index ならHOMEを光らせる
+  // 上部で判定済みの currentPage をそのまま使うので再宣言のバグが消えます！
   if (currentPage === "index" || currentPage === "") {
     const el = document.getElementById("menu-home");
     if (el) el.style.color = "var(--accent-cyan)";
@@ -157,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const el = document.getElementById("menu-faq");
     if (el) el.style.color = "#e2b659";
   } else if (currentPage === "contact") {
-    // お問い合わせページにいる時は、右上ボタンをオレンジ強調
     const btn = document.getElementById("nav-btn-contact");
     if (btn) {
       btn.style.borderColor = "var(--accent-orange)";
@@ -185,7 +180,6 @@ document.addEventListener("DOMContentLoaded", function() {
       menuToggle.classList.toggle('is-active');
       headerRight.classList.toggle('is-active');
       
-      // ★ここを追加：メニューが開いている時は背景のスクロールを止める
       if (headerRight.classList.contains('is-active')) {
         document.body.style.overflow = 'hidden';
       } else {
@@ -197,8 +191,6 @@ document.addEventListener("DOMContentLoaded", function() {
       link.addEventListener('click', () => {
         menuToggle.classList.remove('is-active');
         headerRight.classList.remove('is-active');
-        
-        // ★ここを追加：リンクを押してメニューが閉じたらスクロールを復活させる
         document.body.style.overflow = '';
       });
     });
