@@ -33,20 +33,20 @@ document.addEventListener("DOMContentLoaded", function() {
   const headerHTML = `
   <header class="site-header" id="header">
     <div class="header-inner">
-      <a href="index.html" class="brand">KOWA <span class="accent-gold">Logistics</span></a>
+      <a href="/" class="brand">KOWA <span class="accent-gold">Logistics</span></a>
       
       <div class="header-right" id="header-right">
         <div class="header-contact pc-only">
           <a href="tel:045-954-3111" class="header-action-btn">TEL: 045-954-3111</a>
-          <a href="contact.html" class="header-action-btn" id="nav-btn-contact">✉️ お問い合わせ</a>
+          <a href="/contact" class="header-action-btn" id="nav-btn-contact">✉️ お問い合わせ</a>
         </div>
         
         <nav class="site-nav">
-          <a href="index.html" id="menu-home" class="nav-home">HOME<span>ホーム</span></a>
-          <a href="services.html" id="menu-services" class="nav-services">SERVICES<span>事業内容</span></a>
-          <a href="company.html" id="menu-company" class="nav-company">COMPANY<span>会社情報</span></a>
-          <a href="recruit.html" id="menu-recruit" class="nav-recruit">RECRUIT<span>採用情報</span></a>
-          <a href="faq.html" id="menu-faq" class="nav-faq">FAQ<span>よくある質問</span></a>
+          <a href="/" id="menu-home" class="nav-home">HOME<span>ホーム</span></a>
+          <a href="/services" id="menu-services" class="nav-services">SERVICES<span>事業内容</span></a>
+          <a href="/company" id="menu-company" class="nav-company">COMPANY<span>会社情報</span></a>
+          <a href="/recruit" id="menu-recruit" class="nav-recruit">RECRUIT<span>採用情報</span></a>
+          <a href="/faq" id="menu-faq" class="nav-faq">FAQ<span>よくある質問</span></a>
         </nav>
         
         <div class="header-contact sp-only menu-contact-grid">
