@@ -10,12 +10,14 @@
     /* --- ヒーロー --- */
     .hero {
       position: relative;
-      height: 100vh;
-      min-height: 600px;
+      /* ▼変更：画面全体の高さ（100dvh）からヘッダーの高さ（90px）を引いたミニマム高さを設定 */
+      min-height: calc(100dvh - 90px);
       display: flex;
       flex-direction: column;
       justify-content: center;
       overflow: hidden;
+      /* ▼追加：ヘッダーの裏に文字が潜り込まないよう、上に90px、下に40pxの安全な内側余白を作る */
+      padding: 90px 0 40px; 
     }
 
     .hero-content {
