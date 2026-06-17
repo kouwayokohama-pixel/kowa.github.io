@@ -136,22 +136,27 @@ document.addEventListener("DOMContentLoaded", function() {
   // ==========================================================================
   // 3. メニューの自動色変え
   // ==========================================================================
-  if (currentPage === "index.html" || currentPage === "") {
+  // URLの最後を取得し、もし「.html」がついていたら消してスッキリさせる
+  let currentPage = window.location.pathname.split("/").pop();
+  currentPage = currentPage.replace(".html", "");
+
+  // 空っぽ（/）または index ならHOMEを光らせる
+  if (currentPage === "index" || currentPage === "") {
     const el = document.getElementById("menu-home");
     if (el) el.style.color = "var(--accent-cyan)";
-  } else if (currentPage === "services.html") {
+  } else if (currentPage === "services") {
     const el = document.getElementById("menu-services");
     if (el) el.style.color = "var(--accent-red)";
-  } else if (currentPage === "company.html") {
+  } else if (currentPage === "company") {
     const el = document.getElementById("menu-company");
     if (el) el.style.color = "var(--accent-green)";
-  } else if (currentPage === "recruit.html") {
+  } else if (currentPage === "recruit") {
     const el = document.getElementById("menu-recruit");
     if (el) el.style.color = "var(--accent-orange)";
-  } else if (currentPage === "faq.html") {
+  } else if (currentPage === "faq") {
     const el = document.getElementById("menu-faq");
     if (el) el.style.color = "#e2b659";
-  } else if (currentPage === "contact.html") {
+  } else if (currentPage === "contact") {
     // お問い合わせページにいる時は、右上ボタンをオレンジ強調
     const btn = document.getElementById("nav-btn-contact");
     if (btn) {
