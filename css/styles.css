@@ -261,7 +261,6 @@ body {
 .title-red span    { color: var(--accent-red) !important; }
 .title-green span  { color: var(--accent-green) !important; }
 .title-orange span { color: var(--accent-orange) !important; }
-.title-cyan span   { color: var(--accent-cyan) !important; }
 
 /* ==========================================================================
    共通フッター
