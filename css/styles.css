@@ -195,6 +195,30 @@ body {
 }
 
 /* ==========================================================================
+   ヘッダーのホバー（マウスカーソルを合わせた時）のふんわり発光エフェクト
+   ========================================================================== */
+
+/* 1. 左側のロゴ（青系でふんわり光る） */
+.brand {
+  transition: text-shadow 0.3s ease, opacity 0.3s ease;
+}
+.brand:hover {
+  text-shadow: 0 0 15px rgba(0, 229, 255, 0.6); /* ふんわりとしたシアンブルーの光 */
+}
+
+/* 2. 右側の各メニュー（それぞれのテーマカラーでふんわり光る） */
+.site-nav a {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* 各タグにマウスを乗せた時の色と発光色を指定 */
+.site-nav a.nav-home:hover     { color: var(--accent-cyan);   text-shadow: 0 0 12px rgba(0, 229, 255, 0.5); }
+.site-nav a.nav-services:hover { color: var(--accent-red);    text-shadow: 0 0 12px rgba(255, 42, 95, 0.5); }
+.site-nav a.nav-company:hover  { color: var(--accent-green);  text-shadow: 0 0 12px rgba(0, 255, 136, 0.5); }
+.site-nav a.nav-recruit:hover  { color: var(--accent-orange); text-shadow: 0 0 12px rgba(255, 157, 0, 0.5); }
+.site-nav a.nav-faq:hover      { color: var(--accent-cyan);   text-shadow: 0 0 12px rgba(0, 229, 255, 0.5); }
+
+/* ==========================================================================
    下層ページ共通コンポーネント
    ========================================================================== */
 .subpage-hero {
@@ -242,7 +266,7 @@ body {
 .title-red span    { color: var(--accent-red) !important; }
 .title-green span  { color: var(--accent-green) !important; }
 .title-orange span { color: var(--accent-orange) !important; }
-.title-gold span   { color: #e2b659 !important; }
+.title-cyan span   { color: var(--accent-cyan) !important; }
 
 /* ==========================================================================
    共通フッター
