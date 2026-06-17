@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const headerHTML = `
   <header class="site-header" id="header">
     <div class="header-inner">
-      <a href="/" class="brand">KOWA <span class="accent-gold">Logistics</span></a>
+      <a href="/contact" class="brand">KOWA <span class="accent-gold">Logistics</span></a>
       
       <div class="header-right" id="header-right">
         <div class="header-contact pc-only">
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
           </div>
           <div class="menu-contact-box">
             <div class="menu-contact-title">CONTACT</div>
-            <a href="contact.html" class="menu-contact-btn">フォームへ進む</a>
+            <a href="/contact" class="menu-contact-btn">フォームへ進む</a>
           </div>
         </div>
       </div>
