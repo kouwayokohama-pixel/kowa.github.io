@@ -188,7 +188,7 @@ body {
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  transition: color 0.3s;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 .site-nav a span {
   display: none;
@@ -204,11 +204,6 @@ body {
 }
 .brand:hover {
   text-shadow: 0 0 15px rgba(0, 229, 255, 0.6); /* ふんわりとしたシアンブルーの光 */
-}
-
-/* 2. 右側の各メニュー（それぞれのテーマカラーでふんわり光る） */
-.site-nav a {
-  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 /* 各タグにマウスを乗せた時の色と発光色を指定 */
