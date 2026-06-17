@@ -1,3 +1,14 @@
+// ==========================================================================
+// ★ ここに移動！ブラウザのスクロール記憶を「最優先で」リセット
+// ==========================================================================
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+// さらに念押し：ページが表示された瞬間に確実に一番上へ戻す
+window.addEventListener('pageshow', function() {
+  window.scrollTo(0, 0);
+});
+
 document.addEventListener("DOMContentLoaded", function() {
   
 // --- SEO・SNS共有用メタタグの動的追加 ---
@@ -13,12 +24,6 @@ document.addEventListener("DOMContentLoaded", function() {
   metaOgDescription.setAttribute('property', 'og:description');
   metaOgDescription.setAttribute('content', '横浜市旭区を拠点に、給食配送や日用品配送を行う有限会社晃和運輸。創業1972年、確かな信頼と機動力で地域の物流を支えます。');
   head.appendChild(metaOgDescription);
-
-  // ★これを追加！ブラウザのお節介なスクロール記憶をリセットし、強制的に一番上から表示
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
-  window.scrollTo(0, 0);
   
   // サイトアイコン（ファビコン）の設定があればここに
 
