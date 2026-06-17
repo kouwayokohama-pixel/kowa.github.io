@@ -10,19 +10,19 @@
     /* --- ヒーロー --- */
     .hero {
       position: relative;
-      /* ▼変更：画面全体の高さ（100dvh）からヘッダーの高さ（90px）を引いたミニマム高さを設定 */
-      min-height: calc(100dvh - 90px);
+      height: 100dvh; /* ★ここで絶対に「画面ぴったり100%」に固定します */
+      min-height: 600px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       overflow: hidden;
-      /* ▼追加：ヘッダーの裏に文字が潜り込まないよう、上に90px、下に40pxの安全な内側余白を作る */
-      padding: 90px 0 160px; 
+      /* paddingの力技は削除しました！ */
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
+      transform: translateY(40px);
     }
 
     .hero-catch {
@@ -76,13 +76,15 @@
     /* --- マーキー --- */
     .marquee-container {
       position: absolute;
-      bottom: 40px;
+      bottom: 0; /* ★画面の一番下（底）にぴったりくっつけます */
       width: 100%;
       overflow: hidden;
       white-space: nowrap;
       border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
+      /* 下の線を消して、次のセクションと綺麗に繋げます */
       padding: 16px 0;
+      background-color: var(--bg-color); /* 後ろの線が透けないように背景色を塗る */
+      z-index: 10;
     }
 
     .marquee-text {
@@ -215,6 +217,10 @@
 
     /* --- index.html専用 スマホレスポンシブ --- */
     @media (max-width: 768px) {
+      /* ★追加：スマホの時はズラす量を減らして中央に配置 */
+      .hero-content {
+        transform: translateY(0); 
+      }
       .hero-sub { margin-left: 1.5rem; font-size: 0.95rem; }
       .btn-main { margin-left: 1.5rem; }
       /* ▼▼▼ ここを修正 ▼▼▼ */
