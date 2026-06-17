@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (el) el.style.color = "var(--accent-orange)";
   } else if (currentPage === "faq") {
     const el = document.getElementById("menu-faq");
-    if (el) el.style.color = "#e2b659";
+    if (el) el.style.color = "var(--accent-cyan)";
   } else if (currentPage === "contact") {
     const btn = document.getElementById("nav-btn-contact");
     if (btn) {
