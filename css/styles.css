@@ -408,7 +408,7 @@ body {
   .nav-services span { color: var(--accent-red); }
   .nav-company span  { color: var(--accent-green); }
   .nav-recruit span  { color: var(--accent-orange); }
-  .nav-faq span      { color: #e2b659; }
+  .nav-faq span      { color: var(--accent-cyan); }
   
   .subpage-hero { padding: 120px 0 40px; }
   .subpage-title { font-size: 2.2rem; }
