@@ -217,9 +217,10 @@
     @media (max-width: 768px) {
       .hero-sub { margin-left: 1.5rem; font-size: 0.95rem; }
       .btn-main { margin-left: 1.5rem; }
+      /* ▼▼▼ ここを修正 ▼▼▼ */
       .hero-catch { 
-        font-size: clamp(20px, 7vw, 2.2rem); /* 画面幅に合わせて自動縮小 */
-        white-space: nowrap; /* 絶対に改行させない */
+        font-size: clamp(24px, 8.8vw, 36px); /* 7vw → 8.8vw に拡大、最大値も36pxに！ */
+        white-space: nowrap; 
       }
 
       .service-list { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; padding-bottom: 32px; width: 100%; }
