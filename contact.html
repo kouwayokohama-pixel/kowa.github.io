@@ -110,6 +110,72 @@
       color: rgba(255, 255, 255, 0.25);
     }
 
+    /* プライバシーポリシー同意チェックボックス */
+    .form-privacy {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .privacy-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      position: relative;
+    }
+    /* デフォルトのダサいチェックボックスを隠す */
+    .privacy-label input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    /* カスタムチェックボックスの枠 */
+    .checkbox-custom {
+      width: 24px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    /* チェックマーク（✓）の形を作る */
+    .checkbox-custom::after {
+      content: '';
+      display: none;
+      width: 6px;
+      height: 12px;
+      border: solid #000;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+      margin-bottom: 2px;
+    }
+    /* チェックされた時の状態（オレンジに光る） */
+    .privacy-label input[type="checkbox"]:checked ~ .checkbox-custom {
+      background-color: var(--accent-orange);
+      border-color: var(--accent-orange);
+      box-shadow: 0 0 10px rgba(255, 157, 0, 0.3);
+    }
+    .privacy-label input[type="checkbox"]:checked ~ .checkbox-custom::after {
+      display: block;
+    }
+    /* テキストとリンクの装飾 */
+    .privacy-text {
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+    .privacy-text a {
+      color: var(--accent-orange);
+      text-decoration: underline;
+      transition: opacity 0.3s ease;
+    }
+    .privacy-text a:hover {
+      opacity: 0.7;
+    }
+
     /* 送信エリア・サイバーボタン（オレンジ発光） */
     .form-submit-area {
       text-align: center;
@@ -267,6 +333,16 @@
                 <span class="badge-required">必須</span>
               </div>
               <textarea class="form-control" id="form-message" rows="6" placeholder="詳細な内容や、求人へのご応募の旨をご記入ください。" required></textarea>
+            </div>
+            
+            <!-- ▼▼▼ ここから追加 ▼▼▼ -->
+            <div class="form-group form-privacy">
+              <label class="privacy-label">
+                <!-- requiredをつけることで、チェックしないと送信できなくします -->
+                <input type="checkbox" id="form-privacy-check" required>
+                <span class="checkbox-custom"></span>
+                <span class="privacy-text"><a href="policy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する</span>
+              </label>
             </div>
 
             <div class="form-submit-area">
