@@ -9,7 +9,7 @@
   <style>
     /* --- 採用トップ：メッセージ＆アピールエリア --- */
     .recruit-intro-section {
-      padding: 40px 0 60px;
+      padding: 40px 0 40px; /* 下部余白を調整 */
     }
     .recruit-intro-box {
       background: rgba(255, 255, 255, 0.02);
@@ -17,7 +17,7 @@
       border-top: 4px solid var(--accent-orange);
       padding: 48px;
       backdrop-filter: blur(8px);
-      margin-bottom: 60px;
+      margin-bottom: 20px;
     }
     .recruit-main-catch {
       font-size: 1.6rem;
@@ -43,22 +43,185 @@
       font-weight: 700;
     }
 
-    /* --- 募集要項（画像ベースのスッキリ横線テーブル） --- */
+    /* ==========================================================================
+       ★追加：社員の1週間（開閉式アコーディオン）のデザイン（ゴールドver）
+    ========================================================================== */
+    .schedule-section {
+      padding: 0 0 80px;
+    }
+    .accordion-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 215, 0, 0.4); /* ゴールドの枠線 */
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 32px;
+      background: rgba(255, 215, 0, 0.05); /* うっすらゴールド背景 */
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .accordion-header:hover {
+      background: rgba(255, 215, 0, 0.1);
+    }
+    .accordion-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffd700; /* ゴールド文字 */
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .accordion-icon {
+      font-size: 1.5rem;
+      transition: transform 0.4s ease;
+      color: #ffd700;
+    }
+    .accordion-header.is-active .accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+      opacity: 0;
+    }
+    .accordion-header.is-active + .accordion-content {
+      opacity: 1;
+    }
+    .accordion-inner {
+      padding: 32px;
+      border-top: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    /* 魅力アピールBOX（2列×2段に調整） */
+    .schedule-highlights {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .highlight-item {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 4px;
+    }
+    .highlight-item h4 {
+      color: #ffd700; /* ゴールド文字 */
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .highlight-item p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    /* タイムラインのカード */
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .timeline-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 4px solid #ffd700; /* 左の太線をゴールドに */
+      padding: 24px;
+    }
+    .timeline-card h4 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .timeline-card h4 span {
+      background: #ffd700; /* 曜日の背景をゴールドに */
+      color: #000;
+      font-size: 0.8rem;
+      padding: 2px 8px;
+      border-radius: 2px;
+      font-weight: 900;
+    }
+    .time-row {
+      display: flex;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+    .time-row:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .time-badge {
+      width: 65px;
+      font-weight: 700;
+      color: #ffd700; /* 時間部分をゴールドに */
+      flex-shrink: 0;
+    }
+    .time-desc {
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+    .time-desc span.em {
+      color: #ffd700;
+      font-weight: 700;
+    }
+
+    .schedule-note {
+      text-align: right;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 16px;
+    }
+
+    /* ★追加：一番下の「閉じる」ボタン */
+    .accordion-close-wrap {
+      text-align: center;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px dashed rgba(255, 215, 0, 0.3); /* 上に点線を引いて区切る */
+    }
+    .accordion-close-btn {
+      background: transparent;
+      border: 1px solid #ffd700;
+      color: #ffd700;
+      padding: 12px 40px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.05em;
+    }
+    .accordion-close-btn:hover {
+      background: rgba(255, 215, 0, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* --- 募集要項 --- */
     .requirements-section {
       padding: 0 0 60px;
     }
     .recruit-table-wrapper {
       background: rgba(255, 255, 255, 0.01);
       backdrop-filter: blur(5px);
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
     .recruit-table {
       width: 100%;
       border-collapse: collapse;
-      border-top: 1px solid rgba(255, 157, 0, 0.3); /* 上部のライン */
+      border-top: 1px solid rgba(255, 157, 0, 0.3);
     }
     .recruit-table tr {
-      border-bottom: 1px solid rgba(255, 157, 0, 0.2); /* 行間のライン */
+      border-bottom: 1px solid rgba(255, 157, 0, 0.2);
     }
     .recruit-table th, .recruit-table td {
       padding: 26px 24px;
@@ -72,7 +235,6 @@
       font-size: 1.1rem;
       position: relative;
     }
-    /* 画像のレイアウトをサイバーかつ綺麗に引き立てる左縦線 */
     .recruit-table th::before {
       content: '';
       position: absolute;
@@ -91,88 +253,56 @@
       color: #fff;
       font-size: 1.1rem;
     }
-    .recruit-table td ul {
-      list-style: none;
+
+    /* --- 応募エリア --- */
+    .apply-banner {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 4px solid var(--accent-orange);
+      padding: 40px;
+      border-radius: 4px;
+      margin-bottom: 40px;
+      text-align: center;
     }
-    .recruit-table td ul li {
-      position: relative;
-      padding-left: 20px;
-      margin-bottom: 6px;
-      color: var(--text-muted);
+    .apply-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 24px;
     }
-    .recruit-table td ul li::before {
-      content: '■';
-      position: absolute;
-      left: 0;
-      color: var(--accent-orange);
-      font-size: 0.8.5rem;
+    .apply-btns {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 32px;
     }
-
-    /* ==========================================================================
-    応募エリアの「枠」と「タイトル」のデザイン
-   ========================================================================== */
-  .apply-banner {
-    background: rgba(255, 255, 255, 0.05); /* うっすら白い背景 */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* 全体の枠線 */
-    border-top: 4px solid var(--accent-orange); /* ★上部の太い線 */
-    padding: 40px;
-    border-radius: 4px;
-    margin-bottom: 40px;
-    text-align: center; /* ★箱の中身をすべて中央揃えに！ */
-  }
-
-  .apply-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 24px;
-  }
-
-  /* ==========================================================================
-    WEB応募・電話応募の「ボタン化」と「左右配置」
-   ========================================================================== */
-  /* ボタンを左右に並べるための外枠設定 */
-  .apply-btns {
-    display: flex;
-    flex-direction: row; /* 縦並びから横並びに変更 */
-    justify-content: center; /* 全体を中央に寄せる */
-    gap: 40px; /* 左右のボタンの隙間 */
-    margin-top: 32px;
-  }
-
-  /* ボタンと下部の注釈をまとめる箱 */
-  .btn-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 箱の中も中央揃えに */
-    flex: 1; /* 左右の幅を均等(50:50)にする */
-    max-width: 360px; /* PCの大画面でボタンが横に伸びすぎるのを防ぐ */
-  }
-
-  /* ★ボタンの共通デザイン（両方ともオレンジ！） */
-  .apply-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%; /* wrapperの幅いっぱいに広げる */
-    padding: 16px 40px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 4px;
-    margin-bottom: 12px;
-    background: rgba(255, 255, 255, 0.02); 
-    transition: all 0.3s ease;
-    
-    /* ここでオレンジカラーに統一 */
-    color: var(--accent-orange) !important;
-    border: 1px solid var(--accent-orange);
-  }
-
-  /* マウスを乗せたとき（ホバー）のうっすら光る設定 */
-  .apply-btn:hover {
-    background: rgba(255, 157, 0, 0.1); /* オレンジの半透明 */
-    transform: translateY(-2px); /* フワッと浮き上がる */
-  }
+    .btn-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      max-width: 360px;
+    }
+    .apply-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 16px 40px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.02); 
+      transition: all 0.3s ease;
+      color: var(--accent-orange) !important;
+      border: 1px solid var(--accent-orange);
+    }
+    .apply-btn:hover {
+      background: rgba(255, 157, 0, 0.1);
+      transform: translateY(-2px);
+    }
 
     /* --- スマホ対応レスポンシブ --- */
     @media (max-width: 768px) {
@@ -200,42 +330,33 @@
       .subpage-title { font-size: 2.2rem; }
       .section-title { font-size: 1.8rem; margin-bottom: 24px; }
 
-      /* モバイル特有のレイアウト調整 */
-      .recruit-intro-box { padding: 24px; margin-bottom: 40px; }
+      .recruit-intro-box { padding: 24px; margin-bottom: 20px; }
       .recruit-main-catch { font-size: 1.25rem; margin-bottom: 20px; }
       .recruit-intro-p { font-size: 0.95rem; line-height: 1.8; }
+
+      /* アコーディオンのスマホ調整 */
+      .accordion-header { padding: 16px 20px; }
+      .accordion-title { font-size: 1rem; }
+      .accordion-inner { padding: 20px; }
+      .schedule-highlights { grid-template-columns: 1fr; gap: 12px; }
+      .highlight-item { padding: 12px; }
+      .timeline-card { padding: 16px; }
 
       .recruit-table th, .recruit-table td { display: block; width: 100%; padding: 16px 16px 16px 20px; }
       .recruit-table th { padding-bottom: 4px; font-size: 1.05rem; }
       .recruit-table th::before { top: 18px; height: 18px; }
       .recruit-table td { padding-top: 0; padding-bottom: 24px; }
       
-      .message-banner { padding: 32px 20px; }
-      .banner-title { font-size: 1.2rem; }
-      .banner-desc { font-size: 0.95rem; line-height: 1.8; }
-      .huge-tel-btn { font-size: 1.5rem; padding: 14px 28px; width: 100%; }
+      .apply-banner { padding: 32px 20px; margin-bottom: 0; }
+      .apply-title { font-size: 1.5rem; }
+      .apply-btns { flex-direction: column; align-items: center; gap: 32px; }
+      .btn-wrapper { width: 100%; max-width: 100%; }
+      .apply-btn { width: 100%; padding: 16px 0; }
 
       .footer-top { flex-direction: column; gap: 40px; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; color: var(--text-muted); }
       .footer-policy-link { display: inline-block; margin-bottom: 8px; }
       .footer-policy-split { display: none; }
-
-      /* ==========================================================================
-        スマホ用：ご応募エリアのスマホ微調整
-       ========================================================================== */
-      .apply-banner { padding: 32px 20px; margin-bottom: 0; }
-      .apply-title { font-size: 1.5rem; }
-      
-      /* ★スマホの狭い画面では横並びをやめて、縦並びに戻す */
-      .apply-btns { 
-        flex-direction: column; 
-        align-items: center; 
-        gap: 32px; 
-      }
-      
-      /* ボタンをスマホ画面の横幅いっぱいに広げる */
-      .btn-wrapper { width: 100%; max-width: 100%; }
-      .apply-btn { width: 100%; padding: 16px 0; }
      }
   </style>
 </head>
@@ -249,7 +370,7 @@
     <section class="subpage-hero">
       <div class="container fade-up">
         <h1 class="subpage-title">Recruit</h1>
-        <p class="subpage-subtitle"style="color: var(--accent-orange);">採用情報</p>
+        <p class="subpage-subtitle" style="color: var(--accent-orange);">採用情報</p>
       </div>
     </section>
 
@@ -261,7 +382,6 @@
 
     <section class="recruit-intro-section">
       <div class="container">
-        <!-- ★ ここから差し替え ★ -->
         <div class="recruit-intro-box fade-up">
           <div class="recruit-main-catch">
             <span>◎一律「30日間」の夏休み</span><br>
@@ -276,6 +396,122 @@
       </div>
     </section>
 
+    <!-- ★移動してきた：社員の1週間（開閉式アコーディオン） -->
+    <section class="schedule-section">
+      <div class="container fade-up">
+        
+        <div class="accordion-box">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <div class="accordion-title">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              【タップして開く】働き方のイメージ（社員の1週間の例）
+            </div>
+            <div class="accordion-icon">▼</div>
+          </div>
+
+          <div class="accordion-content">
+            <div class="accordion-inner">
+              
+              <!-- 環境のアピールBOX（2列） -->
+              <div class="schedule-highlights">
+                <div class="highlight-item">
+                  <h4>🗓 月の出勤日は「希望休」を考慮！</h4>
+                  <p>前月までに希望の休みを申請していただき、それに沿って翌月のシフトが組まれるため、予定が立てやすい環境です。</p>
+                </div>
+                <div class="highlight-item">
+                  <h4>📱 面倒な手書き日報はゼロ！</h4>
+                  <p>当社はDX推進中！帰社後はアルコールチェックをしてスマホから日報をピッとお手軽送信。面倒な事務作業がありません。</p>
+                </div>
+                <div class="highlight-item">
+                  <h4>⏰ 休憩時間の使い方は完全自由！</h4>
+                  <p>買い物に行ったり、ご飯を食べたり、トラックで仮眠を取ったり…長い休憩時間は各々が自由に過ごしてリフレッシュしています。</p>
+                </div>
+                <div class="highlight-item">
+                  <h4>🌴 30日間の超・大型連休！</h4>
+                  <p>学校給食の配達がメインだからこそ、学校の夏休みに合わせて一律で大型連休が取れます。家族旅行や趣味を思い切り楽しめます！</p>
+                </div>
+              </div>
+
+              <!-- 曜日別のタイムライン -->
+              <div class="timeline-grid">
+                
+                <!-- 月水金 -->
+                <div class="timeline-card">
+                  <h4><span>月・水・金</span> 学校給食のルート配送</h4>
+                  <div class="time-row"><div class="time-badge">05:00</div><div class="time-desc">出勤・点呼（車・バイク通勤OK！）</div></div>
+                  <div class="time-row"><div class="time-badge">05:30</div><div class="time-desc">倉庫到着・荷物の積込</div></div>
+                  <div class="time-row"><div class="time-badge">06:30</div><div class="time-desc">出発・配達開始</div></div>
+                  <div class="time-row"><div class="time-badge">10:00</div><div class="time-desc"><span class="em">配達終了・休憩（3時間は完全自由なフリータイム！）</span></div></div>
+                  <div class="time-row"><div class="time-badge">13:00</div><div class="time-desc">専用Boxの回収開始</div></div>
+                  <div class="time-row"><div class="time-badge">15:30</div><div class="time-desc">回収終了・倉庫到着</div></div>
+                  <div class="time-row"><div class="time-badge">16:30</div><div class="time-desc">帰社・退社（アルコールチェックをして、<span class="em">スマホで日報送信！</span>）</div></div>
+                </div>
+
+                <!-- 火曜 -->
+                <div class="timeline-card">
+                  <h4><span>火曜日</span> 日用品・雑貨の配送</h4>
+                  <div class="time-row"><div class="time-badge">03:00</div><div class="time-desc">出勤・点呼</div></div>
+                  <div class="time-row"><div class="time-badge">03:30</div><div class="time-desc">倉庫到着・荷物の積込</div></div>
+                  <div class="time-row"><div class="time-badge">05:00</div><div class="time-desc">出発・配達開始</div></div>
+                  <div class="time-row"><div class="time-badge">09:00</div><div class="time-desc">休憩（約1時間）</div></div>
+                  <div class="time-row"><div class="time-badge">12:00</div><div class="time-desc">帰社・退社（<span class="em">お昼には終わるので、午後まるまるプライベートの時間！</span>）</div></div>
+                </div>
+
+                <!-- 木曜 -->
+                <div class="timeline-card">
+                  <h4><span>木曜日</span> 学校給食のルート配送（半日）</h4>
+                  <div class="time-row"><div class="time-badge">03:30</div><div class="time-desc">出勤・点呼・そのまま配達開始！</div></div>
+                  <div class="time-row"><div class="time-badge">07:00</div><div class="time-desc">休憩（45分）</div></div>
+                  <div class="time-row"><div class="time-badge">09:30</div><div class="time-desc">配達終了・倉庫到着</div></div>
+                  <div class="time-row"><div class="time-badge">10:30</div><div class="time-desc">帰社・退社（<span class="em">午前中で仕事終了！自分の時間をたっぷり使えます</span>）</div></div>
+                </div>
+
+                <!-- ★ここから差し替え -->
+                <!-- 週末（土・日） -->
+                <div class="timeline-card" style="border-left-color: var(--accent-cyan); background: rgba(0, 229, 255, 0.05);">
+                  <h4 style="color: var(--accent-cyan);"><span style="background: var(--accent-cyan);">土・日</span> 基本はお休み！（※シフトにより出勤あり）</h4>
+                  <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.8; margin-bottom: 12px;">
+                    休日はしっかりリフレッシュ。希望休のシフト制なので、週末の予定も立てやすい環境です！<br>
+                    <span style="color: var(--text-muted); font-size: 0.85rem;">
+                      ※シフト出勤の場合の例：<br>
+                      ・土曜出勤の場合 ➔ 火曜日と同じ午前中メインの日用品配送<br>
+                      ・日曜出勤の場合 ➔ 配送はなし。洗車や車両整備、翌日の荷物積み込みなど（9:00〜17:00目安）
+                    </span>
+                  </p>
+                </div>
+
+              </div>
+              
+              <!-- 注釈とスポット業務の追記 -->
+              <div class="schedule-note" style="text-align: left; background: rgba(255,255,255,0.02); padding: 16px; border-radius: 4px; margin-top: 24px;">
+                <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 8px;">
+                  ※上記はあくまで「働き方の一例」です。担当コースやシフトにより出勤・退勤時間は変動します。
+                </p>
+                <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6;">
+                  ※日によって、<strong>スポットで「引越」や「什器搬入」等の業務</strong>をお任せする場合もあります。
+                </p>
+              </div>
+
+              <!-- ▼▼▼ ここに追加 ▼▼▼ -->
+              <div class="accordion-close-wrap">
+                <button class="accordion-close-btn" onclick="closeAccordion(this)">
+                  ▲ 閉じる
+                </button>
+              </div>
+              <!-- ▲▲▲ ここに追加 ▲▲▲ -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- 募集要項 --- -->
     <section class="requirements-section">
       <div class="container">
         <h2 class="section-title fade-up title-orange">Requirements<span>募集要項</span></h2>
@@ -349,7 +585,7 @@
               <th>休日・休暇</th>
               <td>
                 <strong>年間休日100日</strong><br>
-                <div style="padding-left: 1em; text-indent: -1em;">・隔週週休2日（土曜日・日曜日）</div>
+                <div style="padding-left: 1em; text-indent: -1em;">・隔週週休2日（土曜日・日曜日 ※シフトによる出勤あり）</div><br>
                 <div style="padding-left: 1em; text-indent: -1em;">・夏季休暇（7〜8月の期間に、最大30日間の長期連休・分割取得が可能！）</div>
                 <div style="padding-left: 1em; text-indent: -1em;">・有給休暇（勤続1年以上で20日付与）</div>
                 <div style="padding-left: 1em; text-indent: -1em;">・年末年始休暇：4日間 / 夏季休暇：5日（上記に含む）</div>
@@ -378,12 +614,11 @@
       </div>
     </section>
 
-    <!-- ★ここから差し替え：応募・お問い合わせエリア -->
+    <!-- ★応募・お問い合わせエリア -->
     <section class="apply-section">
       <div class="container">
         <div class="apply-banner fade-up">
           <h2 class="apply-title">ご応募・お問い合わせ</h2>
-          <!-- ★差し替え：スマホでも変な位置で改行されない綺麗な文章 -->
           <p class="apply-desc">
             <span style="display: inline-block;">◎トラックの運転に興味がある方、</span>
             <span style="display: inline-block;">◎今の働き方を変えたい方、</span>
@@ -413,10 +648,43 @@
         </div>
       </div>
     </section>
-    <!-- ★差し替えここまで -->
   </main>
 
   <div id="footer-placeholder"></div>
   <script src="js/common.js"></script>
+
+  <!-- ★追加：アコーディオン（開閉）を動かすためのスクリプト -->
+  <script>
+    function toggleAccordion(element) {
+      element.classList.toggle('is-active');
+      const content = element.nextElementSibling;
+      if (element.classList.contains('is-active')) {
+        content.style.maxHeight = content.scrollHeight + "px";
+      } else {
+        content.style.maxHeight = "0";
+      }
+    }
+
+    // 閉じるボタン用の処理
+    function closeAccordion(button) {
+      // ボタンが含まれる大枠を探す
+      const box = button.closest('.accordion-box');
+      const header = box.querySelector('.accordion-header');
+      const content = box.querySelector('.accordion-content');
+      
+      // 閉じる処理
+      header.classList.remove('is-active');
+      content.style.maxHeight = "0";
+
+      // ★追加：アコーディオンの頭（募集要項のすぐ上）へスッと自動スクロール
+      // 上の固定ヘッダー（約100px）と被らないように、位置を少しずらして移動させます
+      const targetPosition = box.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth" // 滑らかにスクロールさせる
+      });
+    }
+
+  </script>
 </body>
 </html>
