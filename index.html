@@ -277,9 +277,12 @@
 
     /* --- index.html専用 スマホレスポンシブ --- */
     @media (max-width: 768px) {
-      /* ★追加：スマホの時はズラす量を減らして中央に配置 */
+      .hero {
+        padding-top: 100px; /* 固定ヘッダー分のスペースを強制的に確保して押し下げます */
+        justify-content: center;
+      }
       .hero-content {
-        transform: translateY(0); 
+        transform: translateY(10px); /* 上に持ち上げず、少し下げてヘッダーから距離を置きます */
       }
       .hero-sub { margin-left: 1.5rem; font-size: 0.95rem; }
       .btn-main { margin-left: 1.5rem; }
