@@ -215,6 +215,66 @@
     .contact-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px; }
     .contact-btn { width: 100%; max-width: 280px; }
 
+    /* ===================================================
+       ★追加：トップページ用 DX推進アピールバナー
+    =================================================== */
+    .dx-banner-link {
+      display: block;
+      text-decoration: none;
+      margin: 60px 0; /* 上下の余白 */
+    }
+    .dx-banner-container {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);
+      border: 1px solid rgba(255, 215, 0, 0.25);
+      border-left: 4px solid #ffd700; /* 左端をゴールドに光らせる */
+      border-radius: 4px;
+      padding: 32px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    /* ホバー（マウスを載せた時）のサイバーな発光エフェクト */
+    .dx-banner-container:hover {
+      border-color: #ffd700;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+      transform: translateY(-2px);
+    }
+    /* 右側背景の透かしアイコン */
+    .dx-banner-svg {
+      position: absolute;
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 120px;
+      height: 120px;
+      opacity: 0.04;
+      color: #ffd700;
+      pointer-events: none;
+    }
+    .dx-banner-title {
+      color: #ffd700;
+      font-size: 1.3rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: 0.05em;
+    }
+    .dx-banner-text {
+      color: var(--text-main);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+    .dx-banner-more {
+      display: inline-block;
+      color: #ffd700;
+      font-weight: 700;
+      margin-top: 12px;
+      border-bottom: 1px dashed #ffd700;
+    }
+
     /* --- index.html専用 スマホレスポンシブ --- */
     @media (max-width: 768px) {
       /* ★追加：スマホの時はズラす量を減らして中央に配置 */
@@ -253,6 +313,33 @@
       .contact-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
       .contact-card p { font-size: 0.75rem; margin-bottom: 16px; }
       .contact-btn { padding: 12px 0; font-size: 0.8rem; width: 100%; letter-spacing: normal; }
+      
+      .dx-banner-link {
+        margin: 40px 0;
+      }
+      .dx-banner-container {
+        padding: 24px 20px;
+      }
+      .dx-banner-title {
+        font-size: 1.1rem;
+        flex-direction: column; /* スマホではアイコンと文字を縦並びに */
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .dx-banner-text {
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+      /* スマホでは透かしアイコンを右下に小さく配置 */
+      .dx-banner-svg {
+        width: 80px;
+        height: 80px;
+        right: -10px;
+        bottom: -10px;
+        top: auto;
+        transform: none;
+      }
+    
     }
   </style>
 </head>
@@ -325,6 +412,46 @@
           </div>
         </div>
       </div>
+
+      <!-- ★追加：DX推進アピールバナー（準備中バージョン） -->
+        <!-- onclick属性を追加して、クリック時にアラートを出し、ページ遷移を防ぎます -->
+        <a href="#" onclick="alert('現在、詳細ページを制作・準備中です。公開まで今しばらくお待ちください！'); return false;" class="dx-banner-link fade-up">
+          <div class="dx-banner-container">
+            
+            <!-- 右側の透かし装飾（パソコン用） -->
+            <svg class="dx-banner-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+
+            <div class="dx-banner-content">
+              <h3 class="dx-banner-title">
+                <!-- タイトル横のキューブアイコン -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                  <polyline points="12 22 12 12"></polyline>
+                  <polyline points="22 8.5 12 12"></polyline>
+                  <polyline points="2 8.5 12 12"></polyline>
+                </svg>
+                【INNOVATION】自社開発アプリ・社内DXを推進中
+              </h3>
+              <p class="dx-banner-text">
+                業務のリアルタイム管理やペーパーレス化はもちろん、出荷検品システムの独自タブレットアプリ開発まで。<br class="pc-only">
+                現場を熟知した自社スタッフ主導の「生きたIT」で、他社にはない正確性と圧倒的な高品質物流を実現しています。<br>
+                
+                <!-- リンク文字を「準備中」に変更し、少し控えめな色にする -->
+                <span class="dx-banner-more" style="opacity: 0.8; border-bottom: none;">
+                  ⏳ 独自のDX化についての詳細ページは現在準備中です
+                </span>
+              </p>
+            </div>
+            
+          </div>
+        </a>
+            
+       
+      
       <div style="text-align: center; margin-top: 64px;">
         <a href="services.html" class="btn-outline red-version">詳細はこちら</a>
       </div>
