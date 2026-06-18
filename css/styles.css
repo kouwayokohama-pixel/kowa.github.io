@@ -329,6 +329,10 @@ body {
   /* ★アニメーションの停止コードを削除し、スマホでも動くようにしました */
   .pc-only { display: none !important; }
   .sp-only { display: flex !important; } /* ← !importantを追加！ */
+
+   .page-grid {
+      animation: none;
+    }
   
   /* ハンバーガーメニュー */
   .menu-toggle { display: block; background: transparent; border: none; width: 32px; height: 24px; position: relative; z-index: 1001; cursor: pointer; }
