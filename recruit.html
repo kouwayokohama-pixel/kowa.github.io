@@ -141,7 +141,7 @@
       align-items: center;
       gap: 8px;
     }
-    .timeline-card h4 span:first-child{
+    .timeline-card h4 > span:first-child{
       background: #ffd700; /* 曜日の背景をゴールドに */
       color: #000;
       font-size: 0.8rem;
@@ -470,7 +470,13 @@
                 </div>
 
                 <div class="timeline-card" style="border-left-color: var(--accent-cyan); background: rgba(0, 229, 255, 0.05);">
-                  <h4><span>土・日</span> <span class="keep-text">基本はお休み！</span><br class="sp-only"><span class="keep-text" style="font-size: 0.85rem; font-weight: normal; color: rgba(255,255,255,0.6); margin-top: 4px;">（※シフトにより出勤あり）</span></h4>
+                  <h4 style="color: var(--accent-cyan); display: flex; align-items: flex-start; gap: 8px;">
+                    <span style="background: var(--accent-cyan); color: #000; font-size: 0.8rem; padding: 2px 8px; border-radius: 2px; font-weight: 900; flex-shrink: 0;">土・日</span>
+                    <div style="display: block; text-align: left;">
+                      <span class="keep-text" style="color: #fff;">基本はお休み！</span><br class="sp-only">
+                      <span class="keep-text" style="font-size: 0.85rem; font-weight: normal; color: rgba(255,255,255,0.6); display: inline-block; margin-top: 4px;">（※シフトにより出勤あり）</span>
+                    </div>
+                  </h4>
                   <p style="color: var(--text-main); font-size: 0.95rem; line-height: 1.8; margin-bottom: 12px;">
                     休日はしっかりリフレッシュ。希望休のシフト制なので、週末の予定も立てやすい環境です！<br>
                     <span style="color: var(--text-muted); font-size: 0.85rem; display: block; margin-top: 8px;">
