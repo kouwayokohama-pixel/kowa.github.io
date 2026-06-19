@@ -10,13 +10,12 @@
     /* --- ヒーロー --- */
     .hero {
       position: relative;
-      height: 100dvh; /* ★ここで絶対に「画面ぴったり100%」に固定します */
+      height: 100dvh;
       min-height: 600px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       overflow: hidden;
-      /* paddingの力技は削除しました！ */
     }
 
     .hero-content {
@@ -76,12 +75,11 @@
     /* --- マーキー --- */
     .marquee-container {
       position: absolute;
-      bottom: 0; /* ★画面の一番下（底）にぴったりくっつけます */
+      bottom: 0;
       width: 100%;
       overflow: hidden;
       white-space: nowrap;
       border-top: 1px solid var(--border-color);
-      /* 下の線を消して、次のセクションと綺麗に繋げます */
       padding: 16px 0;
       background-color: transparent;
       z-index: 10;
@@ -130,7 +128,7 @@
     .service-card h3 { font-size: 1.3rem; margin-bottom: 16px; font-weight: 700; letter-spacing: 0.05em; }
     .service-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; }
 
-    /* ★ 共通ボタンデザイン */
+    /* 共通ボタンデザイン */
     .btn-outline {
       display: inline-flex;
       align-items: center;
@@ -169,13 +167,9 @@
     .btn-outline.orange-version::before { background: var(--accent-orange); }
     .btn-outline.orange-version:hover { color: #000; }
 
-    /* ==========================================================================
-    トップページ：地域密着〜の見出し（PC・スマホ共通の2行固定＆最大化）
-   ========================================================================== */
     .intro-title {
-    /* white-space: nowrap は画像を潰す原因になるのでPCでは外します！ */
-    font-size: clamp(24px, 3vw, 36px) !important; /* 画像の場所を奪わない、かつ存在感のある最大40pxに調整 */
-    line-height: 1.5;
+      font-size: clamp(24px, 3vw, 36px) !important;
+      line-height: 1.5;
     }
 
     /* --- 会社情報＆採用情報セクション --- */
@@ -192,15 +186,14 @@
       position: relative; 
       display: flex; 
       flex-direction: column; 
-      flex-grow: 1; /* カード全体の高さを埋める */
+      flex-grow: 1;
     }
     .info-card h3 { font-size: 1.5rem; margin-bottom: 16px; font-weight: 700; letter-spacing: 0.05em; }
     .info-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 32px; }
 
-    /* ★このボタン専用の指定を追加します */
     .info-text .btn-outline {
-      align-self: center; /* ボタンをド真ん中に配置！ */
-      margin-top: auto;   /* ボタンを常にカードの一番下に押しやる！ */
+      align-self: center;
+      margin-top: auto;
     }
 
     /* --- お問い合わせセクション --- */
@@ -215,31 +208,27 @@
     .contact-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px; }
     .contact-btn { width: 100%; max-width: 280px; }
 
-    /* ===================================================
-       ★追加：トップページ用 DX推進アピールバナー
-    =================================================== */
+    /* --- トップページ用 DX推進アピールバナー --- */
     .dx-banner-link {
       display: block;
       text-decoration: none;
-      margin: 60px 0; /* 上下の余白 */
+      margin: 60px 0;
     }
     .dx-banner-container {
       background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);
       border: 1px solid rgba(255, 215, 0, 0.25);
-      border-left: 4px solid #ffd700; /* 左端をゴールドに光らせる */
+      border-left: 4px solid #ffd700;
       border-radius: 4px;
       padding: 32px 40px;
       position: relative;
       overflow: hidden;
       transition: all 0.3s ease;
     }
-    /* ホバー（マウスを載せた時）のサイバーな発光エフェクト */
     .dx-banner-container:hover {
       border-color: #ffd700;
       box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
       transform: translateY(-2px);
     }
-    /* 右側背景の透かしアイコン */
     .dx-banner-svg {
       position: absolute;
       right: 30px;
@@ -277,20 +266,13 @@
 
     /* --- index.html専用 スマホレスポンシブ --- */
     @media (max-width: 768px) {
-      .hero {
-        padding-top: 100px; /* 固定ヘッダー分のスペースを強制的に確保して押し下げます */
-        justify-content: center;
-      }
+      /* ★修正：スマホで要素が重ならないように少し押し上げつつ、ボタンの下に余裕を持たせます */
       .hero-content {
-        transform: translateY(10px); /* 上に持ち上げず、少し下げてヘッダーから距離を置きます */
+        transform: translateY(-10px); 
       }
       .hero-sub { margin-left: 1.5rem; font-size: 0.95rem; }
-      .btn-main { margin-left: 1.5rem; }
-      /* ▼▼▼ ここを修正 ▼▼▼ */
-      .hero-catch { 
-        font-size: clamp(24px, 8.8vw, 36px); /* 7vw → 8.8vw に拡大、最大値も36pxに！ */
-        white-space: nowrap; 
-      }
+      .btn-main { margin-left: 1.5rem; margin-bottom: 40px; /* ★ここを追加！ボタンと流れる文字が被らないようにします */ }
+      .hero-catch { font-size: clamp(24px, 8.8vw, 36px); white-space: nowrap; }
 
       .service-list { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; padding-bottom: 32px; width: 100%; }
       .service-list::-webkit-scrollbar { height: 4px; }
@@ -303,9 +285,9 @@
 
       .business-intro-grid { display: flex; flex-direction: column; gap: 32px; }
       .intro-title {
-        white-space: nowrap !important; /* スマホは縦並び（画像が下）なので、改行禁止にしても問題なし！ */
-       font-size: 6.5vw !important;
-       width: 100% !important; /* ★Android LINEの圧縮対策に追加 */
+        white-space: nowrap !important;
+        font-size: 6.5vw !important;
+        width: 100% !important;
       }    
       .intro-img { order: 2; }
       .intro-desc { order: 3; }
@@ -317,23 +299,15 @@
       .contact-card p { font-size: 0.75rem; margin-bottom: 16px; }
       .contact-btn { padding: 12px 0; font-size: 0.8rem; width: 100%; letter-spacing: normal; }
       
-      .dx-banner-link {
-        margin: 40px 0;
-      }
-      .dx-banner-container {
-        padding: 24px 20px;
-      }
+      .dx-banner-link { margin: 40px 0; }
+      .dx-banner-container { padding: 24px 20px; }
       .dx-banner-title {
         font-size: 1.1rem;
-        flex-direction: column; /* スマホではアイコンと文字を縦並びに */
+        flex-direction: column;
         align-items: flex-start;
         gap: 6px;
       }
-      .dx-banner-text {
-        font-size: 0.9rem;
-        line-height: 1.6;
-      }
-      /* スマホでは透かしアイコンを右下に小さく配置 */
+      .dx-banner-text { font-size: 0.9rem; line-height: 1.6; }
       .dx-banner-svg {
         width: 80px;
         height: 80px;
@@ -342,7 +316,6 @@
         top: auto;
         transform: none;
       }
-    
     }
   </style>
 </head>
@@ -355,8 +328,16 @@
   <section class="hero">
     <div class="container hero-content fade-up">
       <h1 class="hero-catch">「安全で確実な物流」</h1>
+
       <p class="hero-sub">
-        1972年の創業から変わらない、基本目標<br><br>
+        <!-- ★修正：inline-flex と align-items: baseline; を使って文字の底辺をピタッと揃えました -->
+        <span style="display: block; margin-bottom: 16px;">
+          <span style="display: inline-flex; align-items: baseline;">
+            <strong style="color: #00e5ff; font-size: 2.0rem; font-weight: 900; letter-spacing: 0.02em; line-height: 1; text-shadow: 0 0 15px rgba(255, 215, 0, 0.4); margin-right: 8px;">1972年</strong>
+            <span class="keep-text">の創業から変わらない、</span>
+          </span><br class="sp-only">
+          <span class="keep-text" style="display: inline-block; margin-top: 4px;">基本目標</span>
+        </span>
         <span class="keep-text">「日常」を届ける</span><span class="keep-text">プロフェッショナルとして、</span><br>
         <span class="keep-text">横浜市内を中心に、</span><span class="keep-text">2t車による貨物運送事業を行っています。</span>
       </p>
@@ -392,7 +373,7 @@
           <div class="service-img"><img src="images/IND1.jpg" alt="食品・学校給食配送"></div>
           <div class="service-text">
             <h3>学校給食の配送</h3>
-            <p>配送時間・人員配置の管理を徹底し、遅延することなく学校へ食品品を配送します。<br>
+            <p>配送時間・人員配置の管理を徹底し、遅延することなく学校へ食料品を配送します。<br>
                品質・衛生管理のもと、商品を安心・安全にお届けします。食のインフラを担う「確かな輸送力」にぜひご期待ください。</p>
           </div>
         </div>
@@ -416,45 +397,35 @@
         </div>
       </div>
 
-      <!-- ★追加：DX推進アピールバナー（準備中バージョン） -->
-        <!-- onclick属性を追加して、クリック時にアラートを出し、ページ遷移を防ぎます -->
-        <a href="#" onclick="alert('現在、詳細ページを制作・準備中です。公開まで今しばらくお待ちください！'); return false;" class="dx-banner-link fade-up">
-          <div class="dx-banner-container">
-            
-            <!-- 右側の透かし装飾（パソコン用） -->
-            <svg class="dx-banner-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
+      <a href="#" onclick="alert('現在、詳細ページを制作・準備中です。公開まで今しばらくお待ちください！'); return false;" class="dx-banner-link fade-up">
+        <div class="dx-banner-container">
+          <svg class="dx-banner-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
 
-            <div class="dx-banner-content">
-              <h3 class="dx-banner-title">
-                <!-- タイトル横のキューブアイコン -->
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
-                  <polyline points="12 22 12 12"></polyline>
-                  <polyline points="22 8.5 12 12"></polyline>
-                  <polyline points="2 8.5 12 12"></polyline>
-                </svg>
-                【INNOVATION】<br class="sp-only">自社開発アプリ・社内DXを推進中
-              </h3>
-              <p class="dx-banner-text">
-                業務のリアルタイム管理やペーパーレス化はもちろん、出荷検品システムの独自アプリ開発まで。<br class="pc-only">
-                現場を熟知した自社スタッフ主導の「生きたIT」で、他社にはない正確性と圧倒的な高品質物流を実現しています。<br>
-                
-                <!-- リンク文字を「準備中」に変更し、少し控えめな色にする -->
-                <span class="dx-banner-more" style="opacity: 0.8; border-bottom: none;">
-                  ⏳ DX化についての詳細ページは現在準備中
-                </span>
-              </p>
-            </div>
-            
+          <div class="dx-banner-content">
+            <h3 class="dx-banner-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                <polyline points="12 22 12 12"></polyline>
+                <polyline points="22 8.5 12 12"></polyline>
+                <polyline points="2 8.5 12 12"></polyline>
+              </svg>
+              【INNOVATION】<br class="sp-only">自社開発アプリ・社内DXを推進中
+            </h3>
+            <p class="dx-banner-text">
+              業務のリアルタイム管理やペーパーレス化はもちろん、出荷検品システムの独自アプリ開発まで。<br class="pc-only">
+              現場を熟知した自社スタッフ主導の「生きたIT」で、他社にはない正確性と圧倒的な高品質物流を実現しています。<br>
+              <span class="dx-banner-more" style="opacity: 0.8; border-bottom: none;">
+                ⏳ DX化についての詳細ページは現在準備中
+              </span>
+            </p>
           </div>
-        </a>
+        </div>
+      </a>
             
-       
-      
       <div style="text-align: center; margin-top: 64px;">
         <a href="services.html" class="btn-outline red-version">詳細はこちら</a>
       </div>
