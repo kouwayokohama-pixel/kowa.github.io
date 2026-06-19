@@ -275,7 +275,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 60px;
+  margin-bottom: 24px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -323,23 +323,23 @@ body {
 
 .keep-text { display: inline-block; }
 
-/* --- 神奈川県トラック協会ロゴ（リンク左横に配置） --- */
-.footer-bottom-right {
-  display: flex;
-  align-items: center;
-  gap: 24px; /* ロゴとプライバシーポリシーの間の隙間 */
+/* --- 神奈川県トラック協会ロゴリンク用 --- */
+.truck-logo-link {
+  display: inline-block;
+  transition: all 0.3s ease;
 }
 
-.footer-truck-logo-inline {
-  height: 48px; /* ★文字がしっかり読める大きさに拡大（幅は自動調整されます） */
+.truck-logo-link img {
+  height: 40px; /* パソコン・スマホ共通でちょうどいいサイズ */
   width: auto;
   border-radius: 4px;
-  opacity: 0.9; /* 暗くしすぎず、しっかり見せる */
-  transition: opacity 0.3s ease;
+  opacity: 0.85;
 }
 
-.footer-truck-logo-inline:hover {
+/* マウスを乗せたらフワッと明るくなり、少し上に浮くアクション */
+.truck-logo-link:hover {
   opacity: 1;
+  transform: translateY(-3px);
 }
 
 /* ==========================================================================
@@ -441,7 +441,7 @@ body {
   .footer-top {
     display: flex !important;
     flex-direction: column !important;
-    gap: 32px !important; /* バナーと会社情報の間の隙間（お好みで調整してください） */
+    gap: 16px !important; /* バナーと会社情報の間の隙間（お好みで調整してください） */
   }
   
   .footer-right {
@@ -470,9 +470,4 @@ body {
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .footer-policy-split { display: none; }
 
-  .footer-bottom-right {
-    flex-direction: column; /* スマホでは縦並びにする */
-    gap: 16px;
-    margin-top: 16px;
-  }
 }
