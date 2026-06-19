@@ -149,8 +149,6 @@ body {
   gap: 16px;
 }
 
-.keep-text { display: inline-block; }
-
 /* ★ヘッダーのホバー効果（青く光る） */
 .header-contact a {
   transition: color 0.3s ease;
@@ -323,6 +321,26 @@ body {
 .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+.keep-text { display: inline-block; }
+
+/* --- 神奈川県トラック協会ロゴ（リンク左横に配置） --- */
+.footer-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* ロゴとプライバシーポリシーの間の隙間 */
+}
+
+.footer-truck-logo-inline {
+  height: 48px; /* ★文字がしっかり読める大きさに拡大（幅は自動調整されます） */
+  width: auto;
+  border-radius: 4px;
+  opacity: 0.9; /* 暗くしすぎず、しっかり見せる */
+  transition: opacity 0.3s ease;
+}
+
+.footer-truck-logo-inline:hover {
+  opacity: 1;
+}
 
 /* ==========================================================================
    スマートフォン用レスポンシブ設定
@@ -331,11 +349,11 @@ body {
   /* ★アニメーションの停止コードを削除し、スマホでも動くようにしました */
   .pc-only { display: none !important; }
   .sp-only { display: flex !important; } /* ← !importantを追加！ */
-
-   .page-grid {
+  
+  .page-grid {
       animation: none;
     }
-  
+
   /* ハンバーガーメニュー */
   .menu-toggle { display: block; background: transparent; border: none; width: 32px; height: 24px; position: relative; z-index: 1001; cursor: pointer; }
   .menu-toggle-bar { position: absolute; left: 0; width: 100%; height: 2px; background-color: var(--text-main); transition: all 0.3s ease; }
@@ -451,4 +469,10 @@ body {
   
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .footer-policy-split { display: none; }
+
+  .footer-bottom-right {
+    flex-direction: column; /* スマホでは縦並びにする */
+    gap: 16px;
+    margin-top: 16px;
+  }
 }
