@@ -149,6 +149,8 @@ body {
   gap: 16px;
 }
 
+.keep-text { display: inline-block; }
+
 /* ★ヘッダーのホバー効果（青く光る） */
 .header-contact a {
   transition: color 0.3s ease;
