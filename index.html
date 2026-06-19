@@ -342,17 +342,20 @@
       .intro-text-box { 
         width: 100%; 
         margin-top: 0; 
-        padding: 40px 24px; 
-        background: rgba(15, 15, 15, 0.8);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        padding: 40px 16px; /* ★ 左右の余白を減らして、文字が横に広がるスペースを確保！ */
+        background: rgba(15, 15, 15, 0.92); /* ★ ぼかしをなくす代わりに背景を少し濃くして高級感を維持 */
+        
+        /* ★ スクロール激重の原因（スマホでのすりガラス）をオフにしてサクサクに！ */
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        
         box-shadow: none; 
         border-radius: 4px; 
       }
 
-      /* ★スマホ時の見出しサイズも合わせて巨大化 */
       .intro-title {
-        font-size: 7.5vw !important; 
+        font-size: 6.5vw !important; /* ★ どんなスマホでも絶対に2行で収まるベストなサイズ */
+        white-space: nowrap !important; /* ★ これで強制的に2行をキープ！ */
         margin-bottom: 24px;
       }
 
