@@ -99,12 +99,74 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* --- 導入セクション --- */
-    .business-intro { padding: 80px 0; background-color: rgba(5, 5, 5, 0.6); }
-    .business-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    /* ==========================================================================
+       導入セクション（画像＋すりガラス枠）
+    ========================================================================== */
+    .business-intro { 
+      padding: 100px 0; 
+      background-color: rgba(5, 5, 5, 0.6); 
+      overflow: hidden; 
+    }
     
-    .intro-desc { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; max-width: 600px; }
-    .intro-img img { width: 100%; height: auto; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .business-intro-wrapper {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      align-items: start;
+    }
+    
+    .intro-img-wrapper {
+      grid-column: 1 / 9;
+      grid-row: 1;
+      z-index: 1;
+    }
+    .intro-img-wrapper img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+      display: block;
+      /* アニメーションを削除しました */
+    }
+    
+    .intro-text-box {
+      grid-column: 7 / 13; /* ★ 画像と枠の美しいバランスをキープ */
+      grid-row: 1;
+      background: rgba(15, 15, 15, 0.4); 
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 0.5px solid rgba(255, 255, 255, 0.15);
+      padding: 40px 32px; /* ★ 枠の大きさは変えず、中の余白だけを少し薄くして文字スペースを確保 */
+      border-radius: 8px;
+      z-index: 2;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    }
+
+    .intro-title {
+      /* ★ 確実に2行に収まるように文字サイズを小さく調整 */
+      font-size: clamp(16px, 2vw, 28px) !important; 
+      white-space: nowrap; /* ★ サイズを小さくした上でこれを復活させ、絶対に3行になるのを防ぎます */
+      line-height: 1.5;
+      margin-bottom: 24px;
+      /* 白からシアン（青）へのグラデーション */
+      background: linear-gradient(180deg, #ffffff 0%, var(--accent-cyan, #00e5ff) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      /* うっすらとシアンの光彩（影）をつけてさらに強調 */
+      text-shadow: 0 4px 16px rgba(0, 229, 255, 0.25);
+    }
+
+    /* オレンジの線を削除しました */
+
+    .intro-desc p {
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    .intro-desc { 
+      color: var(--text-muted); 
+      font-size: 1.05rem; 
+      line-height: 1.9; 
+    }
 
     /* --- サービスセクション --- */
     .services { padding: 80px 0; background-color: rgba(30, 15, 15, 0.6); }
@@ -164,11 +226,6 @@
     .btn-outline.orange-version { color: var(--accent-orange); border-color: var(--accent-orange); }
     .btn-outline.orange-version::before { background: var(--accent-orange); }
     .btn-outline.orange-version:hover { color: #000; }
-
-    .intro-title {
-      font-size: clamp(24px, 3vw, 36px) !important;
-      line-height: 1.5;
-    }
 
     /* --- 会社情報＆採用情報セクション --- */
     .info-section { padding: 80px 0; background-color: rgba(10, 30, 20, 0.6); }
@@ -264,13 +321,40 @@
 
     /* --- index.html専用 スマホレスポンシブ --- */
     @media (max-width: 768px) {
-      /* ★修正：スマホで要素が重ならないように少し押し上げつつ、ボタンの下に余裕を持たせます */
       .hero-content {
         transform: translateY(-10px); 
       }
       .hero-sub { margin-left: 1.5rem; font-size: 0.95rem; }
-      .btn-main { margin-left: 1.5rem; margin-bottom: 40px; /* ★ここを追加！ボタンと流れる文字が被らないようにします */ }
+      .btn-main { margin-left: 1.5rem; margin-bottom: 40px; }
       .hero-catch { font-size: clamp(24px, 8.8vw, 36px); white-space: nowrap; }
+
+      .business-intro-wrapper { 
+        display: flex;
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center;
+        gap: 32px; 
+      }
+      .intro-img-wrapper { 
+        width: 100%; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      }
+      .intro-text-box { 
+        width: 100%; 
+        margin-top: 0; 
+        padding: 40px 24px; 
+        background: rgba(15, 15, 15, 0.8);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: none; 
+        border-radius: 4px; 
+      }
+
+      /* ★スマホ時の見出しサイズも合わせて巨大化 */
+      .intro-title {
+        font-size: 7.5vw !important; 
+        margin-bottom: 24px;
+      }
 
       .service-list { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; padding-bottom: 32px; width: 100%; }
       .service-list::-webkit-scrollbar { height: 4px; }
@@ -280,15 +364,6 @@
       
       .info-list { grid-template-columns: 1fr; gap: 24px; }
       .info-img { height: 200px; }
-
-      .business-intro-grid { display: flex; flex-direction: column; gap: 32px; }
-      .intro-title {
-        white-space: nowrap !important;
-        font-size: 6.5vw !important;
-        width: 100% !important;
-      }    
-      .intro-img { order: 2; }
-      .intro-desc { order: 3; }
       
       .contact-grid { gap: 12px; }
       .contact-card { padding: 24px 8px; }
@@ -328,7 +403,6 @@
       <h1 class="hero-catch">「安全で確実な物流」</h1>
 
       <p class="hero-sub">
-        <!-- ★修正：inline-flex と align-items: baseline; を使って文字の底辺をピタッと揃えました -->
         <span style="display: block; margin-bottom: 16px;">
           <span style="display: inline-flex; align-items: baseline;">
             <strong style="color: #00e5ff; font-size: 2.0rem; font-weight: 900; letter-spacing: 0.02em; line-height: 1; text-shadow: 0 0 15px rgba(255, 215, 0, 0.4); margin-right: 8px;">1972年</strong>
@@ -348,16 +422,19 @@
   </section>
 
   <section class="business-intro">
-    <div class="container business-intro-grid">
-      <h2 class="intro-title fade-up">地域密着の運送会社<br>「運ぶ」に特化した機動力</h2>
-      <div class="intro-img fade-up">
+    <div class="container business-intro-wrapper fade-up">
+      <div class="intro-img-wrapper">
         <img src="images/TOP.jpg" alt="晃和運輸の車両群">
       </div>
-      <div class="intro-desc fade-up">
-        <p>
-        当社は、学校給食などのルート配送から、日用品の店舗配送、家庭や法人向けの引越し・什器搬入まで幅広く手掛けています。<br>
-        お客様のあらゆる「運ぶ」というニーズに対し、2t車(約30台)の機動力と長年培った確かな信頼でお応えし、横浜のビジネスと暮らしを支え続けてまいります。
-        </p>
+      <div class="intro-text-box">
+        <h2 class="intro-title">地域密着の運送会社<br>「運ぶ」に特化した機動力</h2>
+        <!-- オレンジの区切り線を削除しました -->
+        <div class="intro-desc">
+          <p>
+          当社は、学校給食の配送、日用雑貨の配送、家庭や法人向けの引越・什器搬入まで幅広く手掛けています。<br>
+          お客様のあらゆる「運ぶ」というニーズに対し、2t車の機動力と長年培った確かな信頼でお応えし、横浜のビジネスと暮らしを支え続けます。
+          </p>
+        </div>
       </div>
     </div>
   </section>
