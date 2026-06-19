@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
           <div class="footer-recruit-banner">
             <div class="footer-recruit-text">
               <h3>JOIN OUR TEAM</h3>
-              <p><strong style="color: var(--text-main); border-bottom: 1px solid var(--accent-orange);">平均勤続17.6年・夏季休暇30日の働きやすさ</strong><br>私たちと一緒に働きませんか？</p>
+              <p><strong style="color: var(--text-main); border-bottom: 1px solid var(--accent-orange);">夏季休暇30日・「日勤のみ」の働きやすさ</strong><br>私たちと一緒に働きませんか？</p>
             </div>
             <a href="/recruit" class="footer-recruit-btn">採用情報を詳しく見る</a>
           </div>
@@ -110,23 +110,26 @@ document.addEventListener("DOMContentLoaded", function() {
           <p>
             <a href="tel:045-954-3111" class="footer-tel-link">TEL: 045-954-3111</a>
           </p>
-        </div>
+
+          <div style="margin-top: 20px;"> <a href="https://www.kta.or.jp" target="_blank" rel="noopener noreferrer" class="truck-logo-link">
+              <img src="images/trackicon.jpg" alt="神奈川県トラック協会">
+            </a>
+          </div>
+          </div>
         
-        ${footerBannerHTML}
+        <div class="footer-right-area">
+          ${footerBannerHTML}
+        </div>
 
       </div>
       
       <div class="footer-bottom">
         <p>© 2026 KOWA LOGISTICS. All Rights Reserved.</p>
-        <!-- ▼ 修正：ロゴとリンクをセットにして横並びにします ▼ -->
-        <div class="footer-bottom-right">
-          <img src="images/trackicon.jpg" alt="神奈川県トラック協会" class="footer-truck-logo-inline">
-          <p style="margin: 0;">
-            <a href="/sitepolicy" class="footer-policy-link">プライバシーポリシー</a>
-            <span class="footer-policy-split" style="margin: 0 12px; color: rgba(255,255,255,0.1);">|</span>
-            <span>Yokohama, Japan</span>
-          </p>
-        </div>
+        <p style="margin: 0;">
+          <a href="/sitepolicy" class="footer-policy-link">プライバシーポリシー</a>
+          <span class="footer-policy-split" style="margin: 0 12px; color: rgba(255,255,255,0.1);">|</span>
+          <span>Yokohama, Japan</span>
+        </p>
       </div>
     </div>
   </footer>
