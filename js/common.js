@@ -118,11 +118,15 @@ document.addEventListener("DOMContentLoaded", function() {
       
       <div class="footer-bottom">
         <p>© 2026 KOWA LOGISTICS. All Rights Reserved.</p>
-        <p>
-          <a href="/sitepolicy" class="footer-policy-link">プライバシーポリシー</a>
-          <span class="footer-policy-split" style="margin: 0 12px; color: rgba(255,255,255,0.1);">|</span>
-          <span>Yokohama, Japan</span>
-        </p>
+        <!-- ▼ 修正：ロゴとリンクをセットにして横並びにします ▼ -->
+        <div class="footer-bottom-right">
+          <img src="images/trackicon.jpg" alt="神奈川県トラック協会" class="footer-truck-logo-inline">
+          <p style="margin: 0;">
+            <a href="/sitepolicy" class="footer-policy-link">プライバシーポリシー</a>
+            <span class="footer-policy-split" style="margin: 0 12px; color: rgba(255,255,255,0.1);">|</span>
+            <span>Yokohama, Japan</span>
+          </p>
+        </div>
       </div>
     </div>
   </footer>
