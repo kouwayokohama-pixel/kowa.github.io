@@ -103,6 +103,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
+      margin-top: 24px;    /* ★ここを追加！上の青い枠との間にスペースを作ります */
       margin-bottom: 32px;
     }
     .highlight-item {
@@ -180,7 +181,7 @@
       text-align: right;
       color: var(--text-muted);
       font-size: 0.85rem;
-      margin-top: 16px;
+      margin-top: 8px;
     }
 
     /* ★追加：一番下の「閉じる」ボタン */
@@ -389,7 +390,7 @@
         <div class="recruit-intro-box fade-up">
           <div class="recruit-main-catch">
             <span>◎一律「30日間」の夏休み</span><br>
-            <span>◎平均勤続「17.6年」</span><br>
+            <span>◎平均勤続年数「17.6年」</span><br>
             <span>◎長距離無し！日勤の配送のみ</span><br>
           </div>
           <p class="recruit-intro-p">
@@ -419,25 +420,7 @@
 
           <div class="accordion-content">
             <div class="accordion-inner">
-              
-              <div class="schedule-highlights">
-                <div class="highlight-item">
-                  <h4>🗓 月の出勤日は「希望休」を考慮！</h4>
-                  <p>前月までに希望の休みを申請していただき、それに沿って翌月のシフトが組まれるため、予定が立てやすい環境です。</p>
-                </div>
-                <div class="highlight-item">
-                  <h4>📱 面倒な手書き日報はゼロ！</h4>
-                  <p>当社はDX推進中！帰社後はアルコールチェックをしてスマホから日報をピッとお手軽送信。面倒な事務作業がありません。</p>
-                </div>
-                <div class="highlight-item">
-                  <h4>⏰ 休憩時間の使い方は完全自由！</h4>
-                  <p>買い物に行ったり、ご飯を食べたり、トラックで仮眠を取ったり…長い休憩時間は各々が自由に過ごしてリフレッシュしています。</p>
-                </div>
-                <div class="highlight-item">
-                  <h4>🌴 30日間の超・大型連休！</h4>
-                  <p>学校給食の配達がメインだからこそ、学校の夏休みに合わせて一律で大型連休が取れます。家族旅行や趣味を思い切り楽しめます！</p>
-                </div>
-              </div>
+
 
               <div class="timeline-grid">
                 
@@ -484,6 +467,26 @@
                 </div>
               </div>
               
+              <div class="schedule-highlights">
+                <div class="highlight-item">
+                  <h4>🗓 月の出勤日は「希望休」を考慮！</h4>
+                  <p>前月までに希望の休みを申請していただき、それに沿って翌月のシフトが組まれるため、予定が立てやすい環境です。</p>
+                </div>
+                <div class="highlight-item">
+                  <h4>📱 面倒な手書き日報はゼロ！</h4>
+                  <p>当社はDX推進中！帰社後はアルコールチェックをしてスマホから日報をピッとお手軽送信。面倒な事務作業がありません。</p>
+                </div>
+                <div class="highlight-item">
+                  <h4>⏰ 休憩時間の使い方は完全自由！</h4>
+                  <p>買い物に行く、ご飯を食べる、トラックで仮眠を取る…休憩時間は自由に過ごしてリフレッシュしています。</p>
+                </div>
+                <div class="highlight-item">
+                  <h4>🌴 30日間の超・大型連休！</h4>
+                  <p>学校給食の配達がメインだからこそ、夏休みに合わせて大型連休が取れます。家族旅行や趣味を思い切り楽しめます！</p>
+                </div>
+              </div>
+
+
               <div class="schedule-note" style="text-align: left; background: rgba(255,255,255,0.02); padding: 16px; border-radius: 4px; margin-top: 24px;">
                 <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 8px; padding-left: 1.2em; text-indent: -1.2em;">
                   ※上記はあくまで「働き方の一例」です。担当コースやシフトにより出勤・退勤時間は変動します。
@@ -498,7 +501,6 @@
                   ▲ 閉じる
                 </button>
               </div>
-
             </div>
           </div>
         </div>
