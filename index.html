@@ -44,6 +44,12 @@
       margin-left: 2.5rem; 
     }
 
+    /* ★ここを追加（横浜用のインデントと、2t車用の準備） */
+    .indent-yokohama {
+      margin-left: 1em; /* 1文字分インデントする */
+      display: inline-block;
+    }
+
     .btn-main {
       display: inline-flex;
       align-items: center;
@@ -328,6 +334,12 @@
       .btn-main { margin-left: 1.5rem; margin-bottom: 40px; }
       .hero-catch { font-size: clamp(24px, 8.8vw, 36px); white-space: nowrap; }
 
+      /* ★ここを追加（スマホの時だけ2t車も1文字分インデント） */
+      .indent-truck { 
+        margin-left: 1em; 
+        margin-top: 4px; /* スマホで改行された時の行間を少し整えます */
+      }
+
       .business-intro-wrapper { 
         display: flex;
         flex-direction: column; 
@@ -416,7 +428,10 @@
           <!-- ★「日常」だけを専用のタグで囲み、大きさ・色・光彩を指定しました！ -->
           <span style="font-size: 1.2em; font-weight: 900; color: #00e5ff;">「日常」</span>を届ける
         </span><span class="keep-text">プロフェッショナルとして、</span><br>
-        <span class="keep-text">横浜市内を中心に、</span><span class="keep-text">2t車による貨物運送事業を行っています。</span> 
+        <!-- ★横浜と2t車の部分にインデント用のクラスを足しました！ -->
+        <span class="keep-text indent-yokohama">横浜市内を中心に、</span>
+        <span class="keep-text indent-truck">2t車による貨物運送事業を行っています。</span>
+
       </p>
       <a href="#services" class="btn-main">事業内容を見る</a>
     </div>
