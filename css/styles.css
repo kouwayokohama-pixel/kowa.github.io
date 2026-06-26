@@ -442,15 +442,15 @@ body {
     flex-direction: row; 
     align-items: center; 
     justify-content: center;
-    gap: 12px; 
-    font-size: clamp(1.1rem, 2.8vh, 1.4rem); /* 文字も画面に合わせて縮む */
+    gap: 16px; /* ★英語と日本語の隙間を少し広げました */
+    font-size: clamp(1.3rem, 3.5vh, 1.8rem); /* ★文字を全体的に大きく（最小1.3rem、最大1.8rem） */
     line-height: 1.2; 
-    padding: 0.5vh 0; 
+    padding: 0.8vh 0; /* ★タップしやすいように上下の余白も少し拡大 */
   }
   
   .site-nav a .nav-ja { 
     display: inline-block; 
-    font-size: 0.85rem; 
+    font-size: 1rem; /* ★日本語も 0.85rem から 1rem に大きくしました */
     font-weight: 700; 
     letter-spacing: 0.05em; 
     white-space: nowrap; 
