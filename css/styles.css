@@ -366,14 +366,17 @@ body {
   .menu-toggle.is-active .menu-toggle-bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
 
   /* スマホ版ドロワーメニューパネル */
+  /* スマホ版ドロワーメニューパネル */
   .header-right { 
-    position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
+    position: fixed; top: 0; right: -100%; width: 100%; 
+    height: 100vh; /* 古いブラウザ用 */
+    height: 100dvh; /* ★魔法のコード：iPhoneのURLバーを避けた「本当の画面の高さ」を取得します */
     background-color: rgba(5, 5, 5, 0.95); 
-    display: flex; flex-direction: column; justify-content: flex-start; /* 上寄せに変更 */
+    display: flex; flex-direction: column; justify-content: flex-start; 
     align-items: center; transition: right 0.4s ease; z-index: 1000; 
-    padding: 120px 0 60px; /* 上下に余白を設定 */
-    overflow-y: auto;
+    padding: 80px 0 30px; /* 上下の余白を少しスッキリさせました */
   }
+   
   .header-right.is-active { right: 0; }
   
   /* ★スマホメニューの連絡先エリア（画像のような箱型デザイン） */
@@ -427,10 +430,12 @@ body {
   /* =======================================================
      メニューリンクの並び（縦の余白を贅沢に使ってゆったりと）
   ======================================================= */
+  /* メニューリンクの並び（画面の高さに合わせて隙間が縮む設定） */
   .site-nav { 
     flex-direction: column; 
     align-items: center; 
-    gap: 36px; /* ★上下の間隔を20px ➔ 36px に広げて窮屈さを解消！ */
+    gap: min(4vh, 24px); /* ★画面が小さい時は縮み、最大でも24pxの隙間になる設定 */
+    width: 100%;
   }
   
   .site-nav a { 
@@ -438,38 +443,38 @@ body {
     flex-direction: row; 
     align-items: center; 
     justify-content: center;
-    gap: 16px; /* ★英語と日本語の横の隙間も少し広げました */
-    font-size: 1.5rem; /* ★英語のフォントサイズを気持ち大きく（1.4 ➔ 1.5） */
+    gap: 12px; 
+    font-size: clamp(1.2rem, 3vh, 1.4rem); /* ★文字も画面の高さに合わせて少し縮む設定 */
     line-height: 1.2; 
-    padding: 8px 0; /* ★上下のタップ判定を広げ、押しやすくしました */
+    padding: 1vh 0; /* タップ範囲も画面の高さに合わせる */
   }
   
-  .site-nav a span { 
+  .site-nav a .nav-ja { 
     display: inline-block; 
-    font-size: 0.9rem; /* ★日本語も少しだけ大きく（0.85 ➔ 0.9） */
+    font-size: 0.85rem; 
     font-weight: 700; 
     letter-spacing: 0.05em; 
     white-space: nowrap; 
   }
 
-  .nav-home span     { color: var(--accent-cyan); }
-  .nav-services span { color: var(--accent-red); }
-  .nav-company span  { color: var(--accent-green); }
-  .nav-recruit span  { color: var(--accent-orange); }
-  .nav-faq span      { color: #b026ff; } 
-  .nav-access span   { color: var(--accent-cyan); }
+  /* 日本語部分の色分け */
+  .nav-home .nav-ja     { color: var(--accent-cyan); }
+  .nav-services .nav-ja { color: var(--accent-red); }
+  .nav-company .nav-ja  { color: var(--accent-green); }
+  .nav-recruit .nav-ja  { color: var(--accent-orange); }
+  .nav-faq .nav-ja      { color: #b026ff; } 
+  .nav-access .nav-ja   { color: var(--accent-cyan); }
 
-
-  /* ★スマホメニューの連絡先エリア（ボタンを少し下に離す） */
+  /* ★スマホメニューの連絡先エリア */
   .header-contact.sp-only.menu-contact-grid { 
     display: grid;
     grid-template-columns: 1fr 1fr; 
     gap: 12px;
     width: 100%;
     padding: 0 20px;
-    margin-top: 60px; /* ★メニューとボタンの間の余白をしっかり取りました */
-    padding-bottom: 40px; 
+    margin-top: auto; /* ★上にあるメニューとの隙間を「残りの画面全部」にして、ボタンを一番下に押しやります */
   }
+   
   .subpage-hero { padding: 120px 0 40px; }
   .subpage-title { font-size: 2.2rem; }
   .section-title { font-size: 1.8rem; margin-bottom: 24px; }
