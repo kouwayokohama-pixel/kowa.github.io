@@ -374,7 +374,7 @@ body {
     display: flex; flex-direction: column; 
     justify-content: space-between; /* ★メニューとボタンを画面内で均等に分散 */
     align-items: center; transition: right 0.4s ease; z-index: 1000; 
-    padding: 80px 0 30px; /* 上：ロゴ避け、下：画面下の余白 */
+    padding: 110px 0 25px; /* 上：ロゴ避け、下：画面下の余白 */
     overflow: hidden; /* ★魔法のコード：絶対にスクロールさせない！ */
   }
    
@@ -424,7 +424,7 @@ body {
   .site-nav { 
     flex-direction: column; 
     align-items: center; 
-    gap: 2.5vh; /* ★pxではなくvh(画面の高さの割合)にして、画面が小さいと自動で縮むように */
+    gap: 2.2vh; /* ★pxではなくvh(画面の高さの割合)にして、画面が小さいと自動で縮むように */
     width: 100%;
     margin: auto 0; /* ★上下の空いたスペースのど真ん中に自動配置 */
   }
