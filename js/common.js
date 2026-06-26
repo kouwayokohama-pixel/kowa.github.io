@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
           <a href="/company" id="menu-company" class="nav-company">COMPANY<span>会社情報</span></a>
           <a href="/recruit" id="menu-recruit" class="nav-recruit">RECRUIT<span>採用情報</span></a>
           <a href="/faq" id="menu-faq" class="nav-faq">FAQ<span>よくある質問</span></a>
+          <a href="/access" id="menu-access" class="nav-access">ACCESS<span>アクセス</span></a>
         </nav>
         
         <div class="header-contact sp-only menu-contact-grid">
@@ -143,7 +144,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // ==========================================================================
   // 3. メニューの自動色変え
   // ==========================================================================
-  // 上部で判定済みの currentPage をそのまま使うので再宣言のバグが消えます！
   if (currentPage === "index" || currentPage === "") {
     const el = document.getElementById("menu-home");
     if (el) el.style.color = "var(--accent-cyan)";
@@ -158,6 +158,9 @@ document.addEventListener("DOMContentLoaded", function() {
     if (el) el.style.color = "var(--accent-orange)";
   } else if (currentPage === "faq") {
     const el = document.getElementById("menu-faq");
+    if (el) el.style.color = "var(--accent-cyan)";
+  } else if (currentPage === "access") { // ★ACCESS用の色変えを追加！
+    const el = document.getElementById("menu-access");
     if (el) el.style.color = "var(--accent-cyan)";
   } else if (currentPage === "contact") {
     const btn = document.getElementById("nav-btn-contact");
