@@ -26,7 +26,7 @@
 
     .map-card {
       background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(0, 71, 133, 0.2); /* 濃い青に変更（rgbaは手動指定） */
+      border: 1px solid rgba(95, 97, 236, 0.2); /* 濃い青に変更（rgbaは手動指定） */
       border-top: 4px solid var(--primary-blue); /* 濃い青に変更 */
       border-radius: 8px;
       padding: 32px;
@@ -35,15 +35,15 @@
     }
 
     .map-card:hover {
-      box-shadow: 0 10px 30px rgba(0, 71, 133, 0.25); /* 濃い青の光彩に変更 */
+      box-shadow: 0 10px 30px rgba(95, 97, 236, 0.2); /* 濃い青の光彩に変更 */
       transform: translateY(-4px);
-      border-color: rgba(0, 71, 133, 0.6);            /* 濃い青に変更 */
+      border-color: rgba(95, 97, 236, 0.6);            /* 濃い青に変更 */
     }
 
     .map-title {
       font-size: 1.4rem;
       font-weight: 900;
-      color: #66b3ff; /* 濃い青だと背景に沈むため、見出し用には少し明るいブルー（水色）をアクセントとして使用 */
+      color: #bcbbfa; /* 濃い青だと背景に沈むため、見出し用には少し明るいブルー（水色）をアクセントとして使用 */
       margin-bottom: 16px;
       display: flex;
       align-items: center;
@@ -95,8 +95,9 @@
     }
 
     .transport-card {
-      background: rgba(10, 20, 30, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(95, 97, 236, 0.2); /* 濃い青に変更（rgbaは手動指定） */
+      border-top: 4px solid var(--primary-blue); /* 濃い青に変更 */
       border-radius: 8px;
       padding: 40px;
     }
@@ -114,7 +115,7 @@
     }
 
     .transport-icon {
-      color: #66b3ff; /* 明るいブルーに変更 */
+      color: #bcbbfa; /* 明るいブルーに変更 */
     }
 
     /* --- 車ルート：路線ごとのグループ化 --- */
@@ -177,7 +178,7 @@
     }
     .route-time {
       font-size: 0.85rem;
-      color: #66b3ff; /* 明るいブルーに変更 */
+      color: #f5f7fa; /* 明るいブルーに変更 */
       font-weight: 900;
       margin-bottom: 6px;
       display: flex;
@@ -207,7 +208,7 @@
       font-weight: 900;
       color: #fff; /* 背景が濃い青なので文字は白に */
       text-align: center;
-      background: var(--primary-blue); /* 濃い青に変更 */
+      background: #403dfe; /* 濃い青に変更 */
       padding: 8px 0;
       border-radius: 4px;
       font-size: 0.85rem;
@@ -252,9 +253,9 @@
     /* 目的地の特別スタイル */
     .tl-node.dest .tl-dot {
       background: var(--primary-blue); /* 濃い青に変更 */
-      box-shadow: 0 0 10px rgba(0, 71, 133, 0.5); /* 濃い青の光彩に変更 */
+      box-shadow: 0 0 10px rgba(164, 169, 174, 0.5); /* 濃い青の光彩に変更 */
     }
-    .tl-node.dest .tl-text { color: #66b3ff; /* 明るいブルーに変更 */ }
+    .tl-node.dest .tl-text { color: #f1f1f5; /* 明るいブルーに変更 */ }
 
     .tl-path {
       margin-left: 7px; /* 16pxの円の中心に合わせる */
@@ -266,9 +267,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0, 71, 133, 0.2); /* 濃い青に変更 */
+      background: rgba(165, 159, 245, 0.2); /* 濃い青に変更 */
       border: 1px solid rgba(0, 71, 133, 0.4); /* 濃い青に変更 */
-      color: #66b3ff; /* 明るいブルーに変更 */
+      color: #f5f7f8; /* 明るいブルーに変更 */
       padding: 10px 16px;
       border-radius: 4px;
       font-weight: 700;
