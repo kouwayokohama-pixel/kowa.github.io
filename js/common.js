@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
           <a href="/company" id="menu-company" class="nav-company">COMPANY<span class="nav-ja">会社情報</span></a>
           <a href="/recruit" id="menu-recruit" class="nav-recruit">RECRUIT<span class="nav-ja">採用情報</span></a>
           <a href="/faq" id="menu-faq" class="nav-faq">FAQ<span class="nav-ja">よくある質問</span></a>
-          <a href="/access" id="menu-access" class="nav-access">ACCESS<span class="nav-ja">アクセス</span></a>
+          <a href="/access" id="menu-access" class="nav-access">ACCESS<span class="nav-ja">所在地</span></a>
         </nav>
         
         <div class="header-contact sp-only menu-contact-grid">
