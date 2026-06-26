@@ -424,18 +424,52 @@ body {
     transition: background-color 0.3s;
   }
 
-  .site-nav { flex-direction: column; align-items: center; gap: 16px; }
-  .site-nav a { display: flex; flex-direction: row; align-items: center; gap: 12px; font-size: 1.4rem; line-height: 1.2; }
-  .site-nav a .nav-ja { display: inline-block; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; }
-
+  /* =======================================================
+     メニューリンクの並び（縦の余白を贅沢に使ってゆったりと）
+  ======================================================= */
+  .site-nav { 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 36px; /* ★上下の間隔を20px ➔ 36px に広げて窮屈さを解消！ */
+  }
+  
+  .site-nav a { 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center;
+    gap: 16px; /* ★英語と日本語の横の隙間も少し広げました */
+    font-size: 1.5rem; /* ★英語のフォントサイズを気持ち大きく（1.4 ➔ 1.5） */
+    line-height: 1.2; 
+    padding: 8px 0; /* ★上下のタップ判定を広げ、押しやすくしました */
+  }
+  
+  .site-nav a span { 
+    display: inline-block; 
+    font-size: 0.9rem; /* ★日本語も少しだけ大きく（0.85 ➔ 0.9） */
+    font-weight: 700; 
+    letter-spacing: 0.05em; 
+    white-space: nowrap; 
+  }
 
   .nav-home span     { color: var(--accent-cyan); }
   .nav-services span { color: var(--accent-red); }
   .nav-company span  { color: var(--accent-green); }
   .nav-recruit span  { color: var(--accent-orange); }
-  .nav-faq span      { color: #b026ff; }
-  .nav-access span      { color: var(--accent-cyan); }
-  
+  .nav-faq span      { color: #b026ff; } 
+  .nav-access span   { color: var(--accent-cyan); }
+
+
+  /* ★スマホメニューの連絡先エリア（ボタンを少し下に離す） */
+  .header-contact.sp-only.menu-contact-grid { 
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 12px;
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 60px; /* ★メニューとボタンの間の余白をしっかり取りました */
+    padding-bottom: 40px; 
+  }
   .subpage-hero { padding: 120px 0 40px; }
   .subpage-title { font-size: 2.2rem; }
   .section-title { font-size: 1.8rem; margin-bottom: 24px; }
