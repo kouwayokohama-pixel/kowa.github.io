@@ -212,6 +212,7 @@ body {
 .site-nav a.nav-company:hover  { color: var(--accent-green);  text-shadow: 0 0 12px rgba(0, 255, 136, 0.5); }
 .site-nav a.nav-recruit:hover  { color: var(--accent-orange); text-shadow: 0 0 12px rgba(255, 157, 0, 0.5); }
 .site-nav a.nav-faq:hover      { color: var(--accent-cyan);   text-shadow: 0 0 12px rgba(0, 229, 255, 0.5); }
+.site-nav a.nav-access:hover   { color: var(--accent-cyan);   text-shadow: 0 0 12px rgba(0, 229, 255, 0.5); } /* ← これを追加！ */
 
 /* ==========================================================================
    下層ページ共通コンポーネント
@@ -425,13 +426,14 @@ body {
 
   .site-nav { flex-direction: column; align-items: center; gap: 32px; }
   .site-nav a { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 1.5rem; line-height: 1.2; }
-  .site-nav a span { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; }
+  .site-nav a span { display: block; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; }
   
   .nav-home span     { color: var(--accent-cyan); }
   .nav-services span { color: var(--accent-red); }
   .nav-company span  { color: var(--accent-green); }
   .nav-recruit span  { color: var(--accent-orange); }
   .nav-faq span      { color: var(--accent-cyan); }
+  .nav-access span      { color: var(--accent-cyan); }
   
   .subpage-hero { padding: 120px 0 40px; }
   .subpage-title { font-size: 2.2rem; }
