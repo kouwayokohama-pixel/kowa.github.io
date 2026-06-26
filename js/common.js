@@ -189,10 +189,19 @@ document.addEventListener("DOMContentLoaded", function() {
       menuToggle.classList.toggle('is-active');
       headerRight.classList.toggle('is-active');
       
+      // ★ RECRUITページ等での高さ崩れを防ぐため、背後のスクロールを完全にロック
       if (headerRight.classList.contains('is-active')) {
         document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = `-${window.scrollY}px`; // 現在のスクロール位置を保持
       } else {
+        const scrollY = document.body.style.top;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
         document.body.style.overflow = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1); // 元の位置に戻す
       }
     });
 
