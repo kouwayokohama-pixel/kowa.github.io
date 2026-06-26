@@ -311,26 +311,11 @@
 
     /* --- スマホ対応レスポンシブ --- */
     @media (max-width: 768px) {
-      .pc-only { display: none !important; }
-      .sp-only { display: flex; }
-      
-      .menu-toggle { display: block; background: transparent; border: none; width: 32px; height: 24px; position: relative; z-index: 1001; cursor: pointer; }
-      .menu-toggle-bar { position: absolute; left: 0; width: 100%; height: 2px; background-color: var(--text-main); transition: all 0.3s ease; }
-      .menu-toggle-bar:nth-child(1) { top: 0; }
-      .menu-toggle-bar:nth-child(2) { top: 11px; }
-      .menu-toggle-bar:nth-child(3) { top: 22px; }
-      .menu-toggle.is-active .menu-toggle-bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
-      .menu-toggle.is-active .menu-toggle-bar:nth-child(2) { opacity: 0; }
-      .menu-toggle.is-active .menu-toggle-bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+      /* --- スマホ対応レスポンシブ --- */
+    @media (max-width: 768px) {
+      /* ★メニュー開閉関連の古いコードは styles.css に任せるため、すべて削除しました！ */
 
-      .header-right { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background-color: rgba(5, 5, 5, 0.95); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: right 0.4s ease; z-index: 1000; gap: 40px; }
-      .header-right.is-active { right: 0; }
-      .header-contact { flex-direction: column; gap: 24px; }
-      .header-action-btn { width: 220px; height: 48px; font-size: 1rem; }
-
-      .site-nav { flex-direction: column; align-items: center; gap: 32px; }
-      .site-nav a { font-size: 1.5rem; }
-      
+      /* ここから下は recruit.html 専用の表示崩れ防止用コードだけを残します */
       .subpage-hero { padding: 120px 0 40px; }
       .subpage-title { font-size: 2.2rem; }
       .section-title { font-size: 1.8rem; margin-bottom: 24px; }
@@ -360,11 +345,6 @@
       .apply-btns { flex-direction: column; align-items: center; gap: 32px; }
       .btn-wrapper { width: 100%; max-width: 100%; }
       .apply-btn { width: 100%; padding: 16px 0; }
-
-      .footer-top { flex-direction: column; gap: 40px; }
-      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; color: var(--text-muted); }
-      .footer-policy-link { display: inline-block; margin-bottom: 8px; }
-      .footer-policy-split { display: none; }
      }
   </style>
 </head>
