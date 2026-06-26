@@ -424,7 +424,7 @@ body {
   .site-nav { 
     flex-direction: column; 
     align-items: center; 
-    gap: 2.2vh; /* ★pxではなくvh(画面の高さの割合)にして、画面が小さいと自動で縮むように */
+    gap: 2.4vh; /* ★pxではなくvh(画面の高さの割合)にして、画面が小さいと自動で縮むように */
     width: 100%;
     margin: auto 0; /* ★上下の空いたスペースのど真ん中に自動配置 */
   }
