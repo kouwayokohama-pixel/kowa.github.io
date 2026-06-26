@@ -365,24 +365,28 @@ body {
   .menu-toggle.is-active .menu-toggle-bar:nth-child(2) { opacity: 0; }
   .menu-toggle.is-active .menu-toggle-bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
 
-  /* ★スマホメニューの連絡先エリア（絶対に2列のGridにする設定） */
+  /* ★復活：スマホ版ドロワーメニューパネル（スクロール絶対禁止！） */
+  .header-right { 
+    position: fixed; top: 0; right: -100%; width: 100%; 
+    height: 100vh; 
+    height: 100dvh; 
+    background-color: rgba(5, 5, 5, 0.95); 
+    display: flex; flex-direction: column; 
+    justify-content: space-between; /* メニューとボタンを画面内で均等に分散 */
+    align-items: center; transition: right 0.4s ease; z-index: 1000; 
+    padding: 110px 0 25px; /* 上：ロゴ避け、下：画面下の余白 */
+    overflow: hidden; /* 絶対にスクロールさせない！ */
+  }
+  .header-right.is-active { right: 0; }
+
+  /* ★統合・修正：スマホメニューの連絡先エリア（絶対に2列のGridにする設定） */
   .header-right .header-contact.sp-only.menu-contact-grid { 
-    display: grid !important; /* ★ !important を復活させて、親の flex に絶対に勝たせます */
+    display: grid !important; /* PC用設定に絶対に勝たせる */
     grid-template-columns: 1fr 1fr; 
     gap: 12px;
     width: 100%;
     padding: 0 20px;
-    margin-top: auto; /* ★ margin: auto に戻して、下の空きスペースにピッタリ収まるようにします */
-  }
-
-  .menu-contact-box {
-    background-color: rgba(15, 15, 15, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 16px 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    margin-top: auto; /* 下の空きスペースにピッタリ収める */
   }
 
   .menu-contact-box {
@@ -423,15 +427,14 @@ body {
   }
 
   /* =======================================================
-     メニューリンクの並び（縦の余白を贅沢に使ってゆったりと）
+      メニューリンクの並び
   ======================================================= */
-  /* メニューリンクの並び（画面の高さに合わせて隙間が縮む設定） */
   .site-nav { 
     flex-direction: column; 
     align-items: center; 
-    gap: 2.4vh; /* ★pxではなくvh(画面の高さの割合)にして、画面が小さいと自動で縮むように */
+    gap: 2.4vh; /* 画面が小さいと自動で縮むように */
     width: 100%;
-    margin: auto 0; /* ★上下の空いたスペースのど真ん中に自動配置 */
+    margin: auto 0; /* 上下の空いたスペースのど真ん中に自動配置 */
   }
   
   .site-nav a { 
@@ -440,7 +443,7 @@ body {
     align-items: center; 
     justify-content: center;
     gap: 12px; 
-    font-size: clamp(1.1rem, 2.8vh, 1.4rem); /* ★文字も画面に合わせて少しだけ縮むように調整 */
+    font-size: clamp(1.1rem, 2.8vh, 1.4rem); /* 文字も画面に合わせて縮む */
     line-height: 1.2; 
     padding: 0.5vh 0; 
   }
@@ -460,18 +463,6 @@ body {
   .nav-recruit .nav-ja  { color: var(--accent-orange); }
   .nav-faq .nav-ja      { color: #b026ff; } 
   .nav-access .nav-ja   { color: var(--accent-cyan); }
-
-  /* ★スマホメニューの連絡先エリア */
-  .header-contact.sp-only.menu-contact-grid { 
-    display: grid;
-    grid-template-columns: 1fr 1fr; 
-    gap: 12px;
-    width: 100%;
-    padding: 0 20px;
-    margin-top: 0; /* ★site-navのmargin:autoに任せるため解除 */
-  }
-
- 
    
   .subpage-hero { padding: 120px 0 40px; }
   .subpage-title { font-size: 2.2rem; }
@@ -481,11 +472,11 @@ body {
   .footer-top {
     display: flex !important;
     flex-direction: column !important;
-    gap: 24px !important; /* バナーと会社情報の間の隙間（お好みで調整してください） */
+    gap: 24px !important; 
   }
   
   .footer-right {
-    order: 1 !important; /* 採用バナーを強制的に【1番目(上)】へ */
+    order: 1 !important; 
     width: 100% !important;
     margin: 0 !important;
   }
@@ -494,20 +485,18 @@ body {
   
   /* ★絶対に改行させない指定 */
   .footer-recruit-text p {
-    white-space: nowrap; /* 改行禁止 */
-    font-size: clamp(11px, 3.5vw, 15px); /* 画面幅に合わせて文字を縮小し、枠に収める */
+    white-space: nowrap; 
+    font-size: clamp(11px, 3.5vw, 15px); 
   }
 
   /* ★会社概要を左寄せに戻す */
   .footer-left {
-    order: 2 !important; /* 会社情報を強制的に【2番目(下)】へ */
+    order: 2 !important; 
     width: 100% !important;
     text-align: left !important;
     margin: 0 !important;
   }
-
   
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .footer-policy-split { display: none; }
-
 }
