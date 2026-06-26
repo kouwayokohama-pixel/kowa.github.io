@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (el) el.style.color = "#b026ff";
   } else if (currentPage === "access") { 
     const el = document.getElementById("menu-access");
-    if (el) el.style.color = "var(--accent-cyan)";
+    if (el) el.style.color = "var(--primary-blue)";
   } else if (currentPage === "contact") {
     const btn = document.getElementById("nav-btn-contact");
     if (btn) {
