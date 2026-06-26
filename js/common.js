@@ -40,12 +40,12 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
         
         <nav class="site-nav">
-          <a href="/" id="menu-home" class="nav-home">HOME<span>ホーム</span></a>
-          <a href="/services" id="menu-services" class="nav-services">SERVICES<span>事業内容</span></a>
-          <a href="/company" id="menu-company" class="nav-company">COMPANY<span>会社情報</span></a>
-          <a href="/recruit" id="menu-recruit" class="nav-recruit">RECRUIT<span>採用情報</span></a>
-          <a href="/faq" id="menu-faq" class="nav-faq">FAQ<span>よくある質問</span></a>
-          <a href="/access" id="menu-access" class="nav-access">ACCESS<span>アクセス</span></a>
+          <a href="/" id="menu-home" class="nav-home">HOME<span class="nav-ja">ホーム</span></a>
+          <a href="/services" id="menu-services" class="nav-services">SERVICES<span class="nav-ja">事業内容</span></a>
+          <a href="/company" id="menu-company" class="nav-company">COMPANY<span class="nav-ja">会社情報</span></a>
+          <a href="/recruit" id="menu-recruit" class="nav-recruit">RECRUIT<span class="nav-ja">採用情報</span></a>
+          <a href="/faq" id="menu-faq" class="nav-faq">FAQ<span class="nav-ja">よくある質問</span></a>
+          <a href="/access" id="menu-access" class="nav-access">ACCESS<span class="nav-ja">アクセス</span></a>
         </nav>
         
         <div class="header-contact sp-only menu-contact-grid">
@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // ==========================================================================
   // 2. カレントページ判定 ＆ 共通フッターHTMLの挿入
   // ==========================================================================
-  // ここで最初にURLからページ名を取得し、最初から「.html」を削って統一します
   let currentPage = window.location.pathname.split("/").pop() || "index";
   currentPage = currentPage.replace(".html", "");
 
@@ -158,8 +157,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if (el) el.style.color = "var(--accent-orange)";
   } else if (currentPage === "faq") {
     const el = document.getElementById("menu-faq");
-    if (el) el.style.color = "var(--accent-cyan)";
-  } else if (currentPage === "access") { // ★ACCESS用の色変えを追加！
+    if (el) el.style.color = "#b026ff";
+  } else if (currentPage === "access") { 
     const el = document.getElementById("menu-access");
     if (el) el.style.color = "var(--accent-cyan)";
   } else if (currentPage === "contact") {
