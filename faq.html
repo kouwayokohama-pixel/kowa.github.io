@@ -4,9 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>よくある質問 | 有限会社 晃和運輸</title>
+  <meta name="description" content="有限会社晃和運輸によく寄せられるご質問（FAQ）にお答えします。未経験からのドライバー応募、準中型免許の資格取得支援、夏休みの取得、長距離配送の有無など、採用に関する疑問はこちらをご覧ください。" />
+  
   <link rel="stylesheet" href="css/styles.css" />
 
   <style>
+    /* ==========================================================================
+       ★追加：FAQ専用の「紫（パープル）」のテーマカラーを定義
+    ========================================================================== */
+    :root {
+      --accent-purple: #b026ff; /* サイバー感のあるネオンパープル */
+    }
+
+    /* 見出し下の「採用・業務に関する〜」を紫色にするためのクラス */
+    .title-purple span {
+      color: var(--accent-purple) !important;
+    }
+
     /* --- FAQ（よくある質問）専用スタイル --- */
     .faq-section {
       padding: 40px 0 100px;
@@ -20,16 +34,16 @@
 
     /* 開閉式アコーディオン（details/summary） */
     .faq-item {
-      background: rgba(0, 229, 255, 0.02);
+      background: rgba(176, 38, 255, 0.02); /* シアンから紫に変更 */
       border: 1px solid var(--border-color);
-      border-left: 4px solid var(--accent-cyan);
+      border-left: 4px solid var(--accent-purple); /* シアンから紫に変更 */
       border-radius: 4px;
       backdrop-filter: blur(5px);
       transition: all 0.3s ease;
     }
     .faq-item:hover {
-      border-color: rgba(0, 229, 255, 0.5);
-      background: rgba(0, 229, 255, 0.05);
+      border-color: rgba(176, 38, 255, 0.5); /* シアンから紫に変更 */
+      background: rgba(176, 38, 255, 0.05); /* シアンから紫に変更 */
     }
     
     /* 質問部分（タップできるエリア） */
@@ -56,7 +70,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 1.4rem;
       font-weight: 900;
-      color: var(--accent-cyan);
+      color: var(--accent-purple); /* シアンから紫に変更 */
     }
     
     /* 右側の「＋」「−」アイコン */
@@ -66,7 +80,7 @@
       right: 24px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--accent-cyan);
+      color: var(--accent-purple); /* シアンから紫に変更 */
       font-size: 1.2rem;
       font-weight: 900;
       transition: transform 0.3s ease;
@@ -104,7 +118,7 @@
     }
     .faq-answer strong {
       color: var(--text-main);
-      border-bottom: 1px solid var(--accent-cyan);
+      border-bottom: 1px solid var(--accent-purple); /* シアンから紫に変更 */
     }
 
     /* FAQ下のサポートエリア */
@@ -126,7 +140,7 @@
       .faq-answer { padding: 0 20px 24px 50px; font-size: 0.95rem; }
       .faq-answer::before { left: 16px; font-size: 1.2rem; }
       .faq-support { padding: 24px; }
-      }
+    }
   </style>
 </head>
 <body>
@@ -139,8 +153,7 @@
     <section class="subpage-hero">
       <div class="container fade-up">
         <h1 class="subpage-title">FAQ</h1>
-        <p class="subpage-subtitle" style="color: var(--accent-cyan);">よくある質問</p>
-      </div>
+        <p class="subpage-subtitle" style="color: var(--accent-purple);">よくある質問</p> </div>
     </section>
 
     <div class="container">
@@ -152,11 +165,8 @@
     <section class="faq-section">
       <div class="container">
         
-        <h2 class="section-title fade-up title-cyan">Q&A<span>採用・業務に関するご質問</span></h2>
-
-        <div class="faq-container fade-up">
+        <h2 class="section-title fade-up title-purple">Q&A<span>採用・業務に関するご質問</span></h2> <div class="faq-container fade-up">
           
-          <!-- Q1 -->
           <details class="faq-item">
             <summary class="faq-question">トラックの運転が未経験でも応募できますか？</summary>
             <div class="faq-answer">
@@ -165,7 +175,6 @@
             </div>
           </details>
 
-          <!-- Q2 -->
           <details class="faq-item">
             <summary class="faq-question">「準中型免許」を持っていませんが大丈夫ですか？</summary>
             <div class="faq-answer">
@@ -174,7 +183,6 @@
             </div>
           </details>
 
-          <!-- Q3 -->
           <details class="faq-item">
             <summary class="faq-question">「一律30日間の夏休み」とはどういうことですか？</summary>
             <div class="faq-answer">
@@ -183,7 +191,6 @@
             </div>
           </details>
 
-          <!-- Q4 -->
           <details class="faq-item">
             <summary class="faq-question">長距離の配送や、深夜の運転はありますか？</summary>
             <div class="faq-answer">
@@ -192,7 +199,6 @@
             </div>
           </details>
 
-          <!-- Q5 -->
           <details class="faq-item">
             <summary class="faq-question">車やバイクでの通勤は可能ですか？</summary>
             <div class="faq-answer">
@@ -200,7 +206,6 @@
             </div>
           </details>
 
-          <!-- Q6 -->
           <details class="faq-item">
             <summary class="faq-question">定年後も長く働き続けることはできますか？</summary>
             <div class="faq-answer">
@@ -209,7 +214,6 @@
             </div>
           </details>
 
-          <!-- Q7 -->
           <details class="faq-item">
             <summary class="faq-question">応募から採用までの流れを教えてください。</summary>
             <div class="faq-answer">
@@ -220,11 +224,9 @@
 
         </div>
 
-        <!-- 解決しなかった場合のサポートエリア -->
         <div class="faq-support fade-up">
           <p>その他、ご不明な点や気になることがございましたら、お気軽にお問い合わせください。</p>
-          <a href="contact.html" class="header-action-btn" style="margin: 0 auto; width: 240px; height: 50px; font-size: 1rem; border-color: var(--accent-cyan); color: var(--accent-cyan); background: rgba(0, 229, 255, 0.05);">
-            ✉️ お問い合わせフォーム
+          <a href="/contact" class="header-action-btn" style="margin: 0 auto; width: 240px; height: 50px; font-size: 1rem; border-color: var(--accent-purple); color: var(--accent-purple); background: rgba(176, 38, 255, 0.05);"> ✉️ お問い合わせフォーム
           </a>
         </div>
 
