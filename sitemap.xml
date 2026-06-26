@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!--  created with free sitemap generation system www.sitemapxml.jp  --> 
+<url>
+  <loc>https://kowa-yokohama.com/</loc>
+  <priority>1.0</priority>
+  <lastmod>2026-06-26T11:43:22+09:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://kowa-yokohama.com/services.html</loc>
+  <priority>0.8</priority>
+  <lastmod>2026-06-26T11:43:22+09:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://kowa-yokohama.com/company.html</loc>
+  <priority>0.8</priority>
+  <lastmod>2026-06-26T11:43:22+09:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://kowa-yokohama.com/recruit.html</loc>
+  <priority>0.8</priority>
+  <lastmod>2026-06-26T11:43:22+09:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://kowa-yokohama.com/contact</loc>
+  <priority>0.8</priority>
+  <lastmod>2026-06-26T11:43:23+09:00</lastmod>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://kowa-yokohama.com/contact/policy.html</loc>
+  <priority>0.7</priority>
+  <changefreq>monthly</changefreq>
+</url>
+
+</urlset>
