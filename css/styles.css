@@ -212,8 +212,10 @@ body {
 .site-nav a.nav-company:hover  { color: var(--accent-green);  text-shadow: 0 0 12px rgba(0, 255, 136, 0.5); }
 .site-nav a.nav-recruit:hover  { color: var(--accent-orange); text-shadow: 0 0 12px rgba(255, 157, 0, 0.5); }
 .site-nav a.nav-faq:hover      { color: #b026ff;              text-shadow: 0 0 12px rgba(176, 38, 255, 0.5); } /* ★ シアンから紫に変更 */
-.site-nav a.nav-access:hover   { color: var(--accent-cyan);   text-shadow: 0 0 12px rgba(0, 229, 255, 0.5); } /* ← これを追加！ */
-
+.site-nav a.nav-access:hover { 
+  color: var(--primary-blue); 
+  text-shadow: 0 0 12px rgba(0, 128, 255, 0.5); /* ← 影も黄色（ゴールド）のRGBに変更しました！ */ 
+}
 /* ==========================================================================
    下層ページ共通コンポーネント
    ========================================================================== */
@@ -462,7 +464,7 @@ body {
   .nav-company .nav-ja  { color: var(--accent-green); }
   .nav-recruit .nav-ja  { color: var(--accent-orange); }
   .nav-faq .nav-ja      { color: #b026ff; } 
-  .nav-access .nav-ja   { color: var(--accent-cyan); }
+  .nav-access .nav-ja   { color: var(--primary-blue); }
    
   .subpage-hero { padding: 120px 0 40px; }
   .subpage-title { font-size: 2.2rem; }
