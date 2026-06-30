@@ -336,7 +336,7 @@
     /* --- index.html専用 スマホレスポンシブ --- */
     @media (max-width: 768px) {
       .hero-content {
-        transform: translateY(-10px); 
+        transform: translateY(10px); 
       }
       .hero-sub { margin-left: 1.5rem; font-size: 0.95rem; }
       .btn-main { margin-left: 1.5rem; margin-bottom: 40px; }
@@ -345,7 +345,6 @@
       /* ★ここを追加（スマホの時だけ2t車も1文字分インデント） */
       .indent-truck { 
         margin-left: 1em; 
-        margin-top: 4px; /* スマホで改行された時の行間を少し整えます */
       }
 
       .business-intro-wrapper { 
@@ -433,13 +432,16 @@
           </span>
         </span>
         <span class="keep-text">
-          <!-- ★「日常」だけを専用のタグで囲み、大きさ・色・光彩を指定しました！ -->
-          <span style="font-size: 1.2em; font-weight: 900; color: #00e5ff;">「日常」</span>を届ける
-        </span><span class="keep-text">プロフェッショナルとして、</span><br>
-        <!-- ★横浜と2t車の部分にインデント用のクラスを足しました！ -->
-        <span class="keep-text indent-yokohama"><span style="font-size: 1.2em; font-weight: 900; color: #fff;">横浜市 </span>を中心に、</span>
-        <span class="keep-text indent-truck">2t車による<span style="font-size: 1.2em; font-weight: 900; color: #fff;">貨物運送事業</span>を行っています。</span>
-
+          <!-- ★ここから下の3行を「ブロック化」して行間を完全に統一しました！ -->
+        <span style="display: block; margin-bottom: 6px; line-height: 1.5;">
+          <span class="keep-text"><span style="font-size: 1.2em; font-weight: 900; color: #00e5ff;">「日常」</span>を届ける</span><span class="keep-text">プロフェッショナルとして、</span>
+        </span>
+        <span class="indent-yokohama" style="display: block; margin-bottom: 6px; line-height: 1.5;">
+          <span style="font-size: 1.2em; font-weight: 900; color: #fff;">横浜市 </span>を中心に、
+        </span>
+        <span class="indent-truck" style="display: block; line-height: 1.6;">
+          2t車による<span style="font-size: 1.2em; font-weight: 900; color: #fff;">貨物運送事業</span>を行っています。
+        </span>
       </p>
       <a href="#services" class="btn-main">事業内容を見る</a>
     </div>
