@@ -47,7 +47,7 @@
       margin-bottom: 0;
     }
     
-    /* ラベルと必須バッジ */
+    /* ラベルとバッジ */
     .form-label-area {
       display: flex;
       align-items: center;
@@ -68,8 +68,31 @@
       padding: 2px 8px;
       border-radius: 2px;
     }
+    /* 任意のバッジ（グレー） */
+    .badge-optional {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      border: 1px solid var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
 
-    /* 各種入力フィールド（セレクト、インプット、テキストエリア共通） */
+    /* 採用専用エリア（初期非表示） */
+    #recruit-fields {
+      display: none;
+      background: rgba(255, 157, 0, 0.03); /* 少しだけオレンジの背景をつけて区別 */
+      border: 1px dashed rgba(255, 157, 0, 0.3);
+      padding: 24px;
+      margin-bottom: 32px;
+      border-radius: 4px;
+    }
+    #recruit-fields .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 各種入力フィールド共通 */
     .form-control {
       width: 100%;
       background: rgba(255, 255, 255, 0.03);
@@ -82,7 +105,7 @@
       transition: all 0.3s ease;
     }
     
-    /* セレクトボックスの矢印や中身の調整 */
+    /* セレクトボックス */
     select.form-control {
       cursor: pointer;
       appearance: none;
@@ -105,12 +128,17 @@
       box-shadow: 0 0 14px rgba(255, 157, 0, 0.25);
     }
     
-    /* プレースホルダーの色 */
     .form-control::placeholder {
       color: rgba(255, 255, 255, 0.25);
     }
+    /* disabled状態のスタイル */
+    .form-control:disabled {
+      background: rgba(0,0,0,0.2);
+      color: rgba(255,255,255,0.3);
+      cursor: not-allowed;
+    }
 
-    /* プライバシーポリシー同意チェックボックス */
+    /* プライバシーポリシー */
     .form-privacy {
       margin-top: 40px;
       text-align: center;
@@ -122,7 +150,6 @@
       cursor: pointer;
       position: relative;
     }
-    /* デフォルトのダサいチェックボックスを隠す */
     .privacy-label input[type="checkbox"] {
       position: absolute;
       opacity: 0;
@@ -130,7 +157,6 @@
       height: 0;
       width: 0;
     }
-    /* カスタムチェックボックスの枠 */
     .checkbox-custom {
       width: 24px;
       height: 24px;
@@ -142,7 +168,6 @@
       justify-content: center;
       transition: all 0.3s ease;
     }
-    /* チェックマーク（✓）の形を作る */
     .checkbox-custom::after {
       content: '';
       display: none;
@@ -153,7 +178,6 @@
       transform: rotate(45deg);
       margin-bottom: 2px;
     }
-    /* チェックされた時の状態（オレンジに光る） */
     .privacy-label input[type="checkbox"]:checked ~ .checkbox-custom {
       background-color: var(--accent-orange);
       border-color: var(--accent-orange);
@@ -162,7 +186,6 @@
     .privacy-label input[type="checkbox"]:checked ~ .checkbox-custom::after {
       display: block;
     }
-    /* テキストとリンクの装飾 */
     .privacy-text {
       font-size: 1rem;
       color: var(--text-main);
@@ -176,7 +199,7 @@
       opacity: 0.7;
     }
 
-    /* 送信エリア・サイバーボタン（オレンジ発光） */
+    /* 送信ボタン */
     .form-submit-area {
       text-align: center;
       margin-top: 48px;
@@ -205,17 +228,24 @@
     .submit-cyber-btn:active {
       transform: translateY(0);
     }
-    /* 送信中の無効化スタイル */
     .submit-cyber-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
       transform: none;
       box-shadow: none;
     }
+    
+    /* エラーメッセージ（電話・メールどちらか必須用） */
+    .contact-error {
+      color: var(--accent-red);
+      font-size: 0.85rem;
+      margin-top: 8px;
+      display: none; /* 初期は非表示 */
+    }
 
-    /* 完了メッセージ（調和を持たせたグリーン＋オレンジライン） */
+    /* 完了メッセージ */
     .form-success-msg {
-      display: none; /* 初期状態は非表示 */
+      display: none;
       background: rgba(0, 255, 136, 0.03);
       border: 1px solid var(--accent-green);
       border-top: 4px solid var(--accent-orange);
@@ -234,13 +264,14 @@
       line-height: 1.8;
     }
 
-    /* --- スマホ対応レスポンシブ --- */
+    /* --- スマホ対応 --- */
     @media (max-width: 768px) {
       .contact-section { padding: 40px 0 80px; }
       .contact-intro-box { padding: 20px; margin-bottom: 32px; }
       .contact-intro-box p { font-size: 0.95rem; line-height: 1.7; }
       .contact-form-panel { padding: 32px 20px; }
       .form-group { margin-bottom: 24px; }
+      #recruit-fields { padding: 16px; margin-bottom: 24px; }
       .form-label { font-size: 1rem; }
       .form-control { padding: 12px; font-size: 0.95rem; }
       .submit-cyber-btn { width: 100%; height: 56px; font-size: 1.1rem; }
@@ -280,14 +311,16 @@
         <h2 class="section-title fade-up title-orange">Mail Form<span>メールフォーム</span></h2>
 
         <div class="contact-form-panel fade-up">
-          <form id="cyber-contact-form" onsubmit="handleFormSubmit(event)">
+          <!-- onsubmit属性を削除。送信制御はJSで行います -->
+          <form id="cyber-contact-form">
             
             <div class="form-group">
               <div class="form-label-area">
                 <label class="form-label" for="form-type">お問い合わせ種類</label>
                 <span class="badge-required">必須</span>
               </div>
-              <select class="form-control" id="form-type" required>
+              <!-- ★ onchangeイベントを追加 -->
+              <select class="form-control" id="form-type" required onchange="toggleRecruitFields()">
                 <option value="" disabled selected>選択してください</option>
                 <option value="お見積りのご依頼">運送サービスに関するお問い合わせ・お見積り</option>
                 <option value="採用について">採用へのご応募・お問い合わせ</option>
@@ -311,34 +344,65 @@
               <input type="text" class="form-control" id="form-kana" placeholder="例：コウワ タロウ" required />
             </div>
 
+            <!-- 電話番号とメールアドレスは、JSで「どちらか必須」の制御を行うため、HTMLのrequiredは外します -->
             <div class="form-group">
               <div class="form-label-area">
                 <label class="form-label" for="form-tel">電話番号</label>
-                <span class="badge-required">必須</span>
+                <!-- バッジを「どちらか必須」に変更 -->
+                <span class="badge-required" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: #fff;">電話かメールどちらか必須</span>
               </div>
-              <input type="tel" class="form-control" id="form-tel" inputmode="tel" placeholder="例：045-954-3111" required />
+              <input type="tel" class="form-control contact-method" id="form-tel" inputmode="tel" placeholder="例：045-954-3111" />
             </div>
 
             <div class="form-group">
               <div class="form-label-area">
                 <label class="form-label" for="form-email">メールアドレス</label>
-                <span class="badge-required">必須</span>
+                <span class="badge-required" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: #fff;">電話かメールどちらか必須</span>
               </div>
-              <input type="email" class="form-control" id="form-email" inputmode="email" placeholder="例：info@example.com" required />
+              <input type="email" class="form-control contact-method" id="form-email" inputmode="email" placeholder="例：info@example.com" />
+              <!-- 入力エラーメッセージ用 -->
+              <div id="contact-method-error" class="contact-error">※電話番号、またはメールアドレスのどちらかを必ずご入力ください。</div>
+            </div>
+
+            <!-- ★ 採用専用エリア（最初は非表示。JSで操作します） -->
+            <div id="recruit-fields">
+              <div class="form-group">
+                <div class="form-label-area">
+                  <label class="form-label" for="form-age">年齢</label>
+                  <span class="badge-required">必須</span>
+                </div>
+                <!-- 採用時のみrequiredを付与します -->
+                <input type="number" class="form-control" id="form-age" placeholder="例：35" min="18" max="80" />
+              </div>
+              <div class="form-group">
+                <div class="form-label-area">
+                  <label class="form-label" for="form-license">所持免許</label>
+                  <span class="badge-required">必須</span>
+                </div>
+                <select class="form-control" id="form-license">
+                  <option value="" disabled selected>選択してください</option>
+                  <option value="普通免許（AT限定）">普通免許（AT限定）</option>
+                  <option value="普通免許（MT可）">普通免許（MT可）</option>
+                  <option value="準中型免許">準中型免許（5t限定含む）</option>
+                  <option value="中型免許">中型免許（8t限定含む）</option>
+                  <option value="大型免許">大型免許</option>
+                  <option value="その他">その他（取得予定など）</option>
+                </select>
+              </div>
             </div>
 
             <div class="form-group">
               <div class="form-label-area">
                 <label class="form-label" for="form-message">お問い合わせ内容</label>
-                <span class="badge-required">必須</span>
+                <!-- ★ IDを付与して、JSで「必須/任意」を切り替えます -->
+                <span class="badge-required" id="message-badge">必須</span>
               </div>
-              <textarea class="form-control" id="form-message" rows="6" placeholder="詳細な内容や、求人へのご応募の旨をご記入ください。" required></textarea>
+              <!-- ★ JSでrequiredを操作するため、初期状態のみrequiredをつけておきます -->
+              <textarea class="form-control" id="form-message" rows="6" placeholder="詳細な内容をご記入ください。" required></textarea>
             </div>
             
-            <!-- ▼▼▼ ここから追加 ▼▼▼ -->
             <div class="form-group form-privacy">
               <label class="privacy-label">
-                <!-- requiredをつけることで、チェックしないと送信できなくします -->
                 <input type="checkbox" id="form-privacy-check" required>
                 <span class="checkbox-custom"></span>
                 <span class="privacy-text"><a href="policy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する</span>
@@ -373,25 +437,91 @@
   <script src="js/common.js"></script>
 
   <script>
-    async function handleFormSubmit(event) {
-      event.preventDefault(); // 送信時の画面リロードをブロック
+    // =========================================================================
+    // 1. フォームの表示/非表示、必須/任意の切り替え処理
+    // =========================================================================
+    function toggleRecruitFields() {
+      const typeSelect = document.getElementById('form-type');
+      const recruitFields = document.getElementById('recruit-fields');
+      const ageInput = document.getElementById('form-age');
+      const licenseInput = document.getElementById('form-license');
+      const messageInput = document.getElementById('form-message');
+      const messageBadge = document.getElementById('message-badge');
 
-      const form = document.getElementById('cyber-contact-form');
+      if (typeSelect.value === '採用について') {
+        // 採用が選ばれた場合
+        recruitFields.style.display = 'block'; // エリアを表示
+        ageInput.required = true; // 必須化
+        licenseInput.required = true; // 必須化
+        
+        // お問い合わせ内容を任意に変更
+        messageInput.required = false; 
+        messageBadge.textContent = '任意';
+        messageBadge.className = 'badge-optional';
+        messageInput.placeholder = 'ご質問などがあればご記入ください（任意）';
+
+      } else {
+        // それ以外の場合
+        recruitFields.style.display = 'none'; // エリアを非表示
+        ageInput.required = false; // 必須解除
+        licenseInput.required = false; // 必須解除
+        ageInput.value = ''; // 値をクリア
+        licenseInput.value = ''; // 値をクリア
+        
+        // お問い合わせ内容を必須に戻す
+        messageInput.required = true;
+        messageBadge.textContent = '必須';
+        messageBadge.className = 'badge-required';
+        messageInput.placeholder = '詳細な内容をご記入ください。';
+      }
+    }
+
+    // =========================================================================
+    // 2. フォーム送信処理（電話/メールのどちらか必須チェックを含む）
+    // =========================================================================
+    document.getElementById('cyber-contact-form').addEventListener('submit', async function(event) {
+      event.preventDefault(); // デフォルトの送信をブロック
+
+      const telInput = document.getElementById('form-tel');
+      const emailInput = document.getElementById('form-email');
+      const errorMsg = document.getElementById('contact-method-error');
+
+      // 電話番号もメールアドレスも両方空の場合はエラーを表示して送信ストップ
+      if (telInput.value.trim() === '' && emailInput.value.trim() === '') {
+        errorMsg.style.display = 'block';
+        
+        // エラー位置まで少しスクロール
+        telInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // ユーザーが入力し始めたらエラーメッセージを消す
+        telInput.addEventListener('input', function() { errorMsg.style.display = 'none'; }, {once:true});
+        emailInput.addEventListener('input', function() { errorMsg.style.display = 'none'; }, {once:true});
+        return; // ここで処理を終了
+      }
+      
+      // どちらかが入力されていればエラーを隠して送信処理へ
+      errorMsg.style.display = 'none';
+
+
       const submitBtn = document.getElementById('submit-btn');
       const successMsg = document.getElementById('success-message');
+      const form = document.getElementById('cyber-contact-form');
 
-      // 1. ボタンを「送信中...」に変更して連打を防止
+      // 送信ボタン無効化
       submitBtn.disabled = true;
       const originalBtnText = submitBtn.innerText;
       submitBtn.innerText = '送信中...';
 
-      // 2. 入力されたデータを集める（GAS側と名前を揃えています）
+      // データの収集
+      // GAS側でも age と license を受け取れるように列を追加（または修正）する必要があります
       const data = {
         type: document.getElementById('form-type').value,
         name: document.getElementById('form-name').value,
         kana: document.getElementById('form-kana').value,
-        phone: document.getElementById('form-tel').value, // GAS側はphoneで受け取ります
-        email: document.getElementById('form-email').value,
+        phone: telInput.value, 
+        email: emailInput.value,
+        age: document.getElementById('form-age').value,         // ★追加
+        license: document.getElementById('form-license').value, // ★追加
         message: document.getElementById('form-message').value
       };
 
@@ -399,7 +529,6 @@
       const endpoint = 'https://script.google.com/macros/s/AKfycbzleBWoKaS61CO6_Ytx9H41AmF26C4ulKrO5z_cycB7lA3-EmAdqu-Yh2sgw_FhLLbb/exec';
 
       try {
-        // 4. 裏側でGASにデータを送信（CORS回避のために text/plain を使用）
         const response = await fetch(endpoint, {
           method: 'POST',
           headers: {
@@ -408,21 +537,19 @@
           body: JSON.stringify(data)
         });
 
-        // 5. 送信成功：フォームを隠して完了メッセージを表示する
+        // 送信成功処理
         form.style.display = 'none';
         successMsg.style.display = 'block';
-
-        // ※スクロール位置をメッセージエリアに合わせる（UX向上）
         successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
       } catch (error) {
-        // 6. エラー時：アラートを出してボタンを元に戻す
+        // エラー処理
         console.error('Error:', error);
         alert('通信エラーが発生しました。お手数ですが、時間をおいて再度お試しいただくか、お電話にてお問い合わせください。');
         submitBtn.disabled = false;
         submitBtn.innerText = originalBtnText;
       }
-    }
+    });
   </script>
 
 </body>
