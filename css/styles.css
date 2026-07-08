@@ -359,6 +359,7 @@ body {
 
   .page-bg {
       animation: none;
+      background-position: 100% 50%;
     }
 
   /* ハンバーガーメニュー */
