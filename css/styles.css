@@ -357,6 +357,10 @@ body {
       animation: none;
     }
 
+  .page-bg {
+      animation: none;
+    }
+
   /* ハンバーガーメニュー */
   .menu-toggle { display: block; background: transparent; border: none; width: 32px; height: 24px; position: relative; z-index: 1001; cursor: pointer; }
   .menu-toggle-bar { position: absolute; left: 0; width: 100%; height: 2px; background-color: var(--text-main); transition: all 0.3s ease; }
