@@ -26,6 +26,72 @@ document.addEventListener("DOMContentLoaded", function() {
   head.appendChild(metaOgDescription);
 
   // ==========================================================================
+  // 0. 構造化データ（JSON-LD）の追加：全ページ共通
+  //    検索結果でのサイトリンク表示や、地域名・車種などのローカル検索対策のため、
+  //    見た目には影響しない形でGoogleに会社情報を伝えます。
+  // ==========================================================================
+  const ldOrganization = document.createElement('script');
+  ldOrganization.type = 'application/ld+json';
+  ldOrganization.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "有限会社晃和運輸",
+    "alternateName": "KOWA LOGISTICS",
+    "url": "https://kowa-yokohama.com/",
+    "image": "https://kowa-yokohama.com/images/TOP.jpg",
+    "telephone": "+81-45-954-3111",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "下川井町2098-1",
+      "addressLocality": "横浜市旭区",
+      "addressRegion": "神奈川県",
+      "postalCode": "241-0806",
+      "addressCountry": "JP"
+    },
+    "areaServed": ["横浜市旭区", "横浜市", "神奈川県", "首都圏"],
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "08:30",
+      "closes": "19:00"
+    }
+  });
+  head.appendChild(ldOrganization);
+
+  // パンくずリスト（画面上の.breadcrumbsをそのままJSON-LD化。表示テキストの二重管理を避けるため自動生成）
+  const breadcrumbEl = document.querySelector('.breadcrumbs');
+  if (breadcrumbEl) {
+    const itemListElement = [];
+    let position = 0;
+    breadcrumbEl.querySelectorAll('a').forEach((a) => {
+      position += 1;
+      itemListElement.push({
+        "@type": "ListItem",
+        "position": position,
+        "name": a.textContent.trim(),
+        "item": new URL(a.getAttribute('href'), window.location.origin).href
+      });
+    });
+    const currentLabel = breadcrumbEl.textContent.split('>').pop().trim();
+    if (currentLabel) {
+      itemListElement.push({
+        "@type": "ListItem",
+        "position": position + 1,
+        "name": currentLabel,
+        "item": window.location.href
+      });
+    }
+    const ldBreadcrumb = document.createElement('script');
+    ldBreadcrumb.type = 'application/ld+json';
+    ldBreadcrumb.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": itemListElement
+    });
+    head.appendChild(ldBreadcrumb);
+  }
+
+  // ==========================================================================
   // 1. 共通ヘッダーHTMLの定義 と 挿入
   // ==========================================================================
   const headerHTML = `
