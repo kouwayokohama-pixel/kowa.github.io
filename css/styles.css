@@ -226,7 +226,13 @@ body {
   background: linear-gradient(to bottom, rgba(5,5,5,0), rgba(5,5,5,0.8));
 }
 
+/* ★h1をキーワードを含む見出し全体にまとめるための入れ物（見た目には影響しません） */
+.subpage-heading {
+  font: inherit;
+}
+
 .subpage-title {
+  display: block;
   font-family: 'Montserrat', sans-serif;
   font-size: 3rem;
   font-weight: 900;
