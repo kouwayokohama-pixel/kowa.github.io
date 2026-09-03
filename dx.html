@@ -203,9 +203,12 @@
       gap: 28px;
       padding: 14px 0 4px;
     }
-    .fm-link { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 10px; }
+    .fm-link { position: relative; display: flex; flex-direction: row; align-items: center; justify-content: center; }
     .fm-link-sp { display: none; }
-    .fm-link span { color: var(--text-muted); font-size: 0.88rem; letter-spacing: 0.02em; }
+    .fm-link span {
+      position: absolute; left: 50%; margin-left: 12px; white-space: nowrap;
+      color: var(--text-muted); font-size: 0.88rem; letter-spacing: 0.02em;
+    }
     .fm-link i {
       position: relative;
       display: block;
