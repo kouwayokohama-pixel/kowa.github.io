@@ -497,8 +497,25 @@
 
       .dx-group-label { font-size: 0.95rem; padding: 6px 14px; }
       .dx-group h3 { font-size: 1.1rem; }
-      .dx-cards { grid-template-columns: 1fr; gap: 18px; margin-bottom: 48px; }
-      .dx-cards.two { grid-template-columns: 1fr; }
+      /* ★スマホ：縦に長くなりすぎるので横スワイプに切り替えます */
+      .dx-cards,
+      .dx-cards.two {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 14px;
+        padding-bottom: 26px;
+        margin-bottom: 40px;
+        width: 100%;
+      }
+      .dx-cards::-webkit-scrollbar { height: 4px; }
+      .dx-cards::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.06); border-radius: 4px; }
+      .dx-cards::-webkit-scrollbar-thumb { background: var(--dx-gold); border-radius: 4px; }
+      .dx-card {
+        flex: 0 0 86%;
+        scroll-snap-align: start;
+      }
       .dx-card-shot { height: auto; padding: 22px 16px; }
 
       .dx-offer { padding: 28px 20px; }
