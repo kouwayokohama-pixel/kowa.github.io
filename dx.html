@@ -54,17 +54,30 @@
     }
     .dx-inhouse h3 {
       text-align: center;
-      font-size: 1.5rem;
+      font-size: 1.85rem;
       font-weight: 900;
       color: var(--text-main);
-      margin-bottom: 8px;
-      letter-spacing: 0.03em;
+      margin-bottom: 18px;
+      letter-spacing: 0.04em;
       line-height: 1.5;
     }
     .dx-inhouse h3 em {
+      position: relative;
+      display: inline-block;
       font-style: normal;
       color: var(--dx-gold);
-      text-shadow: 0 0 22px rgba(255, 215, 0, 0.35);
+      padding: 0 3px;
+      text-shadow: 0 0 26px rgba(255, 215, 0, 0.5);
+    }
+    /* 「すべて自社で完結」の下に金色のラインを引いて強調します */
+    .dx-inhouse h3 em::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -7px;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(255, 215, 0, 0), var(--dx-gold) 20%, var(--dx-gold) 80%, rgba(255, 215, 0, 0));
     }
     .dx-inhouse .sub {
       text-align: center;
@@ -106,22 +119,6 @@
       border-left: 11px solid var(--dx-gold);
     }
 
-    .ih-band {
-      margin-top: 26px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 11px;
-      background: rgba(255, 215, 0, 0.1);
-      border: 1px solid var(--dx-gold);
-      border-radius: 4px;
-      padding: 15px 20px;
-      color: var(--dx-gold);
-      font-size: 1.08rem;
-      font-weight: 900;
-      letter-spacing: 0.03em;
-      text-align: center;
-    }
 
     /* --- 連携図 --- */
     .dx-flowchart {
@@ -376,9 +373,11 @@
       margin-bottom: 16px; letter-spacing: 0.03em; line-height: 1.5;
     }
     .dx-offer > p {
-      color: var(--text-main); font-size: 1.05rem; line-height: 1.9;
+      color: var(--text-muted); font-size: 1.05rem; line-height: 1.9;
       max-width: 720px; margin: 0 auto 12px;
     }
+    /* 他のカードと同じく、大事なところだけ白＋太字で立たせます */
+    .dx-offer > p strong { color: var(--text-main); font-weight: 700; }
     .mock-talk {
       display: flex; align-items: center; justify-content: center;
       width: 62px; height: 62px; margin: 6px auto 0;
@@ -462,7 +461,7 @@
 
 
       .dx-inhouse { padding: 24px 16px; margin-bottom: 48px; }
-      .dx-inhouse h3 { font-size: 1.15rem; }
+      .dx-inhouse h3 { font-size: 1.35rem; margin-bottom: 16px; }
       .dx-inhouse .sub { font-size: .8rem; letter-spacing: -0.01em; margin-bottom: 20px; }
       .ih-row { grid-template-columns: 1fr; }
       .ih-arrow { padding: 9px 0; }
@@ -479,7 +478,6 @@
       .ih-icon svg { width: 24px; height: 24px; }
       .ih-step b { font-size: 1.05rem; margin-bottom: 0; }
       .ih-step small { font-size: 0.86rem; }
-      .ih-band { font-size: .95rem; padding: 12px 14px; margin-top: 18px; }
 
       .dx-flowchart { padding: 24px 16px; margin-bottom: 48px; }
       .dx-flowchart h3 { font-size: 1.05rem; }
@@ -649,10 +647,6 @@
             </div>
           </div>
 
-          <div class="ih-band">
-            <span class="dx-dot"></span>
-            すべてを自社だけで行っています
-          </div>
         </div>
 
         <!-- ===================== 強み ===================== -->
@@ -687,8 +681,8 @@
             </svg>
               <span class="dx-why-num">POINT 03</span>
             </div>
-            <h4>物流に特化している</h4>
-            <p>汎用パッケージを当てはめるのではなく、<strong>「自社の配送の流れに合わせてゼロから設計したオリジナルシステム」</strong>。「使わない機能」が一つもありません。</p>
+            <h4>物流へ特化させる</h4>
+            <p>汎用パッケージを当てはめるのではなく、<strong>「自社の配送の流れに合わせてゼロから設計したオリジナルシステム」</strong>。</p>
           </div>
         </div>
 
@@ -733,7 +727,7 @@
             <div class="dx-card-text">
               <div class="dx-card-num">SYSTEM 1-1</div>
               <h4>GPSトラッカー</h4>
-              <p>社用スマホを<strong>デジタコとして使い、全車両の現在地を地図上に表示</strong>。高価な車載機を積まずに運行把握を実現しました。走行履歴も残るため、最寄り車両への急な手配もすぐできます。</p>
+              <p>社用スマホを<strong>デジタコとして使い、全車両の現在地を地図上に表示</strong>。高価な車載機を積まずに運行把握を実現しました。走行履歴も残り、近くの車両を手配もできます。</p>
               <div class="dx-tags">
                 <span class="dx-tag">リアルタイム位置</span><span class="dx-tag">走行履歴</span><span class="dx-tag">車載機不要</span>
               </div>
@@ -766,7 +760,7 @@
             <div class="dx-card-text">
               <div class="dx-card-num">SYSTEM 1-2</div>
               <h4>日報アプリ</h4>
-              <p>始業・終業、走行距離、配送件数をスマホから数タップで報告。<strong>手書き日報も、事務所での転記・集計も不要</strong>になりました。車両のNFCタグ読取で車番・距離の入力も自動化。<strong>社内お知らせの配信</strong>もこのアプリから行えます。</p>
+              <p>業務日報をスマホから数タップで報告。<strong>手書き日報も、事務所での転記・集計も不要</strong>になりました。NFCタグ読取で車番・距離の入力も自動化。<strong>社内お知らせの配信</strong>もこのアプリから行えます。</p>
               <div class="dx-tags">
                 <span class="dx-tag">ペーパーレス</span><span class="dx-tag">勤怠自動集計</span><span class="dx-tag">NFC読取</span>
               </div>
