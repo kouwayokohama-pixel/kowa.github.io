@@ -217,6 +217,161 @@ body {
   text-shadow: 0 0 12px rgba(0, 128, 255, 0.5); /* ← 影も黄色（ゴールド）のRGBに変更しました！ */ 
 }
 /* ==========================================================================
+   ヘッダーのDXリンク（PC：中央 ／ スマホ：メニュー内の上部）
+   ========================================================================== */
+.header-dx {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 20px;
+  border: 1px solid #ffd700;
+  border-left: 3px solid #ffd700;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.18) 0%, rgba(255, 215, 0, 0.04) 100%);
+  border-radius: 2px;
+  color: #ffd700;
+  font-size: 0.88rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: dxGlow 3s ease-in-out infinite;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+/* 光の帯がスッと流れる演出 */
+.header-dx::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  animation: dxShine 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+.header-dx:hover {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.34) 0%, rgba(255, 215, 0, 0.12) 100%);
+  box-shadow: 0 0 26px rgba(255, 215, 0, 0.5);
+  transform: translateY(-1px);
+}
+@keyframes dxGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(255, 215, 0, 0.15), inset 0 0 10px rgba(255, 215, 0, 0.05); }
+  50%      { box-shadow: 0 0 24px rgba(255, 215, 0, 0.45), inset 0 0 14px rgba(255, 215, 0, 0.10); }
+}
+@keyframes dxShine {
+  0%   { left: -60%; }
+  45%  { left: 130%; }
+  100% { left: 130%; }
+}
+
+.menu-dx {
+  align-items: center;
+  gap: 10px;
+  padding: 13px 28px;
+  border: 1px solid #ffd700;
+  border-left: 4px solid #ffd700;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.05) 100%);
+  border-radius: 2px;
+  color: #ffd700;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.25);
+}
+
+.dx-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffd700;
+  box-shadow: 0 0 8px #ffd700;
+  flex-shrink: 0;
+  animation: dxPulse 2.4s ease-in-out infinite;
+}
+@keyframes dxPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+/* ==========================================================================
+   端末モックアップ（すべて架空のサンプルデータで作図しています）
+========================================================================== */
+.mock {
+  --mock-w: 205px;
+  width: var(--mock-w);
+  border-radius: 16px;
+  background: #0b0b0d;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  font-size: 10px;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+.mock-wide { --mock-w: 252px; border-radius: 8px; }
+
+.mock-screen { background: #f3f4f8; color: #16171c; }
+.mock-screen-dark { background: #0f1220; color: #eef; }
+
+.mock-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 7px 10px; font-weight: 700; font-size: 10px;
+}
+.mock-body { padding: 10px; }
+.mock-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 6px;
+  padding: 5px 0; border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+.mock-row:last-child { border-bottom: none; }
+.mock-muted { color: #7a7d88; font-size: 8.5px; }
+.mock-btn {
+  display: block; text-align: center; color: #fff; font-weight: 700;
+  padding: 7px 0; border-radius: 6px; margin-bottom: 6px; font-size: 10px;
+}
+.mock-chip { display: inline-block; font-size: 8.5px; font-weight: 700; padding: 2px 6px; border-radius: 3px; }
+.mock-prog { height: 4px; border-radius: 3px; background: rgba(0,0,0,0.1); overflow: hidden; }
+.mock-prog > i { display: block; height: 100%; background: #14A44D; border-radius: 3px; }
+.mock-bars { display: flex; align-items: flex-end; gap: 2px; height: 34px; margin: 8px 0 3px; }
+.mock-bars > i { flex: 1; background: #14A44D; border-radius: 2px 2px 0 0; display: block; }
+
+.mock-map { position: relative; height: 118px; background: #e8edf2; overflow: hidden; }
+.mock-map::before, .mock-map::after { content: ''; position: absolute; background: #cfd9e4; }
+.mock-map::before { left: 0; right: 0; top: 46%; height: 6px; transform: rotate(-9deg); }
+.mock-map::after  { left: 0; right: 0; top: 74%; height: 3px; transform: rotate(6deg); }
+.mock-road { position: absolute; background: #d8e1ea; }
+.mock-water { position: absolute; right: -12px; top: -12px; width: 74px; height: 74px; border-radius: 50%; background: #bfe0ef; }
+.mock-pin { position: absolute; width: 7px; height: 7px; border-radius: 50%; background: #2f6df6; box-shadow: 0 0 0 3px rgba(47,109,246,.28); }
+.mock-tip {
+  position: absolute; background: #fff; border: 1px solid #c9cfda; border-radius: 3px;
+  font-size: 7.5px; font-weight: 700; padding: 1px 4px; white-space: nowrap; color: #2b2f3a;
+}
+.mock-sw { width: 22px; height: 13px; border-radius: 8px; background: #4b52b5; position: relative; flex-shrink: 0; }
+.mock-sw::after { content: ''; position: absolute; right: 2px; top: 2px; width: 9px; height: 9px; border-radius: 50%; background: #fff; }
+.mock-sw.off { background: #c3c6d0; }
+.mock-sw.off::after { right: auto; left: 2px; }
+.mock-cam { height: 62px; background: linear-gradient(135deg,#3a3d44,#23252b); display: flex; align-items: center; justify-content: center; }
+.mock-cam span { width: 60px; height: 38px; border: 2px solid rgba(255,255,255,.55); border-radius: 5px; }
+.mock-veh {
+  min-width: 34px; text-align: center; font-weight: 900; font-size: 11px;
+  border: 2px solid #f0a020; color: #e07b0a; border-radius: 4px; padding: 1px 0;
+}
+.mock-veh.alert { border-color: #e23b3b; color: #e23b3b; }
+.mock-ptt {
+  margin: 10px 0 2px; text-align: center; color: #fff; font-weight: 900; font-size: 10px;
+  padding: 10px 0; border-radius: 8px;
+  background: linear-gradient(180deg,#f0574f,#d93a32); box-shadow: 0 0 18px rgba(240,87,79,.4);
+}
+.mock-ch {
+  border: 1px solid rgba(255,215,0,.5); color: var(--dx-gold); font-weight: 900; font-size: 12px;
+  border-radius: 6px; padding: 5px 9px; background: rgba(255,215,0,.06);
+}
+
+/* ==========================================================================
    下層ページ共通コンポーネント
    ========================================================================== */
 .subpage-hero {
@@ -367,6 +522,11 @@ body {
       animation: none;
       background-position: 100% 50%;
     }
+
+  /* スマホは描画負荷を避けるためアニメーションを止めます */
+  .dx-dot { animation: none; }
+  .header-dx { animation: none; }
+  .header-dx::after { display: none; }
 
   /* ハンバーガーメニュー */
   .menu-toggle { display: block; background: transparent; border: none; width: 32px; height: 24px; position: relative; z-index: 1001; cursor: pointer; }
