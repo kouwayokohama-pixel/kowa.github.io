@@ -384,10 +384,9 @@
       background: rgba(240, 87, 79, 0.16);
       box-shadow: 0 0 18px rgba(240, 87, 79, 0.35);
     }
-    .mock-talk span {
-      display: block; width: 22px; height: 22px; border-radius: 50%;
-      background: #f0574f;
-      box-shadow: 0 0 0 6px rgba(240, 87, 79, 0.25);
+    .mock-talk svg {
+      width: 28px; height: 28px; color: #f0574f;
+      filter: drop-shadow(0 0 6px rgba(240, 87, 79, 0.55));
     }
 
     .dx-oneoff {
@@ -461,7 +460,7 @@
 
       .dx-inhouse { padding: 24px 16px; margin-bottom: 48px; }
       .dx-inhouse h3 { font-size: 1.15rem; }
-      .dx-inhouse .sub { font-size: .88rem; margin-bottom: 20px; }
+      .dx-inhouse .sub { font-size: .8rem; letter-spacing: -0.01em; margin-bottom: 20px; }
       .ih-row { grid-template-columns: 1fr; }
       .ih-arrow { padding: 9px 0; }
       .ih-arrow::before { transform: rotate(90deg); }
@@ -506,7 +505,10 @@
       .dx-offer > p { font-size: .98rem; }
       .dx-oneoff { display: block; padding: 14px 16px; margin-bottom: 18px; }
       .dx-oneoff b { font-size: 1rem; }
-      .dx-flow { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .dx-flow { grid-template-columns: 1fr; gap: 8px; }
+      .dx-flow-step { display: flex; align-items: center; gap: 12px; text-align: left; padding: 12px 16px; }
+      .dx-flow-step b { margin-bottom: 0; flex-shrink: 0; }
+      .dx-flow-step span { font-size: 0.92rem; }
 
       .dx-cta-btn { width: 100%; padding: 16px 0; font-size: .98rem; }
     }
@@ -602,7 +604,7 @@
                 </span>
                 <b>企画</b>
               </div>
-              <small>現場の困りごとを洗い出す</small>
+              <small>困り事を抽出</small>
             </div>
             <div class="ih-arrow"></div>
             <div class="ih-step">
@@ -614,7 +616,7 @@
                 </span>
                 <b>設計・開発</b>
               </div>
-              <small>ドライバー自身が形にする</small>
+              <small>自社で仕様決定</small>
             </div>
             <div class="ih-arrow"></div>
             <div class="ih-step">
@@ -626,7 +628,7 @@
                 </span>
                 <b>導入</b>
               </div>
-              <small>現場で試しながら調整する</small>
+              <small>現場の声を聞く</small>
             </div>
             <div class="ih-arrow"></div>
             <div class="ih-step">
@@ -636,9 +638,9 @@
                     <polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
                   </svg>
                 </span>
-                <b>運用・改善</b>
+                <b>運用</b>
               </div>
-              <small>使いながら直し続ける</small>
+              <small>改善し続ける</small>
             </div>
           </div>
 
@@ -725,7 +727,7 @@
             </div>
             <div class="dx-card-text">
               <div class="dx-card-num">SYSTEM 1-1</div>
-              <h4>GPSトラッカー（リアルタイム運行管理）</h4>
+              <h4>GPSトラッカー</h4>
               <p>社用スマホを<strong>デジタコとして使い、全車両の現在地を地図上に表示</strong>。高価な車載機を積まずに運行把握を実現しました。走行履歴も残るため、最寄り車両への急な手配もすぐできます。</p>
               <div class="dx-tags">
                 <span class="dx-tag">リアルタイム位置</span><span class="dx-tag">走行履歴</span><span class="dx-tag">車載機不要</span>
@@ -830,7 +832,7 @@
                       <span style="color:#a9aec4;">常時受信</span><div class="mock-sw off" style="background:#4a4d5e;"></div>
                     </div>
                     <div style="border:1px solid #7a3fc0; border-radius:6px; padding:7px 0; text-align:center; color:#b98cff; font-weight:700; margin-bottom:12px;">💬 個別チャット</div>
-                    <div class="mock-talk"><span></span></div>
+                    <div class="mock-talk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"></rect><path d="M5 10v1a7 7 0 0 0 14 0v-1"></path><line x1="12" y1="18" x2="12" y2="22"></line><line x1="8" y1="22" x2="16" y2="22"></line></svg></div>
                     <div style="text-align:center; color:#fff; font-weight:900; font-size:12px; margin:8px 0 10px;">会話中…</div>
                     <div style="background:rgba(255,255,255,.05); border-radius:6px; padding:7px 9px;">
                       <div style="display:flex; justify-content:space-between; padding:1px 0;"><span style="color:#a9aec4;">会話者</span><b style="color:#fff;">佐藤 健一</b></div>
