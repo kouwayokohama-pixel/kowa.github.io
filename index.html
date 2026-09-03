@@ -292,6 +292,10 @@
       margin: 60px 0;
     }
     .dx-banner-container {
+      display: grid;
+      grid-template-columns: 1fr 268px;
+      gap: 32px;
+      align-items: center;
       background: linear-gradient(135deg, rgba(255, 215, 0, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);
       border: 1px solid rgba(255, 215, 0, 0.25);
       border-left: 4px solid #ffd700;
@@ -316,6 +320,17 @@
       opacity: 0.04;
       color: #ffd700;
       pointer-events: none;
+    }
+    .dx-banner-shot { display: flex; justify-content: center; align-items: center; }
+    .dx-devices { position: relative; width: 268px; height: 214px; }
+    .dev-tablet {
+      position: absolute; left: 0; top: 6px;
+      transform: scale(0.74) rotate(-4deg); transform-origin: left top;
+    }
+    .dev-phone {
+      position: absolute; right: 4px; bottom: 0;
+      transform: scale(0.54) rotate(5deg); transform-origin: right bottom;
+      z-index: 2;
     }
     .dx-banner-title {
       color: #ffd700;
@@ -403,8 +418,20 @@
       .contact-btn { padding: 12px 0; font-size: 0.8rem; width: 100%; letter-spacing: normal; }
       
       .dx-banner-link { margin: 40px 0; }
-      .dx-banner-container { padding: 24px 20px; }
-      .dx-banner-title {
+      .dx-banner-container { padding: 24px 20px; grid-template-columns: 1fr; gap: 24px; }
+      .dx-banner-shot { order: 2; }
+      .dx-banner-shot { display: flex; justify-content: center; align-items: center; }
+    .dx-devices { position: relative; width: 268px; height: 214px; }
+    .dev-tablet {
+      position: absolute; left: 0; top: 6px;
+      transform: scale(0.74) rotate(-4deg); transform-origin: left top;
+    }
+    .dev-phone {
+      position: absolute; right: 4px; bottom: 0;
+      transform: scale(0.54) rotate(5deg); transform-origin: right bottom;
+      z-index: 2;
+    }
+    .dx-banner-title {
         font-size: 1.1rem;
         flex-direction: column;
         align-items: flex-start;
@@ -431,11 +458,15 @@
       <div class="header-inner">
         <a href="/" class="brand">KOWA <span class="accent-gold">Logistics</span></a>
 
+        <a href="/dx" class="header-dx pc-only"><span class="dx-dot"></span>社内DXを推進中</a>
+
         <div class="header-right" id="header-right">
           <div class="header-contact pc-only">
             <a href="tel:045-954-3111" class="header-action-btn">TEL: 045-954-3111</a>
             <a href="/contact" class="header-action-btn" id="nav-btn-contact">✉️ お問い合わせ</a>
           </div>
+
+          <a href="/dx" class="menu-dx sp-only"><span class="dx-dot"></span>社内DXを推進中</a>
 
           <nav class="site-nav">
             <a href="/" id="menu-home" class="nav-home">HOME<span class="nav-ja">ホーム</span></a>
@@ -551,7 +582,7 @@
         </div>
       </div>
 
-      <a href="#" onclick="alert('現在、詳細ページを制作・準備中です。公開まで今しばらくお待ちください！'); return false;" class="dx-banner-link fade-up">
+      <a href="/dx" class="dx-banner-link fade-up">
         <div class="dx-banner-container">
           <svg class="dx-banner-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
@@ -570,12 +601,60 @@
               【INNOVATION】<br class="sp-only">自社開発アプリ・社内DXを推進中
             </h3>
             <p class="dx-banner-text">
-              業務のリアルタイム管理やペーパーレス化はもちろん、出荷検品システムの独自アプリ開発まで。<br class="pc-only">
-              現場を熟知した自社スタッフ主導の<span class="dx-banner-more" style="opacity: 0.8; border-bottom: none;">「生きたIT」</span>で、他社にはない正確性と圧倒的な高品質物流を実現しています。<br>
-              <span class="dx-banner-more" style="opacity: 0.8; border-bottom: none;">
-                ⏳ DX化についての詳細ページは現在準備中
+              検品・納品・GPS・日報まで、現場を熟知した自社スタッフが<strong style="color:#ffd700;">企画から開発・運用まで手掛けています</strong>。<br>
+              御社の現場に合わせた<strong style="color:#ffd700;">オーダーメイドでのご提供</strong>も承ります。<br>
+              <span class="dx-banner-more">
+                自社開発システムの詳細を見る ➔
               </span>
             </p>
+          </div>
+
+          <div class="dx-banner-shot">
+            <div class="dx-devices">
+              <!-- タブレット（検品アプリ） -->
+              <div class="dev-tablet">
+                <div class="mock mock-wide">
+                  <div class="mock-screen">
+                    <div class="mock-bar" style="background:#1565d8; color:#fff;">
+                      <span>出荷検品　B-1</span><span style="font-weight:400; opacity:.85;">タブレット</span>
+                    </div>
+                    <div class="mock-body">
+                      <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                        <b style="font-size:10px;">検品進捗</b>
+                        <b style="font-size:10px; color:#14A44D;">250 / 250</b>
+                      </div>
+                      <div class="mock-prog" style="margin-bottom:9px;"><i style="width:100%"></i></div>
+                      <div class="mock-row"><span>コンテナ 0174</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
+                      <div class="mock-row"><span>コンテナ 0175</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
+                      <div class="mock-row"><span>コンテナ 0176</span><span class="mock-chip" style="background:#fdeaea; color:#d23b3b;">重複読取</span></div>
+                      <div class="mock-bars" style="margin-top:8px;">
+                        <i style="height:100%"></i><i style="height:100%"></i><i style="height:82%; background:#f0a020;"></i>
+                        <i style="height:100%"></i><i style="height:100%"></i><i style="height:64%; background:#f0a020;"></i>
+                        <i style="height:100%"></i><i style="height:100%"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- スマートフォン（日報アプリ） -->
+              <div class="dev-phone">
+                <div class="mock">
+                  <div class="mock-screen">
+                    <div class="mock-bar">
+                      <span class="mock-muted">日報</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">始業済</span>
+                    </div>
+                    <div class="mock-body">
+                      <div style="text-align:center; font-size:14px; font-weight:900; margin-bottom:8px;">山田 太郎 さん</div>
+                      <div class="mock-btn" style="background:#1e96e8;">業務開始</div>
+                      <div class="mock-btn" style="background:#e6437c;">お知らせ一覧</div>
+                      <div class="mock-btn" style="background:#f5a300;">履歴を表示</div>
+                      <div class="mock-btn" style="background:#0d8b8b; margin-bottom:0;">NFC読み込み</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </a>
