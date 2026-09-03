@@ -338,6 +338,11 @@
       line-height: 1.8;
       margin-bottom: 0;
     }
+    /* スマホで2行に折り返さないよう、画面幅に合わせて自動縮小させます */
+    .dx-banner-sub { white-space: nowrap; }
+    @media (max-width: 768px) {
+      .dx-banner-sub { font-size: clamp(12px, 4.25vw, 17px); }
+    }
     .dx-banner-more {
       display: inline-block;
       color: #ffd700;
@@ -578,7 +583,7 @@
                 <polyline points="22 8.5 12 12"></polyline>
                 <polyline points="2 8.5 12 12"></polyline>
               </svg>
-              【INNOVATION】<br class="sp-only">自社開発アプリ・社内DXを推進中
+              【INNOVATION】<br class="sp-only"><span class="dx-banner-sub">自社開発アプリ・社内DXを推進中</span>
             </h3>
             <p class="dx-banner-text">
               検品・納品・GPS・日報まで、現場を熟知した自社スタッフが<strong style="color:#ffd700;">企画から開発・運用まで手掛けています</strong>。<br>
