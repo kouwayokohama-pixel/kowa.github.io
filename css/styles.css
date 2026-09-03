@@ -54,6 +54,7 @@ body {
 /* 表示切り替え用ユーティリティ */
 .pc-only { display: block; }
 .sp-only { display: none !important; }
+.menu-dx { display: none; }
 .menu-toggle { display: none; }
 
 /* ==========================================================================
@@ -528,20 +529,25 @@ body {
   .dx-dot { animation: none; }
   .header-dx::after { display: none; }
 
-  /* ★スマホ：DXバッジをロゴの下の行・右寄せに配置 */
-  .header-inner { flex-wrap: wrap; row-gap: 8px; }
-  .header-inner::after { content: ''; flex-basis: 100%; height: 0; order: 2; }
-  .brand { order: 1; }
-  .menu-toggle { order: 1; }
-  .header-dx {
-    display: inline-flex !important;
-    order: 3;
-    margin-left: auto;
-    z-index: 1001;
-    animation: none;
-    font-size: 0.92rem;
-    padding: 8px 18px;
+  /* ★スマホ：DXバッジは常時ヘッダーに出さず、メニューの中に置く */
+  .menu-dx {
+    align-self: flex-end;   /* メニュー内の右上に置く */
+    margin-right: 24px;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 24px;
+    border: 1px solid #ffd700;
+    border-left: 3px solid #ffd700;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.18) 0%, rgba(255, 215, 0, 0.04) 100%);
+    border-radius: 2px;
+    color: #ffd700;
+    font-size: 0.95rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    flex: 0 0 auto;
   }
+  .menu-dx .dx-dot { animation: none; }
 
 
   /* ハンバーガーメニュー */
