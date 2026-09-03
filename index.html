@@ -56,6 +56,16 @@
       margin-left: 2.5rem;
     }
 
+    .hero-year {
+      color: #00e5ff;
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+      margin-right: 8px;
+    }
+
     /* ★ここを追加（横浜用のインデントと、2t車用の準備） */
     .indent-yokohama {
       margin-left: 1em; /* 1文字分インデントする */
@@ -64,6 +74,49 @@
     .indent-truck {
       display: inline-block;
       margin-left: 1em; /* ★2t車の行を1文字分右へズラす（PC版） */
+    }
+
+    /* --- PC：見出しと説明文を縦線で左右に分ける --- */
+    @media (min-width: 1000px) {
+      .hero .hero-content {
+        max-width: 1400px;
+        display: grid;
+        grid-template-columns: auto 1px auto;
+        grid-template-rows: auto auto;
+        column-gap: clamp(22px, 2.6vw, 36px);
+        justify-content: center;
+      }
+      /* 中央の縦線 */
+      .hero .hero-content::before {
+        content: '';
+        grid-area: 1 / 2;
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent, rgba(0, 229, 255, 0.6), transparent);
+      }
+      /* h1の中身をそのままグリッドに並べる（見出しの意味は保ったまま） */
+      .hero-heading { display: contents; }
+      .hero-catch {
+        grid-area: 1 / 1;
+        align-self: center;
+        font-size: clamp(26px, 4.2vw, 57px);
+        white-space: nowrap;
+        margin: 0;
+      }
+      /* 見出しと一緒に説明文・年号・ボタンも画面幅で伸縮させます */
+      .hero-sub {
+        grid-area: 1 / 3;
+        margin: 0;
+        font-size: clamp(13.5px, 1.3vw, 17.6px);
+      }
+      .hero-year { font-size: 1.82em; margin-right: 0.45em; }
+      .hero .btn-main {
+        grid-area: 2 / 3;
+        margin: 30px 0 0;
+        justify-self: start;
+        font-size: clamp(13px, 1.18vw, 16px);
+        padding: clamp(11px, 1.18vw, 16px) clamp(26px, 2.96vw, 40px);
+      }
     }
 
     .btn-main {
@@ -356,13 +409,36 @@
       .hero-content {
         transform: translateY(20px); 
       }
-      .hero-sub { margin-left: 1.5rem; font-size: 0.95rem; margin-bottom: 36px;}
-      .btn-main { margin-left: 1.5rem; margin-bottom: 40px; }
-      .hero-catch { font-size: clamp(24px, 8.8vw, 36px); white-space: nowrap; margin-bottom: 24px;}
+      /* ★スマホ：年号ラベル → 見出し → 説明文 → ボタンを中央に一直線で並べる */
+      .hero-content { text-align: center; }
+      .hero-heading { display: flex; flex-direction: column; }
+      .hero-sub { display: contents; }
 
-      /* ★ここを追加（スマホの時だけ2t車も1文字分インデント） */
-      .indent-truck { 
-        margin-left: 1em; 
+      /* 端末の横幅に合わせて全体を伸縮させます。
+         割る数は「その行が1行に収まる幅の比率」から算出しているので、
+         画面が狭い端末でも折り返しません（見出し 9.91em / 説明文 21.7em）。 */
+      .hero-catch {
+        order: 0;
+        font-size: clamp(22px, calc((100vw - 48px) / 10.2), 40px);
+        white-space: nowrap;
+        margin: 0 0 24px;
+        padding-bottom: 22px;
+        border-bottom: 1px solid rgba(0, 229, 255, 0.28);
+      }
+      .hero-sub { font-size: clamp(11.5px, calc((100vw - 48px) / 22.2), 19px); }
+
+      .hero-eyebrow { order: -1; margin-bottom: 16px !important; }
+      .hero-year { font-size: 1.3em; margin-right: 0.6em; }
+      .hero-eyebrow-cap { font-size: 0.85em; letter-spacing: 0.12em; }
+
+      .hero-body { order: 1; display: block; margin-bottom: 34px; }
+      .indent-yokohama,
+      .indent-truck { margin-left: 0; }
+
+      .btn-main {
+        display: inline-flex;
+        width: auto;
+        margin: 0 auto 40px;
       }
 
       .business-intro-wrapper { 
@@ -451,6 +527,8 @@
             <a href="/contact" class="header-action-btn" id="nav-btn-contact">✉️ お問い合わせ</a>
           </div>
 
+          <a href="/dx" class="menu-dx sp-only"><span class="dx-dot"></span>社内DXを推進中</a>
+
           <nav class="site-nav">
             <a href="/" id="menu-home" class="nav-home">HOME<span class="nav-ja">ホーム</span></a>
             <a href="/services" id="menu-services" class="nav-services">SERVICES<span class="nav-ja">事業内容</span></a>
@@ -487,13 +565,13 @@
         <span class="hero-catch">「安全で確実な物流」</span>
 
         <span class="hero-sub">
-          <span style="display: block; margin-bottom: 16px;">
+          <span class="hero-eyebrow" style="display: block; margin-bottom: 16px;">
             <span style="display: inline-flex; align-items: baseline;">
-              <strong style="color: #00e5ff; font-size: 2.0rem; font-weight: 900; letter-spacing: 0.02em; line-height: 1; text-shadow: 0 0 15px rgba(255, 215, 0, 0.4); margin-right: 8px;">1972年</strong>
-              <span class="keep-text"> 創業時の基本目標</span>
+              <strong class="hero-year">1972年</strong>
+              <span class="keep-text hero-eyebrow-cap"> 創業時の基本目標</span>
             </span>
           </span>
-          <span class="keep-text">
+          <span class="keep-text hero-body">
             <!-- ★ここから下の3行を「ブロック化」して行間を完全に統一しました！ -->
           <span style="display: block; margin-bottom: 6px; line-height: 1.5;">
             <span class="keep-text"><span style="font-size: 1.2em; font-weight: 900; color: #00e5ff;">「日常」</span>を届ける</span><span class="keep-text">プロフェッショナルとして、</span>
@@ -655,7 +733,7 @@
       </a>
             
       <div style="text-align: center; margin-top: 64px;">
-        <a href="/services" class="btn-outline red-version">詳細はこちら</a>
+        <a href="/services" class="btn-outline red-version">事業詳細はこちら</a>
       </div>
     </div>
   </section>
