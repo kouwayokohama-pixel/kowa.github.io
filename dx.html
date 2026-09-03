@@ -85,6 +85,7 @@
       padding: 22px 14px;
       text-align: center;
     }
+    .ih-head { display: block; }
     .ih-icon { display: block; color: var(--dx-gold); margin-bottom: 10px; }
     .ih-step b {
       display: block;
@@ -187,7 +188,9 @@
     }
     .fm-hub small { color: var(--text-main); }
 
-    .fm-ico { display: block; color: var(--dx-gold); margin-bottom: 10px; }
+    .fm-head { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 6px; }
+    .fm-ico { display: block; color: var(--dx-gold); line-height: 0; }
+    .fm-head b { margin-bottom: 0 !important; }
     .fm-hub-head {
       display: flex; align-items: center; justify-content: center; gap: 10px;
       color: var(--dx-gold); margin-bottom: 12px;
@@ -200,7 +203,7 @@
       gap: 28px;
       padding: 14px 0 4px;
     }
-    .fm-link { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+    .fm-link { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 10px; }
     .fm-link-sp { display: none; }
     .fm-link span { color: var(--text-muted); font-size: 0.88rem; letter-spacing: 0.02em; }
     .fm-link i {
@@ -241,7 +244,15 @@
       box-shadow: 0 0 22px rgba(255, 215, 0, 0.12);
       transform: translateY(-5px);
     }
-    .dx-why-card svg { color: var(--dx-gold); margin-bottom: 14px; }
+    .dx-why-head { display: flex; align-items: center; gap: 11px; margin-bottom: 12px; }
+    .dx-why-card svg { color: var(--dx-gold); flex-shrink: 0; }
+    .dx-why-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 900;
+      color: var(--dx-gold);
+      letter-spacing: 0.14em;
+    }
     .dx-why-card h4 {
       font-size: 1.15rem;
       font-weight: 700;
@@ -263,12 +274,12 @@
       background: rgba(255, 215, 0, 0.1);
       border: 1px solid var(--dx-line);
       color: var(--dx-gold);
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      padding: 4px 12px;
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      padding: 7px 18px;
       border-radius: 2px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .dx-group h3 {
       font-size: 1.35rem;
@@ -286,7 +297,7 @@
       margin-bottom: 72px;
     }
     .dx-cards.two { grid-template-columns: repeat(2, 1fr); }
-    .dx-cards.two .dx-card-shot { height: 390px; }
+    .dx-cards.two .dx-card-shot { height: 404px; }
     .dx-cards.two .mock { --mock-w: 230px; font-size: 11px; }
     .dx-cards.two .mock-wide { --mock-w: 275px; }
 
@@ -310,7 +321,7 @@
       display: flex;
       justify-content: center;
       border-bottom: 1px solid var(--border-color);
-      height: 350px;
+      height: 340px;
       align-items: center;
     }
     .dx-card-text { padding: 22px 20px 24px; flex-grow: 1; display: flex; flex-direction: column; }
@@ -365,6 +376,20 @@
       color: var(--text-main); font-size: 1.05rem; line-height: 1.9;
       max-width: 720px; margin: 0 auto 12px;
     }
+    .mock-talk {
+      display: flex; align-items: center; justify-content: center;
+      width: 62px; height: 62px; margin: 6px auto 0;
+      border-radius: 50%;
+      border: 2px solid #f0574f;
+      background: rgba(240, 87, 79, 0.16);
+      box-shadow: 0 0 18px rgba(240, 87, 79, 0.35);
+    }
+    .mock-talk span {
+      display: block; width: 22px; height: 22px; border-radius: 50%;
+      background: #f0574f;
+      box-shadow: 0 0 0 6px rgba(240, 87, 79, 0.25);
+    }
+
     .dx-oneoff {
       display: inline-block;
       border: 1px solid var(--dx-gold);
@@ -440,8 +465,18 @@
       .ih-row { grid-template-columns: 1fr; }
       .ih-arrow { padding: 9px 0; }
       .ih-arrow::before { transform: rotate(90deg); }
-      .ih-step { padding: 16px 14px; }
-      .ih-step b { font-size: 1.05rem; }
+      .ih-step { padding: 13px 14px; }
+      .ih-head {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 4px;
+      }
+      .ih-icon { margin-bottom: 0; line-height: 0; }
+      .ih-icon svg { width: 24px; height: 24px; }
+      .ih-step b { font-size: 1.05rem; margin-bottom: 0; }
+      .ih-step small { font-size: 0.86rem; }
       .ih-band { font-size: .95rem; padding: 12px 14px; margin-top: 18px; }
 
       .dx-flowchart { padding: 24px 16px; margin-bottom: 48px; }
@@ -460,6 +495,7 @@
       .dx-why { grid-template-columns: 1fr; gap: 14px; margin-bottom: 48px; }
       .dx-why-card { padding: 22px 18px; }
 
+      .dx-group-label { font-size: 0.95rem; padding: 6px 14px; }
       .dx-group h3 { font-size: 1.1rem; }
       .dx-cards { grid-template-columns: 1fr; gap: 18px; margin-bottom: 48px; }
       .dx-cards.two { grid-template-columns: 1fr; }
@@ -493,8 +529,6 @@
             <a href="tel:045-954-3111" class="header-action-btn">TEL: 045-954-3111</a>
             <a href="/contact" class="header-action-btn" id="nav-btn-contact">✉️ お問い合わせ</a>
           </div>
-
-          <a href="/dx" class="menu-dx sp-only"><span class="dx-dot"></span>社内DXを推進中</a>
 
           <nav class="site-nav">
             <a href="/" id="menu-home" class="nav-home">HOME<span class="nav-ja">ホーム</span></a>
@@ -547,9 +581,9 @@
 
         <!-- ===================== リード ===================== -->
         <div class="dx-lead fade-up">
-          <div class="dx-lead-catch">使う人間が、<em>つくっている。</em></div>
+          <div class="dx-lead-catch">使う人間が、<em>開発する。</em></div>
           <p>
-            毎日トラックに乗るスタッフが、検品から納品・運行管理までのシステムを自社で開発。<br class="pc-only">
+            トラックに乗るドライバー自身が、検品から納品・運行管理までのシステムを自社で開発。<br class="pc-only">
             だから「ここが使いにくい」の一言が、その日のうちに形になります。
           </p>
         </div>
@@ -559,56 +593,58 @@
           <h3>企画から運用まで、<em>すべて自社で完結</em></h3>
           <p class="sub">外注も、既製パッケージの購入もしていません</p>
 
-          <div class="ih-row">
-            <div class="ih-step">
-              <span class="ih-icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9 18h6"></path><path d="M10 22h4"></path>
-                  <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
-                </svg>
-              </span>
-              <b>企画</b>
+          <div class="ih-row">            <div class="ih-step">
+              <div class="ih-head">
+                <span class="ih-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
+                  </svg>
+                </span>
+                <b>企画</b>
+              </div>
+              <small>現場の困りごとを洗い出す</small>
             </div>
-
             <div class="ih-arrow"></div>
-
             <div class="ih-step">
-              <span class="ih-icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
-                </svg>
-              </span>
-              <b>設計・開発</b>
+              <div class="ih-head">
+                <span class="ih-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </span>
+                <b>設計・開発</b>
+              </div>
+              <small>ドライバー自身が形にする</small>
             </div>
-
             <div class="ih-arrow"></div>
-
             <div class="ih-step">
-              <span class="ih-icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                  <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                </svg>
-              </span>
-              <b>導入</b>
+              <div class="ih-head">
+                <span class="ih-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line>
+                  </svg>
+                </span>
+                <b>導入</b>
+              </div>
+              <small>現場で試しながら調整する</small>
             </div>
-
             <div class="ih-arrow"></div>
-
             <div class="ih-step">
-              <span class="ih-icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline>
-                  <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-                </svg>
-              </span>
-              <b>運用・改善</b>
+              <div class="ih-head">
+                <span class="ih-icon">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                  </svg>
+                </span>
+                <b>運用・改善</b>
+              </div>
+              <small>使いながら直し続ける</small>
             </div>
           </div>
 
           <div class="ih-band">
             <span class="dx-dot"></span>
-            この4つすべてを、自社スタッフだけで行っています
+            すべてを自社だけで行っています
           </div>
         </div>
 
@@ -616,27 +652,36 @@
         <h2 class="section-title fade-up title-gold">Why<span>なぜ自社で作るのか</span></h2>
         <div class="dx-why fade-up">
           <div class="dx-why-card">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="dx-why-head">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="1" y="3" width="15" height="13"></rect>
               <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
               <circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle>
             </svg>
+              <span class="dx-why-num">POINT 01</span>
+            </div>
             <h4>現場の人間が、設計・開発</h4>
-            <p>実際にトラックに乗り、荷物を運ぶ<strong>スタッフがそのまま開発を担当</strong>。要件を聞き出す工程が要らないぶん、<strong>現場が本当に困っていることだけ</strong>を形にできます。</p>
+            <p>実際にトラックに乗り、荷物を運ぶ<strong>ドライバーがそのまま開発を担当</strong>。<strong>現場が本当に困っていることだけ</strong>を形にできます。</p>
           </div>
           <div class="dx-why-card">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="dx-why-head">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline>
             </svg>
+              <span class="dx-why-num">POINT 02</span>
+            </div>
             <h4>「使いにくい」が即日直る</h4>
-            <p>「ここをこうしてほしい」という<strong>従業員の声を、その日のうちに反映</strong>。外注なら数週間かかる修正も待ち時間がなく、使いながら育てていけます。</p>
+            <p>「ここをこうしてほしい」という<strong>声を、その日のうちに反映</strong>。外注なら数週間かかる修正も待ち時間がなく、使いながら育てていけます。</p>
           </div>
           <div class="dx-why-card">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="dx-why-head">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2 2 7l10 5 10-5-10-5z"></path><path d="m2 17 10 5 10-5"></path><path d="m2 12 10 5 10-5"></path>
             </svg>
+              <span class="dx-why-num">POINT 03</span>
+            </div>
             <h4>物流に特化している</h4>
-            <p>汎用パッケージを当てはめるのではなく、<strong>自社の配送の流れに合わせてゼロから設計したオリジナルシステム</strong>。「使わない機能」が一つもありません。</p>
+            <p>汎用パッケージを当てはめるのではなく、<strong>「自社の配送の流れに合わせてゼロから設計したオリジナルシステム」</strong>。「使わない機能」が一つもありません。</p>
           </div>
         </div>
 
@@ -644,8 +689,8 @@
         <h2 class="section-title fade-up title-gold">Our Systems<span>自社開発システム</span></h2>
 
         <div class="dx-group fade-up">
-          <div class="dx-group-label">01 ｜ 自社の現場で毎日使っているシステム</div>
-          <h3>運行・勤怠・車両・連絡手段も、すべて自社アプリで</h3>
+          <div class="dx-group-label">① 自社の現場で毎日使っているシステム</div>
+          <h3>運行・勤怠・車両・連絡手段も、すべて自社アプリで完結！</h3>
         </div>
 
         <div class="dx-cards two fade-up">
@@ -671,6 +716,8 @@
                   <div class="mock-body" style="padding:6px 10px;">
                     <div class="mock-row"><span style="color:#3a63c8; font-weight:700;">山田 太郎</span><span class="mock-muted">15:18</span><div class="mock-sw"></div></div>
                     <div class="mock-row"><span style="color:#3a63c8; font-weight:700;">佐藤 健一</span><span class="mock-muted">15:19</span><div class="mock-sw"></div></div>
+                    <div class="mock-row"><span style="color:#3a63c8; font-weight:700;">鈴木 一郎</span><span class="mock-muted">15:17</span><div class="mock-sw"></div></div>
+                    <div class="mock-row"><span style="color:#3a63c8; font-weight:700;">高橋 実</span><span class="mock-muted">15:20</span><div class="mock-sw"></div></div>
                     <div class="mock-row"><span style="color:#8b8f9b; font-weight:700;">田中 花子</span><span class="mock-muted">08:39</span><div class="mock-sw off"></div></div>
                   </div>
                 </div>
@@ -679,9 +726,9 @@
             <div class="dx-card-text">
               <div class="dx-card-num">SYSTEM 1-1</div>
               <h4>GPSトラッカー（リアルタイム運行管理）</h4>
-              <p>ドライバーのスマホを<strong>デジタコとして使い、全車両の現在地を地図上に表示</strong>。高価な車載機を積まずに運行把握を実現しました。走行履歴も残るため、最寄り車両への急な手配もすぐできます。</p>
+              <p>社用スマホを<strong>デジタコとして使い、全車両の現在地を地図上に表示</strong>。高価な車載機を積まずに運行把握を実現しました。走行履歴も残るため、最寄り車両への急な手配もすぐできます。</p>
               <div class="dx-tags">
-                <span class="dx-tag">リアルタイム位置</span><span class="dx-tag">走行履歴</span><span class="dx-tag">車載機不要</span><span class="dx-tag">低コスト</span>
+                <span class="dx-tag">リアルタイム位置</span><span class="dx-tag">走行履歴</span><span class="dx-tag">車載機不要</span>
               </div>
             </div>
           </div>
@@ -695,7 +742,7 @@
                     <span class="mock-muted">v1.52.0</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">始業済</span>
                   </div>
                   <div class="mock-body">
-                    <div style="text-align:center; font-size:15px; font-weight:900; margin-bottom:8px;">山田 太郎 さん</div>
+                    <div style="text-align:center; font-size:16px; font-weight:900; margin:4px 0 10px;">山田 太郎 さん</div>
                     <div style="display:flex; background:#eef0f6; border-radius:6px; padding:7px 0; margin-bottom:9px;">
                       <div style="flex:1; text-align:center; border-right:1px solid #dcdfe8;"><div class="mock-muted">状態</div><b style="font-size:10.5px;">運行中</b></div>
                       <div style="flex:1; text-align:center;"><div class="mock-muted">現在</div><b style="font-size:10.5px;">B-1</b></div>
@@ -703,6 +750,7 @@
                     <div class="mock-btn" style="background:#1e96e8;">業務開始</div>
                     <div class="mock-btn" style="background:#e6437c;">お知らせ一覧</div>
                     <div class="mock-btn" style="background:#f5a300;">履歴を表示</div>
+                    <div class="mock-btn" style="background:#e2650c;">稼働状況の確認</div>
                     <div class="mock-btn" style="background:#0d8b8b; margin-bottom:0;">▣ NFCタグ読み込み</div>
                   </div>
                 </div>
@@ -710,7 +758,7 @@
             </div>
             <div class="dx-card-text">
               <div class="dx-card-num">SYSTEM 1-2</div>
-              <h4>日報アプリ（ペーパーレス日報・勤怠）</h4>
+              <h4>日報アプリ</h4>
               <p>始業・終業、走行距離、配送件数をスマホから数タップで報告。<strong>手書き日報も、事務所での転記・集計も不要</strong>になりました。車両のNFCタグ読取で車番・距離の入力も自動化。<strong>社内お知らせの配信</strong>もこのアプリから行えます。</p>
               <div class="dx-tags">
                 <span class="dx-tag">ペーパーレス</span><span class="dx-tag">勤怠自動集計</span><span class="dx-tag">NFC読取</span>
@@ -741,6 +789,14 @@
                     <div class="mock-row">
                       <span class="mock-veh">252</span>
                       <div style="flex:1; margin-left:5px;"><div style="font-size:9.5px;">371,275 km</div><div class="mock-muted">点検 2026/8</div></div>
+                    </div>
+                    <div class="mock-row">
+                      <span class="mock-veh">1124</span>
+                      <div style="flex:1; margin-left:5px;"><div style="font-size:9.5px;">338,586 km</div><div class="mock-muted">点検 2026/8</div></div>
+                    </div>
+                    <div class="mock-row">
+                      <span class="mock-veh">4022</span>
+                      <div style="flex:1; margin-left:5px;"><div style="font-size:9.5px;">248,116 km</div><div class="mock-muted">点検 2026/9</div></div>
                     </div>
                     <div style="display:flex; gap:4px; margin-top:8px;">
                       <span class="mock-chip" style="background:#1e96e8; color:#fff; flex:1; text-align:center; padding:4px 0;">点検</span>
@@ -774,7 +830,8 @@
                       <span style="color:#a9aec4;">常時受信</span><div class="mock-sw off" style="background:#4a4d5e;"></div>
                     </div>
                     <div style="border:1px solid #7a3fc0; border-radius:6px; padding:7px 0; text-align:center; color:#b98cff; font-weight:700; margin-bottom:12px;">💬 個別チャット</div>
-                    <div style="text-align:center; color:#fff; font-weight:900; font-size:11px; margin-bottom:8px;">会話中…</div>
+                    <div class="mock-talk"><span></span></div>
+                    <div style="text-align:center; color:#fff; font-weight:900; font-size:12px; margin:8px 0 10px;">会話中…</div>
                     <div style="background:rgba(255,255,255,.05); border-radius:6px; padding:7px 9px;">
                       <div style="display:flex; justify-content:space-between; padding:1px 0;"><span style="color:#a9aec4;">会話者</span><b style="color:#fff;">佐藤 健一</b></div>
                       <div style="display:flex; justify-content:space-between; padding:1px 0;"><span style="color:#a9aec4;">チャンネル</span><b style="color:#ffd700;">CH1</b></div>
@@ -796,8 +853,8 @@
         </div>
 
         <div class="dx-group fade-up">
-          <div class="dx-group-label">02 ｜ 取引先企業様へご提供したシステム</div>
-          <h3>検品・納品・進捗管理をつなぐ、3つのシステム</h3>
+          <div class="dx-group-label">② 取引先企業様へご提供したシステム</div>
+          <h3>検品・納品・進捗管理を行う3つのシステム</h3>
         </div>
 
         <div class="dx-flowchart fade-up">
@@ -806,34 +863,38 @@
 
           <div class="fm-row">
             <div class="fm-node">
-              <span class="fm-ico">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 21h18"></path>
-                  <path d="M4 21V11l5 3.2V11l5 3.2V11l5 3.2V21"></path>
-                  <path d="M5 11V5h2.5v6"></path>
-                </svg>
-              </span>
-              <b>工場で検品</b>
-              <small>タブレットでQRを読み取り</small>
+              <div class="fm-head">
+                <span class="fm-ico">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 21h18"></path>
+                    <path d="M4 21V11l5 3.2V11l5 3.2V11l5 3.2V21"></path>
+                    <path d="M5 11V5h2.5v6"></path>
+                  </svg>
+                </span>
+                <b>工場で検品</b>
+              </div>
+              <small>QRリーダーで読み取り</small>
             </div>
             <div class="fm-node">
-              <span class="fm-ico">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="1" y="3" width="15" height="13"></rect>
-                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                  <circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle>
-                </svg>
-              </span>
-              <b>配送先で納品</b>
+              <div class="fm-head">
+                <span class="fm-ico">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="1" y="3" width="15" height="13"></rect>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle>
+                  </svg>
+                </span>
+                <b>配送先で納品</b>
+              </div>
               <small>スマートフォンでQRを読み取り</small>
             </div>
           </div>
 
           <div class="fm-links">
-            <div class="fm-link"><span>検品したデータ</span><i></i></div>
-            <div class="fm-link"><span>納品したデータ</span><i></i></div>
+            <div class="fm-link"><i></i><span>読取情報</span></div>
+            <div class="fm-link"><i></i><span>読取情報</span></div>
           </div>
-          <div class="fm-link fm-link-sp"><span>検品・納品のデータ</span><i></i></div>
+          <div class="fm-link fm-link-sp"><i></i><span>読取情報</span></div>
 
           <div class="fm-hub">
             <div class="fm-hub-head">
@@ -844,10 +905,10 @@
               </svg>
               <span>事務所</span>
             </div>
-            <b>両方のデータが、リアルタイムで集まる</b>
+            <b>データがリアルタイム反映</b>
             <small>
-              「工場で何個積んだか」と「配送先で何個降ろしたか」をシステムが自動で見比べるので、<br class="pc-only">
-              数が合わないときはすぐに気づけます。
+              「工場の出荷数」と「配送先の納品数」をシステムで見比べて管理し、<br class="pc-only">
+              異常をすぐに検知できます。
             </small>
           </div>
         </div>
@@ -867,10 +928,12 @@
                       <b style="font-size:10px; color:#14A44D;">250 / 250（100%）</b>
                     </div>
                     <div class="mock-prog" style="margin-bottom:9px;"><i style="width:100%"></i></div>
-                    <div class="mock-row"><span>コンテナ 0174</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
-                    <div class="mock-row"><span>コンテナ 0175</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
-                    <div class="mock-row"><span>コンテナ 0176</span><span class="mock-chip" style="background:#fdeaea; color:#d23b3b;">重複読取</span></div>
-                    <div class="mock-row"><span>コンテナ 0177</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
+                    <div class="mock-row"><span>商品A</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
+                    <div class="mock-row"><span>商品B</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
+                    <div class="mock-row"><span>商品C</span><span class="mock-chip" style="background:#fdeaea; color:#d23b3b;">重複読取</span></div>
+                    <div class="mock-row"><span>商品D</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
+                    <div class="mock-row"><span>商品E</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
+                    <div class="mock-row"><span>商品F</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
                     <div style="margin-top:9px; background:#eef3ff; border-left:3px solid #1565d8; padding:6px 8px; border-radius:3px;">
                       <b style="font-size:9px; color:#1565d8;">誤読・重複はその場で警告</b>
                     </div>
@@ -896,7 +959,33 @@
                   <div class="mock-bar" style="background:#5a5f6b; color:#fff;">
                     <span>← B1-4／〇〇小学校</span><span style="font-weight:400;">一覧</span>
                   </div>
-                  <div class="mock-cam"><span></span></div>
+                  <div class="mock-cam"><span>
+                      <svg viewBox="0 0 29 29" shape-rendering="crispEdges" aria-hidden="true">
+                        <rect width="29" height="29" fill="#fff"/>
+                        <g fill="#111">
+                          <path d="M1 1h7v7H1zM2 2v5h5V2z"/><rect x="3" y="3" width="3" height="3"/>
+                          <path d="M21 1h7v7h-7zM22 2v5h5V2z"/><rect x="23" y="3" width="3" height="3"/>
+                          <path d="M1 21h7v7H1zM2 22v5h5v-5z"/><rect x="3" y="23" width="3" height="3"/>
+                          <rect x="10" y="1" width="1" height="1"/><rect x="12" y="1" width="1" height="1"/><rect x="14" y="1" width="1" height="1"/><rect x="17" y="1" width="1" height="1"/>
+                          <rect x="11" y="2" width="1" height="1"/><rect x="13" y="2" width="1" height="1"/><rect x="16" y="2" width="1" height="1"/><rect x="18" y="2" width="1" height="1"/>
+                          <rect x="10" y="3" width="1" height="1"/><rect x="14" y="3" width="1" height="1"/><rect x="15" y="3" width="1" height="1"/><rect x="18" y="3" width="1" height="1"/>
+                          <rect x="12" y="4" width="1" height="1"/><rect x="13" y="4" width="1" height="1"/><rect x="16" y="4" width="1" height="1"/>
+                          <rect x="10" y="5" width="1" height="1"/><rect x="11" y="5" width="1" height="1"/><rect x="15" y="5" width="1" height="1"/><rect x="18" y="5" width="1" height="1"/>
+                          <rect x="13" y="6" width="1" height="1"/><rect x="14" y="6" width="1" height="1"/><rect x="17" y="6" width="1" height="1"/>
+                          <rect x="10" y="7" width="1" height="1"/><rect x="12" y="7" width="1" height="1"/><rect x="16" y="7" width="1" height="1"/><rect x="18" y="7" width="1" height="1"/>
+                          <rect x="1" y="10" width="1" height="1"/><rect x="3" y="10" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="9" y="10" width="1" height="1"/><rect x="12" y="10" width="1" height="1"/><rect x="15" y="10" width="1" height="1"/><rect x="19" y="10" width="1" height="1"/><rect x="22" y="10" width="1" height="1"/><rect x="25" y="10" width="1" height="1"/><rect x="27" y="10" width="1" height="1"/>
+                          <rect x="2" y="12" width="1" height="1"/><rect x="5" y="12" width="1" height="1"/><rect x="8" y="12" width="1" height="1"/><rect x="11" y="12" width="1" height="1"/><rect x="14" y="12" width="1" height="1"/><rect x="17" y="12" width="1" height="1"/><rect x="21" y="12" width="1" height="1"/><rect x="24" y="12" width="1" height="1"/><rect x="26" y="12" width="1" height="1"/>
+                          <rect x="1" y="14" width="1" height="1"/><rect x="4" y="14" width="1" height="1"/><rect x="7" y="14" width="1" height="1"/><rect x="10" y="14" width="1" height="1"/><rect x="13" y="14" width="1" height="1"/><rect x="16" y="14" width="1" height="1"/><rect x="20" y="14" width="1" height="1"/><rect x="23" y="14" width="1" height="1"/><rect x="27" y="14" width="1" height="1"/>
+                          <rect x="3" y="16" width="1" height="1"/><rect x="6" y="16" width="1" height="1"/><rect x="9" y="16" width="1" height="1"/><rect x="12" y="16" width="1" height="1"/><rect x="15" y="16" width="1" height="1"/><rect x="18" y="16" width="1" height="1"/><rect x="22" y="16" width="1" height="1"/><rect x="25" y="16" width="1" height="1"/>
+                          <rect x="10" y="18" width="1" height="1"/><rect x="12" y="18" width="1" height="1"/><rect x="14" y="18" width="1" height="1"/><rect x="17" y="18" width="1" height="1"/><rect x="20" y="18" width="1" height="1"/><rect x="24" y="18" width="1" height="1"/><rect x="27" y="18" width="1" height="1"/>
+                          <rect x="11" y="20" width="1" height="1"/><rect x="13" y="20" width="1" height="1"/><rect x="16" y="20" width="1" height="1"/><rect x="19" y="20" width="1" height="1"/><rect x="22" y="20" width="1" height="1"/><rect x="26" y="20" width="1" height="1"/>
+                          <rect x="10" y="22" width="1" height="1"/><rect x="14" y="22" width="1" height="1"/><rect x="18" y="22" width="1" height="1"/><rect x="21" y="22" width="1" height="1"/><rect x="25" y="22" width="1" height="1"/><rect x="27" y="22" width="1" height="1"/>
+                          <rect x="12" y="24" width="1" height="1"/><rect x="15" y="24" width="1" height="1"/><rect x="17" y="24" width="1" height="1"/><rect x="20" y="24" width="1" height="1"/><rect x="23" y="24" width="1" height="1"/><rect x="26" y="24" width="1" height="1"/>
+                          <rect x="11" y="26" width="1" height="1"/><rect x="13" y="26" width="1" height="1"/><rect x="16" y="26" width="1" height="1"/><rect x="19" y="26" width="1" height="1"/><rect x="22" y="26" width="1" height="1"/><rect x="24" y="26" width="1" height="1"/><rect x="27" y="26" width="1" height="1"/>
+                          <rect x="10" y="27" width="1" height="1"/><rect x="14" y="27" width="1" height="1"/><rect x="18" y="27" width="1" height="1"/><rect x="21" y="27" width="1" height="1"/><rect x="25" y="27" width="1" height="1"/>
+                        </g>
+                      </svg>
+                    </span></div>
                   <div class="mock-body" style="background:#f7f8fc;">
                     <b style="font-size:10.5px;">読み取ったシリアル</b>
                     <div class="mock-muted" style="margin-bottom:6px;">タップで取り消し</div>
@@ -947,6 +1036,14 @@
                         <div style="display:flex; justify-content:space-between;"><b style="font-size:9.5px;">B-2</b><span style="font-size:8.5px; color:#e07b0a;">配送中</span></div>
                         <div class="mock-prog" style="margin:3px 0;"><i style="width:82%; background:#f0a020;"></i></div>
                       </div>
+                      <div style="background:#fff; border:1px solid #e3e6ee; border-radius:4px; padding:5px 6px;">
+                        <div style="display:flex; justify-content:space-between;"><b style="font-size:9.5px;">C-1</b><span style="font-size:8.5px; color:#0f8f45;">完了</span></div>
+                        <div class="mock-prog" style="margin:3px 0;"><i style="width:100%"></i></div>
+                      </div>
+                      <div style="background:#fff; border:1px solid #e3e6ee; border-radius:4px; padding:5px 6px;">
+                        <div style="display:flex; justify-content:space-between;"><b style="font-size:9.5px;">D-9</b><span style="font-size:8.5px; color:#e07b0a;">配送中</span></div>
+                        <div class="mock-prog" style="margin:3px 0;"><i style="width:64%; background:#f0a020;"></i></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -973,7 +1070,7 @@
           </div>
 
           <p>
-            業務の流れも、扱う荷物も、会社ごとに違います。だから当社は、
+            <strong>業務の流れも、扱う荷物も、会社ごとに違います。</strong>だから当社は、
             <strong>できあいのシステムを当てはめず、御社の現場に合わせて設計・開発</strong>します。
           </p>
           <p>
