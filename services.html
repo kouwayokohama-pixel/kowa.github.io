@@ -96,7 +96,7 @@
     }
 
     /* --- DX紹介ボックス（テキスト＋アプリ画面の2カラム） --- */
-    .dx-innovation-box { display: grid; grid-template-columns: 1fr 276px; gap: 36px; align-items: center; }
+    .dx-innovation-box { display: grid; grid-template-columns: 1fr 288px; gap: 36px; align-items: center; }
     .dx-innov-shot { display: flex; justify-content: center; }
 
     /* --- スマホ対応レスポンシブ --- */
@@ -359,22 +359,57 @@
           </div>
 
           <div class="dx-innov-shot">
-            <div class="mock mock-wide">
-              <div class="mock-screen">
-                <div class="mock-bar" style="background:#1565d8; color:#fff;">
-                  <span>出荷検品　B-1</span><span style="font-weight:400; opacity:.85;">タブレット</span>
-                </div>
-                <div class="mock-body">
-                  <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                    <b style="font-size:10px;">検品進捗</b>
-                    <b style="font-size:10px; color:#14A44D;">250 / 250（100%）</b>
+            <div class="dx-devices">
+              <div class="dev-tablet">
+                <div class="mock mock-wide">
+                  <div class="mock-screen">
+                    <div class="mock-bar" style="background:#1565d8; color:#fff;">
+                      <span>出荷検品　B-1</span><span style="font-weight:400; opacity:.85;">タブレット</span>
+                    </div>
+                    <div class="mock-body">
+                      <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                        <b style="font-size:10px;">検品進捗</b><b style="font-size:10px; color:#14A44D;">250 / 250</b>
+                      </div>
+                      <div class="mock-prog" style="margin-bottom:9px;"><i style="width:100%"></i></div>
+                      <div class="mock-row"><span>コンテナ 0174</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
+                      <div class="mock-row"><span>コンテナ 0175</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
+                      <div class="mock-row"><span>コンテナ 0176</span><span class="mock-chip" style="background:#fdeaea; color:#d23b3b;">重複読取</span></div>
+                      <div style="margin-top:9px; background:#eef3ff; border-left:3px solid #1565d8; padding:6px 8px; border-radius:3px;">
+                        <b style="font-size:9px; color:#1565d8;">誤読・重複はその場で警告</b>
+                      </div>
+                    </div>
                   </div>
-                  <div class="mock-prog" style="margin-bottom:9px;"><i style="width:100%"></i></div>
-                  <div class="mock-row"><span>コンテナ 0174</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
-                  <div class="mock-row"><span>コンテナ 0175</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
-                  <div class="mock-row"><span>コンテナ 0176</span><span class="mock-chip" style="background:#fdeaea; color:#d23b3b;">重複読取</span></div>
-                  <div style="margin-top:9px; background:#eef3ff; border-left:3px solid #1565d8; padding:6px 8px; border-radius:3px;">
-                    <b style="font-size:9px; color:#1565d8;">誤読・重複はその場で警告</b>
+                </div>
+              </div>
+
+              <div class="dev-mini">
+                <div class="mock">
+                  <div class="mock-screen-dark">
+                    <div class="mock-bar" style="background:#000;"><span class="mock-ch">CH1</span><span style="color:#8a8fa3;">☰</span></div>
+                    <div class="mock-body">
+                      <div style="text-align:center; color:#fff; font-weight:900; font-size:11px; margin-bottom:8px;">会話中…</div>
+                      <div style="background:rgba(255,255,255,.05); border-radius:6px; padding:7px 9px; margin-bottom:8px;">
+                        <div style="display:flex; justify-content:space-between;"><span style="color:#a9aec4;">会話者</span><b style="color:#fff;">佐藤 健一</b></div>
+                      </div>
+                      <div class="mock-ptt">PUSH TO TALK</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dev-phone">
+                <div class="mock">
+                  <div class="mock-screen">
+                    <div class="mock-bar" style="background:#5a5f6b; color:#fff;">
+                      <span>← B1-4／〇〇小学校</span><span style="font-weight:400;">一覧</span>
+                    </div>
+                    <div class="mock-cam"><span></span></div>
+                    <div class="mock-body" style="background:#f7f8fc;">
+                      <b style="font-size:10.5px;">読み取ったシリアル</b>
+                      <div class="mock-row"><div><b style="font-size:11px;">0174</b><div style="color:#0f8f45; font-size:8.5px;">確定済み</div></div><span style="color:#d23b3b; font-weight:900;">✕</span></div>
+                      <div class="mock-row"><div><b style="font-size:11px;">0175</b><div style="color:#0f8f45; font-size:8.5px;">確定済み</div></div><span style="color:#d23b3b; font-weight:900;">✕</span></div>
+                      <div class="mock-row"><div><b style="font-size:11px;">0176</b><div style="color:#0f8f45; font-size:8.5px;">確定済み</div></div><span style="color:#d23b3b; font-weight:900;">✕</span></div>
+                    </div>
                   </div>
                 </div>
               </div>

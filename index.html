@@ -322,16 +322,6 @@
       pointer-events: none;
     }
     .dx-banner-shot { display: flex; justify-content: center; align-items: center; }
-    .dx-devices { position: relative; width: 268px; height: 214px; }
-    .dev-tablet {
-      position: absolute; left: 0; top: 6px;
-      transform: scale(0.74) rotate(-4deg); transform-origin: left top;
-    }
-    .dev-phone {
-      position: absolute; right: 4px; bottom: 0;
-      transform: scale(0.54) rotate(5deg); transform-origin: right bottom;
-      z-index: 2;
-    }
     .dx-banner-title {
       color: #ffd700;
       font-size: 1.3rem;
@@ -421,16 +411,6 @@
       .dx-banner-container { padding: 24px 20px; grid-template-columns: 1fr; gap: 24px; }
       .dx-banner-shot { order: 2; }
       .dx-banner-shot { display: flex; justify-content: center; align-items: center; }
-    .dx-devices { position: relative; width: 268px; height: 214px; }
-    .dev-tablet {
-      position: absolute; left: 0; top: 6px;
-      transform: scale(0.74) rotate(-4deg); transform-origin: left top;
-    }
-    .dev-phone {
-      position: absolute; right: 4px; bottom: 0;
-      transform: scale(0.54) rotate(5deg); transform-origin: right bottom;
-      z-index: 2;
-    }
     .dx-banner-title {
         font-size: 1.1rem;
         flex-direction: column;
@@ -611,33 +591,45 @@
 
           <div class="dx-banner-shot">
             <div class="dx-devices">
-              <!-- タブレット（検品アプリ） -->
               <div class="dev-tablet">
                 <div class="mock mock-wide">
                   <div class="mock-screen">
-                    <div class="mock-bar" style="background:#1565d8; color:#fff;">
-                      <span>出荷検品　B-1</span><span style="font-weight:400; opacity:.85;">タブレット</span>
-                    </div>
+                    <div class="mock-bar" style="background:#1565d8; color:#fff; justify-content:center;">データモニター</div>
                     <div class="mock-body">
-                      <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
-                        <b style="font-size:10px;">検品進捗</b>
-                        <b style="font-size:10px; color:#14A44D;">250 / 250</b>
+                      <div style="display:flex; justify-content:space-between;">
+                        <span class="mock-muted">2026年9月3日</span><b style="font-size:10px; color:#0f8f45;">100%</b>
                       </div>
-                      <div class="mock-prog" style="margin-bottom:9px;"><i style="width:100%"></i></div>
-                      <div class="mock-row"><span>コンテナ 0174</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
-                      <div class="mock-row"><span>コンテナ 0175</span><span class="mock-chip" style="background:#e4f7ec; color:#0f8f45;">確定</span></div>
-                      <div class="mock-row"><span>コンテナ 0176</span><span class="mock-chip" style="background:#fdeaea; color:#d23b3b;">重複読取</span></div>
-                      <div class="mock-bars" style="margin-top:8px;">
-                        <i style="height:100%"></i><i style="height:100%"></i><i style="height:82%; background:#f0a020;"></i>
-                        <i style="height:100%"></i><i style="height:100%"></i><i style="height:64%; background:#f0a020;"></i>
-                        <i style="height:100%"></i><i style="height:100%"></i>
+                      <div style="display:flex; align-items:center; gap:5px; margin:5px 0 2px;">
+                        <div class="mock-prog" style="flex:1;"><i style="width:100%"></i></div>
+                        <b style="font-size:9px; white-space:nowrap;">2,951 個</b>
                       </div>
+                      <div class="mock-muted" style="margin-top:7px;">コース別 進捗</div>
+                      <div class="mock-bars">
+                        <i style="height:100%"></i><i style="height:100%"></i><i style="height:100%"></i><i style="height:100%"></i>
+                        <i style="height:82%; background:#f0a020;"></i><i style="height:100%"></i><i style="height:100%"></i>
+                        <i style="height:64%; background:#f0a020;"></i><i style="height:100%"></i><i style="height:100%"></i>
+                      </div>
+                      <div style="display:flex; justify-content:space-between;" class="mock-muted"><span>B-1</span><span>B-2</span><span>D-9</span></div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- スマートフォン（日報アプリ） -->
+              <div class="dev-mini">
+                <div class="mock">
+                  <div class="mock-screen-dark">
+                    <div class="mock-bar" style="background:#000;"><span class="mock-ch">CH1</span><span style="color:#8a8fa3;">☰</span></div>
+                    <div class="mock-body">
+                      <div style="text-align:center; color:#fff; font-weight:900; font-size:11px; margin-bottom:8px;">会話中…</div>
+                      <div style="background:rgba(255,255,255,.05); border-radius:6px; padding:7px 9px; margin-bottom:8px;">
+                        <div style="display:flex; justify-content:space-between;"><span style="color:#a9aec4;">会話者</span><b style="color:#fff;">佐藤 健一</b></div>
+                      </div>
+                      <div class="mock-ptt">PUSH TO TALK</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="dev-phone">
                 <div class="mock">
                   <div class="mock-screen">
