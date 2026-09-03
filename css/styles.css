@@ -372,6 +372,15 @@ body {
 }
 
 /* ==========================================================================
+   複数端末のイラスト（DX導線用・すべて架空のサンプルデータ）
+   ========================================================================== */
+.dx-devices { position: relative; width: 268px; height: 214px; }
+.dx-devices > div { position: absolute; }
+.dev-tablet { left: 0; top: 0; transform: scale(0.68) rotate(-4deg); transform-origin: left top; z-index: 1; }
+.dev-phone  { right: 34px; bottom: -6px; transform: scale(0.50) rotate(5deg); transform-origin: right bottom; z-index: 3; }
+.dev-mini   { right: -10px; top: 26px; transform: scale(0.34) rotate(10deg); transform-origin: right top; z-index: 2; }
+
+/* ==========================================================================
    下層ページ共通コンポーネント
    ========================================================================== */
 .subpage-hero {
