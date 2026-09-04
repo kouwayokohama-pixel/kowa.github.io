@@ -3,7 +3,7 @@
 /* ==========================================================================
    Google Fonts & 変数定義（サイト共通）
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Zen+Kaku+Gothic+New:wght@700&display=swap');
 
 :root {
   --bg-color: #050505;
@@ -132,14 +132,30 @@ body {
 }
 
 .brand {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: 2rem;
-  font-weight: 900;
-  color: var(--text-main);
+  font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #eaf2fd;
   text-decoration: none;
   line-height: 1.2;
   position: relative;
-  z-index: 1001; 
+  z-index: 1001;
+  /* トラックの車体と同じ青（#1d5bbf）でぼんやり光らせます */
+  text-shadow:
+    0 0 10px rgba(29, 91, 191, 1),
+    0 0 22px rgba(29, 91, 191, 0.95),
+    0 0 44px rgba(23, 74, 160, 0.8);
+  animation: brandGlow 3.4s ease-in-out infinite;
+}
+
+@keyframes brandGlow {
+  0%, 100% { filter: brightness(1); }
+  50%      { filter: brightness(1.22); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand { animation: none; }
 }
 
 .accent-gold { color: #e2b659; }
@@ -211,7 +227,10 @@ body {
   transition: text-shadow 0.3s ease, opacity 0.3s ease;
 }
 .brand:hover {
-  text-shadow: 0 0 15px rgba(0, 229, 255, 0.6); /* ふんわりとしたシアンブルーの光 */
+  text-shadow:
+    0 0 14px rgba(45, 110, 235, 1),
+    0 0 30px rgba(29, 91, 191, 1),
+    0 0 56px rgba(23, 74, 160, 0.9);
 }
 
 /* 各タグにマウスを乗せた時の色と発光色を指定 */
@@ -439,7 +458,7 @@ body {
    共通フッター
    ========================================================================== */
 .site-footer {
-  padding: 80px 0 40px;
+  padding: 52px 0 28px;
   background-color: rgba(5, 5, 5, 0.85);
   border-top: 1px solid var(--border-color);
 }
@@ -448,31 +467,52 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 24px;
 }
 
-.footer-brand { font-size: 2rem; font-weight: 900; margin-bottom: 8px; }
-.footer-company { font-family: 'Noto Sans JP', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--text-main); margin-bottom: 12px; letter-spacing: 0.05em; }
+/* 社名はヘッダーのロゴと同じ書体・同じ青い光で揃えます */
+.footer-brand {
+  display: inline-block;
+  text-decoration: none;
+  transition: text-shadow 0.3s ease;
+  font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #eaf2fd;
+  margin-bottom: 14px;
+  text-shadow:
+    0 0 9px rgba(29, 91, 191, 0.95),
+    0 0 20px rgba(29, 91, 191, 0.85),
+    0 0 38px rgba(23, 74, 160, 0.7);
+}
 .footer-map-link, .footer-tel-link { color: var(--text-muted); text-decoration: none; transition: color 0.3s ease; display: inline-block; }
 .footer-map-link:hover { color: var(--accent-cyan); text-decoration: underline; }
-.footer-tel-link { display: block; margin-top: 14px; font-size: 1.3rem; font-weight: 900; color: var(--text-main); }
+.footer-tel-link { display: block; margin-top: 10px; font-size: 1.3rem; font-weight: 900; color: var(--text-main); }
 .footer-tel-link:hover { color: var(--accent-cyan); }
+.footer-brand:hover {
+  text-shadow:
+    0 0 13px rgba(45, 110, 235, 1),
+    0 0 28px rgba(29, 91, 191, 1),
+    0 0 52px rgba(23, 74, 160, 0.9);
+}
+.footer-fax { display: block; margin-top: 4px; font-size: 1rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.02em; }
 
 .footer-right { flex: 0 0 420px; }
 .footer-recruit-banner {
   background: rgba(255, 157, 0, 0.03);
   border: 1px solid var(--border-color);
   border-top: 4px solid var(--accent-orange);
-  padding: 32px;
+  padding: 24px 28px;
   text-align: center;
   backdrop-filter: blur(5px);
 }
-.footer-recruit-text h3 { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--accent-orange); letter-spacing: 0.1em; margin-bottom: 12px; }
-.footer-recruit-text p { color: var(--text-main); font-size: 0.95rem; font-weight: 500; margin-bottom: 24px; line-height: 1.6; }
+.footer-recruit-text h3 { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 900; color: var(--accent-orange); letter-spacing: 0.1em; margin-bottom: 10px; }
+.footer-recruit-text p { color: var(--text-main); font-size: 0.95rem; font-weight: 500; margin-bottom: 18px; line-height: 1.6; }
 .footer-recruit-btn { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 50px; background-color: var(--accent-orange); color: #000; font-weight: 900; font-size: 1rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 157, 0, 0.2); }
 .footer-recruit-btn:hover { background-color: #ffb133; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 157, 0, 0.4); }
 
@@ -481,7 +521,7 @@ body {
   justify-content: space-between;
   color: var(--text-muted);
   font-size: 0.85rem;
-  padding-top: 24px;
+  padding-top: 18px;
   border-top: 1px solid var(--border-color);
   max-width: 1200px;
   margin: 0 auto;
@@ -522,6 +562,9 @@ body {
   /* ★アニメーションの停止コードを削除し、スマホでも動くようにしました */
   #services,
   :target { scroll-margin-top: 30px; }
+
+  /* スマホはハンバーガーに当たらないサイズに落とします */
+  .brand { font-size: 2.1rem; }
 
   .pc-only { display: none !important; }
   .sp-only { display: flex !important; } /* ← !importantを追加！ */
@@ -677,8 +720,11 @@ body {
   .footer-top {
     display: flex !important;
     flex-direction: column !important;
-    gap: 24px !important; 
+    gap: 20px !important; 
   }
+
+  .site-footer { padding: 40px 0 24px; }
+  .footer-brand { font-size: 1.55rem; margin-bottom: 10px; }
   
   .footer-right {
     order: 1 !important; 
@@ -686,7 +732,7 @@ body {
     margin: 0 !important;
   }
 
-  .footer-recruit-banner { padding: 32px 20px; border-left: none; border-right: none; }
+  .footer-recruit-banner { padding: 24px 18px; border-left: none; border-right: none; }
   
   /* ★絶対に改行させない指定 */
   .footer-recruit-text p {
