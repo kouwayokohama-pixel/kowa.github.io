@@ -55,6 +55,13 @@ body {
 .pc-only { display: block; }
 .sp-only { display: none !important; }
 .menu-dx { display: none; }
+
+/* ページ内リンク（#services など）で飛んだとき、
+   固定ヘッダーの下に見出しが潜らないよう余白を確保します */
+#services,
+:target {
+  scroll-margin-top: 45px;
+}
 .menu-toggle { display: none; }
 
 /* ==========================================================================
@@ -513,6 +520,9 @@ body {
    ========================================================================== */
 @media (max-width: 768px) {
   /* ★アニメーションの停止コードを削除し、スマホでも動くようにしました */
+  #services,
+  :target { scroll-margin-top: 30px; }
+
   .pc-only { display: none !important; }
   .sp-only { display: flex !important; } /* ← !importantを追加！ */
   
