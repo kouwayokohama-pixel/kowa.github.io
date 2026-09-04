@@ -248,15 +248,15 @@
     /* 完了メッセージ */
     .form-success-msg {
       display: none;
-      background: rgba(0, 255, 136, 0.03);
-      border: 1px solid var(--accent-green);
+      background: rgba(255, 157, 0, 0.05);
+      border: 1px solid var(--accent-orange);
       border-top: 4px solid var(--accent-orange);
       padding: 40px 24px;
       text-align: center;
       margin-top: 32px;
     }
     .form-success-msg h3 {
-      color: var(--accent-green);
+      color: var(--accent-orange);
       font-size: 1.5rem;
       margin-bottom: 16px;
     }
@@ -348,7 +348,7 @@
     <section class="contact-section">
       <div class="container">
         
-        <div class="contact-intro-box fade-up">
+        <div class="contact-intro-box fade-up" id="contact-intro">
           <p>
             配送のご依頼、お見積りのご相談、または採用へのご応募は、下記のフォームより必要事項をご入力の上、送信してください。<br>
             WEBからのお問い合わせ・ご応募につきましては、<strong>10日以内に必ず担当者より折り返しご連絡いたします。</strong>
@@ -358,7 +358,7 @@
           </p>
         </div>
 
-        <h2 class="section-title fade-up title-orange">Mail Form<span>メールフォーム</span></h2>
+        <h2 class="section-title fade-up title-orange" id="mailform-title">Mail Form<span>メールフォーム</span></h2>
 
         <div class="contact-form-panel fade-up">
           <!-- onsubmit属性を削除。送信制御はJSで行います -->
@@ -588,8 +588,12 @@
           body: JSON.stringify(data)
         });
 
-        // 送信成功処理
+        // 送信成功処理（案内文とフォーム見出しも隠して、完了メッセージだけを見せます）
         form.style.display = 'none';
+        const introBox = document.getElementById('contact-intro');
+        const formTitle = document.getElementById('mailform-title');
+        if (introBox) introBox.style.display = 'none';
+        if (formTitle) formTitle.style.display = 'none';
         successMsg.style.display = 'block';
         successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
