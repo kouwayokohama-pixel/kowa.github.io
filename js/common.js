@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
     "url": "https://kowa-yokohama.com/",
     "image": "https://kowa-yokohama.com/images/TOP.jpg",
     "telephone": "+81-45-954-3111",
+    "faxNumber": "+81-45-954-3112",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "下川井町2098-1",
@@ -97,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const headerHTML = `
   <header class="site-header" id="header">
     <div class="header-inner">
-      <a href="/" class="brand">KOWA <span class="accent-gold">Logistics</span></a>
+      <a href="/" class="brand">(有)晃和運輸</a>
       
       <a href="/dx" class="header-dx pc-only"><span class="dx-dot"></span>社内DXを推進中</a>
 
@@ -170,8 +171,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <div class="footer-top fade-up">
         
         <div class="footer-left">
-          <div class="footer-brand">KOWA <span class="accent-gold">Logistics</span></div>
-          <div class="footer-company">有限会社 晃和運輸</div>
+          <a href="/" class="footer-brand">有限会社 晃和運輸</a>
           <p class="footer-info">
             <a href="https://maps.google.com/?q=神奈川県横浜市旭区下川井町2098−1" target="_blank" rel="noopener noreferrer" class="footer-map-link">
               〒241-0806<br>神奈川県横浜市旭区下川井町2098−1
@@ -179,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function() {
           </p>
           <p>
             <a href="tel:045-954-3111" class="footer-tel-link">TEL: 045-954-3111</a>
+            <span class="footer-fax">FAX: 045-954-3112</span>
           </p>
 
           <div style="margin-top: 20px;"> <a href="https://www.kta.or.jp" target="_blank" rel="noopener noreferrer" class="truck-logo-link">
@@ -194,11 +195,11 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
       
       <div class="footer-bottom">
-        <p>© 2026 KOWA LOGISTICS. All Rights Reserved.</p>
+        <p>© 2026 有限会社晃和運輸</p>
         <p style="margin: 0;">
           <a href="/sitepolicy" class="footer-policy-link">プライバシーポリシー</a>
           <span class="footer-policy-split" style="margin: 0 12px; color: rgba(255,255,255,0.1);">|</span>
-          <span>Yokohama, Japan</span>
+          <span>横浜市旭区</span>
         </p>
       </div>
     </div>
