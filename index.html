@@ -167,6 +167,10 @@
       -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
       text-transform: uppercase;
       animation: scrollText 30s linear infinite;
+      /* 一度だけ描いてGPUで動かす（スクロール中の描き直しを防ぎます） */
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     @keyframes scrollText {
@@ -440,6 +444,10 @@
         width: auto;
         margin: 0 auto 40px;
       }
+
+      /* スマホは描画面積を減らしてスクロールを軽くします */
+      .marquee-container { padding: 10px 0; }
+      .marquee-text { font-size: 2.4rem; }
 
       .business-intro-wrapper { 
         display: flex;
