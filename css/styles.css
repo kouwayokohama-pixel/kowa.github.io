@@ -33,6 +33,11 @@ html, body {
   max-width: 100vw;
   position: relative;
 
+  /* スマホで下端を超えてスクロールしたとき、背景のグリッドが
+     めくれて見えてしまうのを防ぎます（上端も同様） */
+  overscroll-behavior-y: none;
+  background-color: var(--bg-color);
+
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -579,8 +584,19 @@ body {
   #services,
   :target { scroll-margin-top: 30px; }
 
-  /* スマホはハンバーガーに当たらないサイズに落とします */
-  .brand { font-size: 2.1rem; }
+  /* スマホはハンバーガーに当たらないサイズに落とします。
+     ロゴの明滅はヘッダーが画面に固定されている＝スクロール中ずっと
+     描き直しが走るため、スマホでは止めます（光そのものは残ります） */
+  .brand { font-size: 2.1rem; animation: none; }
+  .header-dx { animation: none; }
+
+  /* すりガラス（backdrop-filter）はスクロールのたびに背景をぼかし直すため、
+     スマホでは不透明な背景に置き換えます（見た目はほぼ同じです） */
+  .site-header.scrolled {
+    background: rgba(5, 5, 5, 0.96);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 
   .pc-only { display: none !important; }
   .sp-only { display: flex !important; } /* ← !importantを追加！ */
