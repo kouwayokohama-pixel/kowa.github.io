@@ -245,11 +245,12 @@ document.addEventListener("DOMContentLoaded", function() {
   // 4. ヘッダースクロール ＆ ハンバーガー＆フェードイン
   // ==========================================================================
   const headerEl = document.getElementById('header');
+  // passive: true にすると、ブラウザがこの処理を待たずにスクロールできます
   window.addEventListener('scroll', () => {
     if (headerEl) {
       headerEl.classList.toggle('scrolled', window.scrollY > 50);
     }
-  });
+  }, { passive: true });
 
   const menuToggle = document.getElementById('menu-toggle');
   const headerRight = document.getElementById('header-right');
