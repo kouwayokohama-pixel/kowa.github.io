@@ -132,6 +132,8 @@ body {
 }
 
 .brand {
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
   font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
   font-size: 3rem;
   font-weight: 700;
@@ -149,9 +151,21 @@ body {
   animation: brandGlow 3.4s ease-in-out infinite;
 }
 
+/* iOS Safari では文字への filter が光を四角く塗りつぶしてしまうため、
+   光（text-shadow）そのものを明滅させています */
 @keyframes brandGlow {
-  0%, 100% { filter: brightness(1); }
-  50%      { filter: brightness(1.22); }
+  0%, 100% {
+    text-shadow:
+      0 0 10px rgba(29, 91, 191, 1),
+      0 0 22px rgba(29, 91, 191, 0.95),
+      0 0 44px rgba(23, 74, 160, 0.8);
+  }
+  50% {
+    text-shadow:
+      0 0 13px rgba(45, 110, 235, 1),
+      0 0 29px rgba(29, 91, 191, 1),
+      0 0 54px rgba(23, 74, 160, 0.9);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -227,6 +241,7 @@ body {
   transition: text-shadow 0.3s ease, opacity 0.3s ease;
 }
 .brand:hover {
+  animation: none;
   text-shadow:
     0 0 14px rgba(45, 110, 235, 1),
     0 0 30px rgba(29, 91, 191, 1),
@@ -478,6 +493,7 @@ body {
 .footer-brand {
   display: inline-block;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
   transition: text-shadow 0.3s ease;
   font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
   font-size: 1.9rem;
