@@ -198,8 +198,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <p>© 2026 有限会社晃和運輸</p>
         <p style="margin: 0;">
           <a href="/sitepolicy" class="footer-policy-link">プライバシーポリシー</a>
-          <span class="footer-policy-split" style="margin: 0 12px; color: rgba(255,255,255,0.1);">|</span>
-          <span>横浜市旭区</span>
+
         </p>
       </div>
     </div>
