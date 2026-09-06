@@ -34,9 +34,10 @@ html, body {
   position: relative;
 
   /* スマホで下端を超えてスクロールしたとき、背景のグリッドが
-     めくれて見えてしまうのを防ぎます（上端も同様） */
+     めくれて見えてしまうのを防ぎます（上端も同様）。
+     ※ここに background を書くと body の背景がキャンバスへ伝播しなくなり、
+       z-index が負の .page-bg / .page-grid を覆い隠してしまうので書きません */
   overscroll-behavior-y: none;
-  background-color: var(--bg-color);
 
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
