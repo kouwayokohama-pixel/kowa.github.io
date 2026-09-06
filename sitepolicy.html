@@ -31,7 +31,7 @@
     }
 
     .policy-item h3 {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 16px;
@@ -42,7 +42,7 @@
 
     .policy-item p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 1rem;
       line-height: 1.8;
       margin-bottom: 16px;
     }
@@ -55,7 +55,7 @@
 
     .policy-list li {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 1rem;
       line-height: 1.8;
       margin-bottom: 8px;
       position: relative;
@@ -75,8 +75,11 @@
 
     /* --- スマホ対応レスポンシブ --- */
     @media (max-width: 768px) {
+      /* --- 文字サイズの統一（スマホ） --- */
+      .policy-item p, .policy-list li { font-size: 0.95rem; }
+
       .policy-card { padding: 32px 24px; }
-      .policy-item h3 { font-size: 1.2rem; }
+      .policy-item h3 { font-size: 1.3rem; }
     }
   </style>
 </head>

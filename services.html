@@ -31,8 +31,8 @@
     .fleet-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 32px; backdrop-filter: blur(5px); transition: all 0.4s ease; }
     .fleet-card:hover { border-color: var(--accent-red); box-shadow: 0 0 20px rgba(255, 42, 95, 0.15); transform: translateY(-6px); }
     .fleet-icon { color: var(--accent-red); margin-bottom: 16px; }
-    .fleet-card h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.05em; }
-    .fleet-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .fleet-card h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.05em; }
+    .fleet-card p { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
     .fleet-total-box { margin-top: 40px; background: rgba(255, 42, 95, 0.03); border: 1px dashed var(--accent-red); padding: 24px; text-align: center; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.05em; }
     .fleet-total-box span { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; color: var(--accent-red); margin: 0 4px; }
 
@@ -42,13 +42,13 @@
     .strength-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-top: 4px solid var(--accent-red); padding: 32px 24px; text-align: center; transition: all 0.4s ease; backdrop-filter: blur(5px); }
     .strength-card:hover { border-color: var(--accent-red); box-shadow: 0 0 20px rgba(255, 42, 95, 0.15); transform: translateY(-6px); }
     .strength-num { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--accent-red); margin-bottom: 12px; letter-spacing: 0.1em; }
-    .strength-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--text-main); }
+    .strength-card h3 { font-size: 1.4rem; font-weight: 700; color: var(--text-main); }
     
     /* --- お悩み解決セクション --- */
     .problem-solving-section { margin-top: 80px; }
     .problem-title { text-align: center; margin-bottom: 40px; }
     .problem-title svg { color: var(--accent-red); margin-bottom: 16px; }
-    .problem-title h3 { font-size: 1.5rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; justify-content: center; gap: 20px; }
+    .problem-title h3 { font-size: 1.4rem; font-weight: 700; color: var(--text-main); display: flex; align-items: center; justify-content: center; gap: 20px; }
     .problem-title h3::before, .problem-title h3::after { content: ''; display: block; width: 80px; height: 2px; background-color: var(--accent-red); }
     .problem-box { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 40px; backdrop-filter: blur(5px); }
     .problem-list { list-style: none; display: flex; flex-direction: column; gap: 32px; }
@@ -101,6 +101,11 @@
 
     /* --- スマホ対応レスポンシブ --- */
     @media (max-width: 768px) {
+      /* --- 文字サイズの統一（スマホ） --- */
+      .strength-card h3 { font-size: 1.3rem; }
+      .fleet-card h4 { font-size: 1.1rem; }
+      .fleet-card p { font-size: 0.95rem; }
+
       .dx-innovation-box { grid-template-columns: 1fr; gap: 24px; }
       .highlight-box { padding: 24px; margin-bottom: 40px; }
       .overview-row { flex-direction: column; padding: 16px; }
@@ -120,7 +125,7 @@
       .strengths-grid { grid-template-columns: 1fr; gap: 20px; }
       .strength-card { padding: 24px 16px; }
       
-      .problem-title h3 { font-size: 1.1rem; gap: 12px; }
+      .problem-title h3 { font-size: 1.3rem; gap: 12px; }
       .problem-title h3::before, .problem-title h3::after { width: 30px; }
       .problem-box { padding: 24px 16px; }
       .problem-list { gap: 20px; }

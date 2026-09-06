@@ -264,8 +264,8 @@
       transform: translateY(-8px); 
     }
     .service-text { padding: 32px; position: relative; }
-    .service-card h3 { font-size: 1.3rem; margin-bottom: 16px; font-weight: 700; letter-spacing: 0.05em; }
-    .service-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; }
+    .service-card h3 { font-size: 1.4rem; margin-bottom: 16px; font-weight: 700; letter-spacing: 0.05em; }
+    .service-card p { color: var(--text-muted); font-size: 1rem; line-height: 1.8; }
 
     /* 共通ボタンデザイン */
     .btn-outline {
@@ -322,8 +322,8 @@
       flex-direction: column; 
       flex-grow: 1;
     }
-    .info-card h3 { font-size: 1.5rem; margin-bottom: 16px; font-weight: 700; letter-spacing: 0.05em; }
-    .info-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-bottom: 32px; }
+    .info-card h3 { font-size: 1.4rem; margin-bottom: 16px; font-weight: 700; letter-spacing: 0.05em; }
+    .info-card p { color: var(--text-muted); font-size: 1rem; line-height: 1.8; margin-bottom: 32px; }
 
     .info-text .btn-outline {
       align-self: center;
@@ -338,8 +338,8 @@
     .contact-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 40px; text-align: center; transition: all 0.4s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
     .contact-card:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--accent-orange); box-shadow: 0 0 20px rgba(255, 157, 0, 0.2); transform: translateY(-8px); }
     .contact-icon { margin-bottom: 16px; color: var(--accent-orange); }
-    .contact-card h3 { font-size: 1.5rem; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.05em; }
-    .contact-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px; }
+    .contact-card h3 { font-size: 1.4rem; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.05em; }
+    .contact-card p { color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 24px; }
     .contact-btn { width: 100%; max-width: 280px; }
 
     /* --- トップページ用 DX推進アピールバナー --- */
@@ -398,6 +398,10 @@
     /* スマホで2行に折り返さないよう、画面幅に合わせて自動縮小させます */
     .dx-banner-sub { white-space: nowrap; }
     @media (max-width: 768px) {
+      /* --- 文字サイズの統一（スマホ） --- */
+      .service-card h3, .info-card h3 { font-size: 1.3rem; }
+      .service-card p, .info-card p { font-size: 0.95rem; }
+
       .dx-banner-sub { font-size: clamp(12px, 4.25vw, 17px); }
     }
     .dx-banner-more {
@@ -475,7 +479,7 @@
       }
 
       .intro-title {
-        font-size: 6.5vw !important; /* ★ どんなスマホでも絶対に2行で収まるベストなサイズ */
+        font-size: 1.4rem !important; /* ★ どんなスマホでも絶対に2行で収まるベストなサイズ */
         white-space: nowrap !important; /* ★ これで強制的に2行をキープ！ */
         margin-bottom: 24px;
       }
@@ -492,8 +496,8 @@
       .contact-grid { gap: 12px; }
       .contact-card { padding: 24px 8px; }
       .contact-icon svg { width: 28px; height: 28px; }
-      .contact-card h3 { font-size: 1.1rem; margin-bottom: 4px; }
-      .contact-card p { font-size: 0.75rem; margin-bottom: 16px; }
+      .contact-card h3 { font-size: 1.3rem; margin-bottom: 4px; }
+      .contact-card p { font-size: 0.95rem; margin-bottom: 16px; }
       .contact-btn { padding: 12px 0; font-size: 0.8rem; width: 100%; letter-spacing: normal; }
       
       .dx-banner-link { margin: 40px 0; }
