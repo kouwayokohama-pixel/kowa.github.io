@@ -243,12 +243,12 @@
     }
     .recruit-table th::before {
       content: '';
-      position: absolute;
-      left: 0;
-      top: 28px;
-      height: 22px;
+      display: inline-block;
       width: 4px;
-      background-color: var(--accent-orange);
+      height: 1.15em;
+      background-color: currentColor;
+      margin-right: 12px;
+      vertical-align: -0.15em;
     }
     .recruit-table td {
       color: var(--text-main);
@@ -338,7 +338,6 @@
 
       .recruit-table th, .recruit-table td { display: block; width: 100%; padding: 16px 16px 16px 20px; font-size: 0.95rem; }
       .recruit-table th { padding-bottom: 4px; font-size: 0.95rem; }
-      .recruit-table th::before { top: 18px; height: 18px; }
       .recruit-table td { padding-top: 0; padding-bottom: 24px; }
       
       .apply-banner { padding: 32px 20px; margin-bottom: 0; }
