@@ -20,7 +20,7 @@
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border-color);
       padding: 64px 56px;
-      border-radius: 4px;
+      border-radius: var(--radius);
       backdrop-filter: blur(5px);
     }
     .ceo-message-content {
@@ -64,7 +64,7 @@
     }
 
     /* --- 2. 会社概要（テーブル） --- */
-    .overview-section { padding: 10px 0 60px; }
+    .overview-section { padding: var(--sec-head) 0 var(--sec-gap); }
     .overview-table {
       width: 100%;
       border-collapse: collapse;
@@ -94,7 +94,8 @@
     .table-map-link:hover { color: var(--accent-green); }
 
     /* --- 3. 沿革（タイムライン） --- */
-    .history-section { padding: 60px 0 100px; }
+    .history-section { padding: var(--sec-gap) 0; }
+    .ceo-message-section { padding: var(--sec-gap) 0 var(--sec-end); }
     .timeline { position: relative; margin-left: 20px; padding-left: 40px; border-left: 2px solid var(--border-color); }
     .timeline-item { position: relative; margin-bottom: 48px; }
     .timeline-item:last-child { margin-bottom: 0; }
@@ -114,7 +115,6 @@
       .overview-table th { border-bottom: none; padding-top: 18px; padding-bottom: 4px; font-size: 0.95rem; }
       .overview-table td { padding-top: 0; padding-bottom: 24px; font-size: 0.95rem; }
 
-      .history-section { padding: 40px 0 80px; }
       .timeline { margin-left: 10px; padding-left: 24px; }
       .timeline-dot { left: -31px; width: 10px; height: 10px; }
       .timeline-year { font-size: 1.25rem; }
@@ -297,7 +297,7 @@
       </div>
     </section>
 
-    <section class="ceo-message-section" style="padding: 40px 0 20px;">
+    <section class="ceo-message-section">
       <div class="container fade-up">
         
         <h2 class="section-title title-green">Message<span>代表挨拶</span></h2>

@@ -11,7 +11,7 @@
   <style>
     /* --- お問い合わせコンテンツ専用スタイル --- */
     .contact-section {
-      padding: 10px 0 100px;
+      padding: var(--sec-head) 0 var(--sec-end);
     }
     
     /* フォーム導入メッセージ */
@@ -68,7 +68,7 @@
       font-size: 0.75rem;
       font-weight: 700;
       padding: 2px 8px;
-      border-radius: 2px;
+      border-radius: var(--radius-sm);
     }
     /* 任意のバッジ（グレー） */
     .badge-optional {
@@ -78,7 +78,7 @@
       font-size: 0.75rem;
       font-weight: 700;
       padding: 2px 8px;
-      border-radius: 2px;
+      border-radius: var(--radius-sm);
     }
 
     /* 採用専用エリア（初期非表示） */
@@ -88,7 +88,7 @@
       border: 1px dashed rgba(255, 157, 0, 0.3);
       padding: 24px;
       margin-bottom: 32px;
-      border-radius: 4px;
+      border-radius: var(--radius);
     }
     #recruit-fields .form-group:last-child {
       margin-bottom: 0;
@@ -99,7 +99,7 @@
       width: 100%;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-color);
-      border-radius: 4px;
+      border-radius: var(--radius);
       color: #fff;
       font-family: 'Noto Sans JP', sans-serif;
       font-size: 1rem;
@@ -164,7 +164,7 @@
       height: 24px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-color);
-      border-radius: 4px;
+      border-radius: var(--radius);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -268,7 +268,6 @@
 
     /* --- スマホ対応 --- */
     @media (max-width: 768px) {
-      .contact-section { padding: 40px 0 80px; }
       .contact-intro-box { padding: 20px; margin-bottom: 32px; }
       .contact-intro-box p { font-size: 0.95rem; line-height: 1.7; }
       .contact-form-panel { padding: 32px 20px; }

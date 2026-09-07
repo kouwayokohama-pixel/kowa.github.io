@@ -13,7 +13,7 @@
   <style>
     /* --- 採用トップ：メッセージ＆アピールエリア --- */
     .recruit-intro-section {
-      padding: 10px 0 40px; /* 下部余白を調整 */
+      padding: var(--sec-head) 0 var(--sec-gap);
     }
     .recruit-intro-box {
       background: rgba(255, 255, 255, 0.02);
@@ -51,12 +51,12 @@
        ★追加：社員の1週間（開閉式アコーディオン）のデザイン（ゴールドver）
     ========================================================================== */
     .schedule-section {
-      padding: 0 0 40px;
+      padding: var(--sec-gap) 0;
     }
     .accordion-box {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 215, 0, 0.4); /* ゴールドの枠線 */
-      border-radius: 4px;
+      border-radius: var(--radius);
       overflow: hidden;
     }
     .accordion-header {
@@ -114,7 +114,7 @@
       background: rgba(0, 0, 0, 0.3);
       border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 20px;
-      border-radius: 4px;
+      border-radius: var(--radius);
     }
     .highlight-item h4 {
       color: #ffd700; /* ゴールド文字 */
@@ -136,7 +136,7 @@
     .timeline-card {
       background: rgba(255, 255, 255, 0.03);
       border-left: 4px solid #ffd700; /* 左の太線をゴールドに */
-      padding: 24px;
+      padding: var(--card-pad);
     }
     .timeline-card h4 {
       font-size: 1.15rem;
@@ -151,7 +151,7 @@
       color: #000;
       font-size: 0.8rem;
       padding: 2px 8px;
-      border-radius: 2px;
+      border-radius: var(--radius-sm);
       font-weight: 900;
       flex-shrink: 0;
     }
@@ -199,10 +199,10 @@
       background: transparent;
       border: 1px solid #ffd700;
       color: #ffd700;
-      padding: 12px 40px;
+      padding: 12px 48px;
       font-size: 0.95rem;
       font-weight: 700;
-      border-radius: 4px;
+      border-radius: var(--radius);
       cursor: pointer;
       transition: all 0.3s ease;
       letter-spacing: 0.05em;
@@ -214,7 +214,7 @@
 
     /* --- 募集要項 --- */
     .requirements-section {
-      padding: 0 0 60px;
+      padding: var(--sec-gap) 0;
     }
     .recruit-table-wrapper {
       background: rgba(255, 255, 255, 0.01);
@@ -261,13 +261,16 @@
     }
 
     /* --- 応募エリア --- */
+    .apply-section {
+      padding: var(--sec-gap) 0 var(--sec-end);
+    }
     .apply-banner {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-top: 4px solid var(--accent-orange);
-      padding: 40px;
-      border-radius: 4px;
-      margin-bottom: 40px;
+      padding: var(--card-pad);
+      border-radius: var(--radius);
+      margin-bottom: 0;
       text-align: center;
     }
     .apply-title {
@@ -294,11 +297,11 @@
       align-items: center;
       justify-content: center;
       width: 100%;
-      padding: 16px 40px;
+      padding: 16px 48px;
       font-size: 1.1rem;
       font-weight: bold;
       text-decoration: none;
-      border-radius: 4px;
+      border-radius: var(--radius);
       margin-bottom: 12px;
       background: rgba(255, 255, 255, 0.02); 
       transition: all 0.3s ease;
@@ -319,7 +322,6 @@
       /* ここから下は recruit.html 専用の表示崩れ防止用コードだけを残します */
       .subpage-hero { padding: 120px 0 40px; }
       .subpage-title { font-size: 2.2rem; }
-      .section-title { font-size: 1.8rem; margin-bottom: 24px; }
 
       .recruit-intro-box { padding: 24px; margin-bottom: 20px; }
       .recruit-main-catch { font-size: 1.25rem; margin-bottom: 20px; }
@@ -340,7 +342,7 @@
       .recruit-table th { padding-bottom: 4px; font-size: 0.95rem; }
       .recruit-table td { padding-top: 0; padding-bottom: 24px; }
       
-      .apply-banner { padding: 32px 20px; margin-bottom: 0; }
+      .apply-banner { padding: var(--card-pad) 20px; }
       .apply-title { font-size: 1.4rem; }
       .apply-btns { flex-direction: column; align-items: center; gap: 32px; }
       .btn-wrapper { width: 100%; max-width: 100%; }
@@ -486,7 +488,7 @@
 
                 <div class="timeline-card" style="border-left-color: var(--accent-cyan); background: rgba(0, 229, 255, 0.05);">
                   <h4 style="color: var(--accent-cyan); display: flex; align-items: flex-start; gap: 8px;">
-                    <span style="background: var(--accent-cyan); color: #000; font-size: 0.8rem; padding: 2px 8px; border-radius: 2px; font-weight: 900; flex-shrink: 0;">土・日</span>
+                    <span style="background: var(--accent-cyan); color: #000; font-size: 0.8rem; padding: 2px 8px; border-radius: var(--radius-sm); font-weight: 900; flex-shrink: 0;">土・日</span>
                     <div style="display: block; text-align: left;">
                       <span class="keep-text" style="color: #fff;">基本はお休み！</span><br class="sp-only">
                       <span class="keep-text" style="font-size: 0.85rem; font-weight: normal; color: rgba(255,255,255,0.6); display: inline-block; margin-top: 4px;">（※シフトにより出勤あり）</span>
@@ -523,7 +525,7 @@
               </div>
 
 
-              <div class="schedule-note" style="text-align: left; background: rgba(255,255,255,0.02); padding: 16px; border-radius: 4px; margin-top: 24px;">
+              <div class="schedule-note" style="text-align: left; background: rgba(255,255,255,0.02); padding: 16px; border-radius: var(--radius); margin-top: 24px;">
                 <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 8px; padding-left: 1.2em; text-indent: -1.2em;">
                   ※上記はあくまで「働き方の一例」です。担当コースやシフトにより出勤・退勤時間は変動します。
                 </p>

@@ -17,7 +17,7 @@
       --dx-line: rgba(255, 215, 0, 0.25);
     }
     .title-gold span { color: var(--dx-gold) !important; }
-    .dx-section { padding: 10px 0 40px; }
+    .dx-section { padding: var(--sec-head) 0 var(--sec-end); }
 
     /* --- リード --- */
     .dx-lead {
@@ -48,7 +48,7 @@
     .dx-inhouse {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border-color);
-      border-radius: 6px;
+      border-radius: var(--radius);
       padding: 40px 32px 32px;
       margin-bottom: 76px;
     }
@@ -94,7 +94,7 @@
     .ih-step {
       background: rgba(255, 215, 0, 0.06);
       border: 1px solid var(--dx-gold);
-      border-radius: 6px;
+      border-radius: var(--radius);
       padding: 22px 14px;
       text-align: center;
     }
@@ -124,7 +124,7 @@
     .dx-flowchart {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border-color);
-      border-radius: 6px;
+      border-radius: var(--radius);
       padding: 40px 32px 32px;
       margin-bottom: 72px;
     }
@@ -151,7 +151,7 @@
     .fm-node, .fm-hub {
       background: rgba(255, 215, 0, 0.06);
       border: 1px solid var(--dx-gold);
-      border-radius: 8px;
+      border-radius: var(--radius);
       padding: 22px 18px;
       text-align: center;
     }
@@ -235,14 +235,14 @@
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border-color);
       border-top: 3px solid var(--dx-gold);
-      border-radius: 4px;
-      padding: 28px 22px;
+      border-radius: var(--radius);
+      padding: var(--card-pad) 22px;
       transition: all 0.4s ease;
     }
     .dx-why-card:hover {
       border-color: var(--dx-gold);
-      box-shadow: 0 0 22px rgba(255, 215, 0, 0.12);
-      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+      transform: translateY(var(--card-lift));
     }
     .dx-why-head { display: flex; align-items: center; gap: 11px; margin-bottom: 12px; }
     .dx-why-card svg { color: var(--dx-gold); flex-shrink: 0; }
@@ -278,7 +278,7 @@
       font-weight: 900;
       letter-spacing: 0.06em;
       padding: 7px 18px;
-      border-radius: 2px;
+      border-radius: var(--radius-sm);
       margin-bottom: 14px;
     }
     .dx-group h3 {
@@ -304,7 +304,7 @@
     .dx-card {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border-color);
-      border-radius: 6px;
+      border-radius: var(--radius);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -312,8 +312,8 @@
     }
     .dx-card:hover {
       border-color: var(--dx-gold);
-      box-shadow: 0 0 24px rgba(255, 215, 0, 0.12);
-      transform: translateY(-6px);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+      transform: translateY(var(--card-lift));
     }
     .dx-card-shot {
       background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(0,0,0,0.35));
@@ -356,7 +356,7 @@
       color: var(--text-muted);
       font-size: 0.78rem;
       padding: 4px 9px;
-      border-radius: 2px;
+      border-radius: var(--radius-sm);
     }
 
     /* --- ご提供 --- */
@@ -364,7 +364,7 @@
       background: linear-gradient(135deg, rgba(255,215,0,.06) 0%, rgba(0,0,0,.3) 100%);
       border: 1px solid var(--dx-line);
       border-top: 4px solid var(--dx-gold);
-      border-radius: 6px;
+      border-radius: var(--radius);
       padding: 44px 40px;
       text-align: center;
     }
@@ -395,7 +395,7 @@
       display: inline-block;
       border: 1px solid var(--dx-gold);
       background: rgba(255, 215, 0, 0.08);
-      border-radius: 6px;
+      border-radius: var(--radius);
       padding: 16px 28px;
       margin-bottom: 24px;
     }
@@ -423,7 +423,7 @@
     }
     .dx-flow-step {
       background: rgba(0,0,0,.3); border: 1px solid rgba(255,255,255,.1);
-      border-radius: 4px; padding: 16px 12px;
+      border-radius: var(--radius); padding: 16px 12px;
     }
     .dx-flow-step b {
       display: block; font-family: 'Montserrat', sans-serif; color: var(--dx-gold);
@@ -435,9 +435,9 @@
     .dx-cta { text-align: center; margin: 48px 0 16px; }
     .dx-cta-btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      padding: 18px 56px; background: transparent; color: var(--dx-gold);
+      padding: 16px 48px; background: transparent; color: var(--dx-gold);
       border: 1px solid var(--dx-gold); text-decoration: none; font-weight: 700;
-      font-size: 1.05rem; letter-spacing: 0.08em; border-radius: 4px; transition: all .3s ease;
+      font-size: 1.05rem; letter-spacing: 0.08em; border-radius: var(--radius); transition: all .3s ease;
     }
     .dx-cta-btn:hover {
       background: rgba(255,215,0,.1); box-shadow: 0 0 22px rgba(255,215,0,.25); transform: translateY(-2px);
@@ -447,7 +447,7 @@
     .dx-disclaimer {
       margin-top: 40px; padding: 16px 20px;
       background: rgba(255,255,255,.02); border: 1px dashed rgba(255,255,255,.15);
-      border-radius: 4px; color: var(--text-muted); font-size: .85rem; line-height: 1.8;
+      border-radius: var(--radius); color: var(--text-muted); font-size: .85rem; line-height: 1.8;
     }
 
     /* --- スマホ --- */
@@ -510,8 +510,8 @@
         width: 100%;
       }
       .dx-cards::-webkit-scrollbar { height: 4px; }
-      .dx-cards::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.06); border-radius: 4px; }
-      .dx-cards::-webkit-scrollbar-thumb { background: var(--dx-gold); border-radius: 4px; }
+      .dx-cards::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.06); border-radius: var(--radius); }
+      .dx-cards::-webkit-scrollbar-thumb { background: var(--dx-gold); border-radius: var(--radius); }
       .dx-card {
         flex: 0 0 86%;
         scroll-snap-align: start;
