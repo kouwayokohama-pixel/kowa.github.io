@@ -28,8 +28,11 @@
       color: var(--text-main);
       line-height: 1.8;
     }
+    /* 本文中の強調：白字のまま目立たせるため、アクセント色で下線を引きます */
     .contact-intro-box p strong {
-      color: var(--accent-orange);
+      color: var(--text-main);
+      font-weight: 700;
+      border-bottom: 1px solid var(--accent-orange);
     }
 
     /* サイバーなフォームパネル */

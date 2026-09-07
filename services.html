@@ -137,6 +137,18 @@
       .message-text { padding: 32px 20px; }
       .message-catchphrase { font-size: 1.2rem; margin-bottom: 16px; }
     }
+    /* 本文中の強調：白字のまま目立たせるため、ページのアクセント色で下線を引きます
+       （よくある質問ページで使っていた手法を全ページに揃えました） */
+    .overview-data strong,
+    .problem-list strong,
+    .dx-innov-text strong,
+    .message-text strong,
+    .fleet-card p strong,
+    .strength-card p strong {
+      color: var(--text-main);
+      font-weight: 700;
+      border-bottom: 1px solid var(--accent-red);
+    }
   </style>
 </head>
 <body>

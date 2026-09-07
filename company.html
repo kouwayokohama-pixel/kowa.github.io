@@ -120,6 +120,15 @@
       .timeline-year { font-size: 1.25rem; }
       .timeline-item { margin-bottom: 32px; }
     }
+    /* 本文中の強調：白字のまま目立たせるため、ページのアクセント色で下線を引きます
+       （よくある質問ページで使っていた手法を全ページに揃えました） */
+    .overview-table td strong,
+    .timeline-content strong,
+    .ceo-message-content strong {
+      color: var(--text-main);
+      font-weight: 700;
+      border-bottom: 1px solid var(--accent-green);
+    }
   </style>
 </head>
 

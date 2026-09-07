@@ -13,6 +13,10 @@
     /* ==========================================================================
        アクセスぺージ専用スタイル（濃い青：primary-blue 基調に変更）
     ========================================================================== */
+    /* 文字に使う青。--primary-blue は黒背景だと沈んで読みにくいので、
+       文字だけ明るめの青を使います（塗り・枠線は --primary-blue のまま） */
+    :root { --accent-blue: #5f61ec; }
+
     .access-section {
       padding: var(--sec-head) 0 var(--sec-end);
     }
@@ -129,7 +133,7 @@
     .route-group-name {
       font-size: 1rem;
       font-weight: 700;
-      color: var(--text-muted);
+      color: var(--accent-blue);   /* 他ページの項目名と同じく、ページのアクセント色に */
       margin-bottom: 12px;
       display: flex;
       align-items: center;
@@ -301,6 +305,13 @@
       .tl-path { padding: 20px 0 20px 24px; }
       .tl-path-label { font-size: 0.85rem; padding: 8px 12px; }
     }
+    /* 本文中の強調：白字のまま目立たせるため、ページのアクセント色で下線を引きます */
+    .map-address strong,
+    .transport-card strong {
+      color: var(--text-main);
+      font-weight: 700;
+      border-bottom: 1px solid var(--accent-blue);
+    }
   </style>
 </head>
 <body>
@@ -366,7 +377,7 @@
       <div class="container fade-up">
         <h1 class="subpage-heading">
           <span class="subpage-title">Access</span>
-          <span class="subpage-subtitle" style="display: block; color: var(--primary-blue); font-weight: 700; letter-spacing: 0.1em;">所在地</span>
+          <span class="subpage-subtitle" style="display: block; color: var(--accent-blue); font-weight: 700; letter-spacing: 0.1em;">所在地</span>
         </h1>
       </div>
     </section>
@@ -380,7 +391,7 @@
     <section class="access-section">
       <div class="container">
         
-        <h2 class="section-title fade-up">Location<span style="color:var(--primary-blue);">所在地・マップ</span></h2>
+        <h2 class="section-title fade-up">Location<span style="color:var(--accent-blue);">所在地・マップ</span></h2>
 
         <div class="map-grid fade-up">
           
@@ -414,7 +425,7 @@
 
         </div>
 
-        <h2 class="section-title fade-up" style="margin-top: 40px;">Transport<span style="color:var(--primary-blue);">交通アクセス</span></h2>
+        <h2 class="section-title fade-up" style="margin-top: 40px;">Transport<span style="color:var(--accent-blue);">交通アクセス</span></h2>
 
         <div class="transport-grid fade-up">
           

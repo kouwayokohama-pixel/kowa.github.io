@@ -81,6 +81,14 @@
       .policy-card { padding: 32px 24px; }
       .policy-item h3 { font-size: 1.3rem; }
     }
+    /* 本文中の強調：白字のまま目立たせるため、ページのアクセント色で下線を引きます
+       （よくある質問ページで使っていた手法を全ページに揃えました） */
+    .policy-item p strong,
+    .policy-list li strong {
+      color: var(--text-main);
+      font-weight: 700;
+      border-bottom: 1px solid var(--accent-cyan);
+    }
   </style>
 </head>
 <body>

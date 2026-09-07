@@ -50,10 +50,19 @@
     .hero-sub {
       display: block;
       font-size: 1.1rem;
-      color: var(--text-muted);
+      color: var(--text-main);
       max-width: 500px;
       margin-bottom: 40px;
       margin-left: 2.5rem;
+    }
+    /* 「1972年」に添える小さな説明。見出しの補足なのでグレーのままにします */
+    .hero-eyebrow-cap { color: var(--text-muted); }
+    /* ヒーロー本文の強調。白地の中でも浮くように、シアンの下線を引きます */
+    .hero-em {
+      font-size: 1.2em;
+      font-weight: 900;
+      color: #fff;
+      border-bottom: 1px solid var(--accent-cyan);
     }
 
     .hero-year {
@@ -522,6 +531,19 @@
         transform: none;
       }
     }
+    /* 本文中の強調：白字のまま目立たせるため、ページのアクセント色で下線を引きます
+       （よくある質問ページで使っていた手法を全ページに揃えました） */
+    .dx-banner-text strong {
+      border-bottom: 1px solid currentColor;   /* 金色の帯の中はもともと金文字なので、同色の下線で揃えます */
+    }
+    .intro-desc strong,
+    .service-card p strong,
+    .info-card p strong,
+    .contact-card p strong {
+      color: var(--text-main);
+      font-weight: 700;
+      border-bottom: 1px solid var(--accent-cyan);
+    }
   </style>
 </head>
 <body>
@@ -599,10 +621,10 @@
             <span class="keep-text"><span style="font-size: 1.2em; font-weight: 900; color: #00e5ff;">「日常」</span>を届ける</span><span class="keep-text">プロフェッショナルとして、</span>
           </span>
           <span class="indent-yokohama" style="display: block; margin-bottom: 6px; line-height: 1.5;">
-            <span style="font-size: 1.2em; font-weight: 900; color: #fff;">横浜市 </span>を中心に、
+            <span class="hero-em">横浜市 </span>を中心に、
           </span>
           <span class="indent-truck" style="display: block; line-height: 1.6;">
-            2t車による<span style="font-size: 1.2em; font-weight: 900; color: #fff;">貨物運送事業</span>を行っています。
+            2t車による<span class="hero-em">貨物運送事業</span>を行っています。
           </span>
         </span>
       </h1>

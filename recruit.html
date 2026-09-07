@@ -315,8 +315,6 @@
 
     /* --- スマホ対応レスポンシブ --- */
     @media (max-width: 768px) {
-      /* --- スマホ対応レスポンシブ --- */
-    @media (max-width: 768px) {
       /* ★メニュー開閉関連の古いコードは styles.css に任せるため、すべて削除しました！ */
 
       /* ここから下は recruit.html 専用の表示崩れ防止用コードだけを残します */
@@ -348,6 +346,16 @@
       .btn-wrapper { width: 100%; max-width: 100%; }
       .apply-btn { width: 100%; padding: 16px 0; }
      }
+    /* 本文中の強調：白字のまま目立たせるため、ページのアクセント色で下線を引きます
+       （よくある質問ページで使っていた手法を全ページに揃えました） */
+    .recruit-intro-p strong,
+    .highlight-item strong,
+    .timeline-card strong,
+    .recruit-table td strong {
+      color: var(--text-main);
+      font-weight: 700;
+      border-bottom: 1px solid var(--accent-orange);
+    }
   </style>
 </head>
 <body>
