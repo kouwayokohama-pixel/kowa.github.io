@@ -304,6 +304,20 @@ document.addEventListener("DOMContentLoaded", function() {
         unlockScroll();
       });
     });
+
+    // ★重要：メニューを開いたまま画面幅がPCサイズになると、
+    //   メニュー自体は見えなくなるのに背後の固定だけが残り、
+    //   ページが一切スクロールできなくなります（見た目は正常なので原因が分かりにくい）。
+    //   ウィンドウの拡大、ブラウザの拡大縮小、外部ディスプレイの抜き差しなどで起きます。
+    //   幅が戻ったら、メニューを閉じて固定も必ず解除します。
+    window.addEventListener('resize', () => {
+      if (!headerRight.classList.contains('is-active')) return;
+      if (window.matchMedia('(min-width: 769px)').matches) {
+        menuToggle.classList.remove('is-active');
+        headerRight.classList.remove('is-active');
+        unlockScroll();
+      }
+    });
   }
 
   // マーキー（KOWA LOGISTICS の帯）は、必要なときだけ動かします。
