@@ -353,7 +353,9 @@
     .contact-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: var(--card-pad); text-align: center; transition: all 0.4s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
     .contact-card:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--accent-orange); box-shadow: 0 0 20px rgba(255, 157, 0, 0.15); transform: translateY(var(--card-lift)); }
     .contact-icon { margin-bottom: 16px; color: var(--accent-orange); }
-    .contact-card h3 { font-size: 1.4rem; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.05em; }
+    /* 他のカード見出しと同じく下線で区切ります（このセクションはオレンジ） */
+    .contact-card h3 { font-size: 1.4rem; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.05em;
+      display: inline-block; border-bottom: 2px solid var(--accent-orange); padding-bottom: 8px; }
     /* ここはボタンに添える案内なので、注記と同じグレーにします */
     .contact-card p { color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 24px; }
     .contact-btn { width: 100%; max-width: 280px; }
@@ -512,7 +514,7 @@
       .contact-grid { gap: 12px; }
       .contact-card { padding: 24px 8px; }
       .contact-icon svg { width: 28px; height: 28px; }
-      .contact-card h3 { font-size: 1.3rem; margin-bottom: 4px; }
+      .contact-card h3 { font-size: 1.3rem; margin-bottom: 4px; padding-bottom: 6px; }
       .contact-card p { font-size: 0.95rem; margin-bottom: 16px; }
       .contact-btn { padding: 12px 0; font-size: 0.8rem; width: 100%; letter-spacing: normal; }
       
