@@ -269,6 +269,55 @@
       line-height: 1.8;
     }
 
+    /* 送信できなかったときのパネル。alert だと見落とされやすく、
+       電話番号も出ないので、画面内にはっきり出します */
+    .form-error-msg {
+      display: none;
+      background: rgba(255, 42, 95, 0.06);
+      border: 1px solid var(--accent-red);
+      border-top: 4px solid var(--accent-red);
+      padding: 32px 24px;
+      text-align: center;
+      margin-top: 32px;
+      border-radius: var(--radius);
+    }
+    .form-error-msg h3 {
+      color: var(--accent-red);
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+    .form-error-msg p {
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .form-error-tel {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 260px;
+      padding: 16px 32px;
+      border: 2px solid var(--accent-red);
+      border-radius: var(--radius);
+      color: var(--accent-red);
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .form-error-tel:hover {
+      background: rgba(255, 42, 95, 0.12);
+      box-shadow: 0 0 20px rgba(255, 42, 95, 0.3);
+    }
+    .form-error-note {
+      margin-top: 16px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
     /* --- スマホ対応 --- */
     @media (max-width: 768px) {
       .contact-intro-box { padding: 20px; margin-bottom: 32px; }
@@ -488,6 +537,18 @@
             </p>
           </div>
 
+          <div class="form-error-msg" id="error-message">
+            <h3>⚠ 送信できませんでした</h3>
+            <p>
+              申し訳ございません。ただいまフォームからの送信ができない状態です。<br>
+              お急ぎの場合は、お手数ですがお電話にてご連絡ください。
+            </p>
+            <a href="tel:045-954-3111" class="form-error-tel">📞 045-954-3111</a>
+            <div class="form-error-note">
+              受付時間 8:30 - 19:00 ／ 入力いただいた内容はそのまま残っています。
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -589,6 +650,9 @@
       // 3. 発行したGASのURL
       const endpoint = 'https://script.google.com/macros/s/AKfycbzleBWoKaS61CO6_Ytx9H41AmF26C4ulKrO5z_cycB7lA3-EmAdqu-Yh2sgw_FhLLbb/exec';
 
+      const errorMsgBox = document.getElementById('error-message');
+      errorMsgBox.style.display = 'none';
+
       try {
         const response = await fetch(endpoint, {
           method: 'POST',
@@ -597,6 +661,25 @@
           },
           body: JSON.stringify(data)
         });
+
+        // ★通信できただけでは「送れた」とは限りません。
+        //   GAS側は { result: 'success' } / { result: 'error' } を返してくれるので、
+        //   そこまで確認してから完了画面を出します。
+        //   （ここを見ていないと、メールが送られていないのに
+        //     「送信が完了いたしました」と表示されてしまいます）
+        if (response.type !== 'opaque' && !response.ok) {
+          throw new Error('HTTP ' + response.status);
+        }
+
+        let result = null;
+        try {
+          result = JSON.parse(await response.text());
+        } catch (e) {
+          result = null; // 応答が読めない場合は、通信できた事実だけで判断します
+        }
+        if (result && result.result !== 'success') {
+          throw new Error(result.message || 'GAS returned an error');
+        }
 
         // 送信成功処理（案内文とフォーム見出しも隠して、完了メッセージだけを見せます）
         form.style.display = 'none';
@@ -608,9 +691,11 @@
         successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
       } catch (error) {
-        // エラー処理
-        console.error('Error:', error);
-        alert('通信エラーが発生しました。お手数ですが、時間をおいて再度お試しいただくか、お電話にてお問い合わせください。');
+        // 失敗したことと、電話番号を画面にはっきり出します。
+        // 入力内容は消さずに残すので、直ったあとに送り直せます。
+        console.error('送信エラー:', error);
+        errorMsgBox.style.display = 'block';
+        errorMsgBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
         submitBtn.disabled = false;
         submitBtn.innerText = originalBtnText;
       }
