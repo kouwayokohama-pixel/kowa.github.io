@@ -261,34 +261,47 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const menuToggle = document.getElementById('menu-toggle');
   const headerRight = document.getElementById('header-right');
-  const navLinks = document.querySelectorAll('.site-nav a, .header-action-btn');
+  const navLinks = document.querySelectorAll('.site-nav a, .header-action-btn, .menu-contact-btn, .menu-badges a');
 
   if (menuToggle && headerRight) {
+    // メニューを開いているあいだ背後をスクロールさせないための処理。
+    // ここで大事なのは「position: fixed を当てる前にスクロール位置を控えておく」こと。
+    // fixed を先に当てるとページの高さが無くなって window.scrollY が 0 になってしまい、
+    // 閉じたときに一番上へ戻ってしまいます。
+    let savedScrollY = 0;
+
+    const lockScroll = () => {
+      savedScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+      document.body.style.top = `-${savedScrollY}px`;
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+    };
+
+    const unlockScroll = () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, savedScrollY); // 見ていた位置に戻す
+    };
+
     menuToggle.addEventListener('click', () => {
       menuToggle.classList.toggle('is-active');
-      headerRight.classList.toggle('is-active');
-      
-      // ★ RECRUITページ等での高さ崩れを防ぐため、背後のスクロールを完全にロック
-      if (headerRight.classList.contains('is-active')) {
-        document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
-        document.body.style.width = '100%';
-        document.body.style.top = `-${window.scrollY}px`; // 現在のスクロール位置を保持
+      const opened = headerRight.classList.toggle('is-active');
+      if (opened) {
+        lockScroll();
       } else {
-        const scrollY = document.body.style.top;
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        document.body.style.overflow = '';
-        window.scrollTo(0, parseInt(scrollY || '0') * -1); // 元の位置に戻す
+        unlockScroll();
       }
     });
 
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
+        if (!headerRight.classList.contains('is-active')) return;
         menuToggle.classList.remove('is-active');
         headerRight.classList.remove('is-active');
-        document.body.style.overflow = '';
+        unlockScroll();
       });
     });
   }
