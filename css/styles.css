@@ -657,6 +657,22 @@ body {
   .brand { font-size: 2.1rem; animation: none; }
   .hbadge { animation: none; }
 
+  /* ★同じ理由で、カード類のすりガラスもスマホでは切ります。
+     カードは半透明なので、スクロール中ずっと「後ろの背景をぼかし直す」処理が
+     カードの枚数ぶん走ります（トップページだけで8枚）。
+     ページ側の指定より後に読まれる保証がないため !important を付けています。 */
+  .service-card, .info-card, .contact-card,
+  .fleet-card, .strength-card, .problem-box,
+  .overview-list, .map-card, .transport-card,
+  .footer-recruit-banner, .footer-recruit-box,
+  .highlight-box, .policy-card,
+  .message-text, .recruit-intro-box, .recruit-table-wrapper,
+  .overview-table, .ceo-message-box,
+  .contact-intro-box, .contact-form-panel, .faq-item {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
   /* すりガラス（backdrop-filter）はスクロールのたびに背景をぼかし直すため、
      スマホでは不透明な背景に置き換えます（見た目はほぼ同じです） */
   .site-header.scrolled {
