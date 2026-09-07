@@ -49,11 +49,8 @@ html, body {
   max-width: 100vw;
   position: relative;
 
-  /* スマホで下端を超えてスクロールしたとき、背景のグリッドが
-     めくれて見えてしまうのを防ぎます（上端も同様）。
-     ※ここに background を書くと body の背景がキャンバスへ伝播しなくなり、
-       z-index が負の .page-bg / .page-grid を覆い隠してしまうので書きません */
-  overscroll-behavior-y: none;
+  /* ※ここに background を書くと body の背景がキャンバスへ伝播しなくなり、
+     z-index が負の .page-bg / .page-grid を覆い隠してしまうので書きません */
 
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -680,6 +677,10 @@ body {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
+
+  /* スマホで下端を超えてスクロールしたとき、背景のグリッドがめくれて
+     見えてしまうのを防ぎます（上端も同様）。PCでは指定しません */
+  html, body { overscroll-behavior-y: none; }
 
   .pc-only { display: none !important; }
   .sp-only { display: flex !important; } /* ← !importantを追加！ */
