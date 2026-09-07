@@ -305,6 +305,24 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
 
+    // 保険：メニューが閉じているのに背後の固定だけが残っていたら、必ず解除します。
+    // 原因が何であれ「見た目は正常なのにスクロールできない」状態を自動で復旧させます。
+    const releaseStuckScroll = () => {
+      if (headerRight.classList.contains('is-active')) return;
+      if (document.body.style.position === 'fixed' || document.body.style.overflow === 'hidden') {
+        const y = parseInt(document.body.style.top || '0', 10) * -1;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        if (y > 0) window.scrollTo(0, y);
+      }
+    };
+    releaseStuckScroll();
+    window.addEventListener('resize', releaseStuckScroll);
+    window.addEventListener('pageshow', releaseStuckScroll);
+    document.addEventListener('visibilitychange', releaseStuckScroll);
+
     // ★重要：メニューを開いたまま画面幅がPCサイズになると、
     //   メニュー自体は見えなくなるのに背後の固定だけが残り、
     //   ページが一切スクロールできなくなります（見た目は正常なので原因が分かりにくい）。
