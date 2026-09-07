@@ -100,7 +100,9 @@
     .timeline-item { position: relative; margin-bottom: 48px; }
     .timeline-item:last-child { margin-bottom: 0; }
     .timeline-dot { position: absolute; left: -47px; top: 6px; width: 12px; height: 12px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 12px var(--accent-green); }
-    .timeline-year { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--text-main); line-height: 1; margin-bottom: 8px; }
+    .timeline-year { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--text-main); line-height: 1; margin-bottom: 8px;
+      /* 本文も白字になったので、年月だけはグリーンの下線で区切りを付けます */
+      display: inline-block; border-bottom: 2px solid var(--accent-green); padding-bottom: 6px; }
     .timeline-content { color: var(--text-main); font-size: 1rem; }
 
     /* --- スマホ対応レスポンシブ --- */
@@ -122,9 +124,15 @@
     }
     /* 本文中の強調：白字のまま目立たせるため、ページのアクセント色で下線を引きます
        （よくある質問ページで使っていた手法を全ページに揃えました） */
+    /* 社長メッセージの一番大事な言葉。ここだけ文字もグリーンにします */
+    .ceo-em {
+      color: var(--accent-green);
+      font-weight: 700;
+      border-bottom: 1px solid var(--accent-green);
+    }
     .overview-table td strong,
     .timeline-content strong,
-    .ceo-message-content strong {
+    .ceo-message-content strong:not(.ceo-em) {
       color: var(--text-main);
       font-weight: 700;
       border-bottom: 1px solid var(--accent-green);
@@ -323,11 +331,11 @@
               晃和運輸は、横浜市旭区を拠点とし、地域に密着した運送事業を展開してまいりました。
             </p>
             <p class="ceo-message-text">
-              私たちが日々運んでいるものは、決して単なる「モノ」ではありません。例えば、子どもたちが毎日楽しみに待っている学校給食。あるいは、企業様の活動を支える大切な資材。私たちが安全かつ確実にお届けすることで、地域の皆様の「当たり前の日常」が今日も無事に動いています。<br>
+              私たちが日々運んでいるものは、決して単なる「モノ」ではありません。例えば、子どもたちが毎日楽しみに待っている学校給食。あるいは、企業様の活動を支える大切な資材。私たちが安全かつ確実にお届けすることで、地域の皆様の<strong class="ceo-em">「当たり前の日常」</strong>が今日も無事に動いています。<br>
               だからこそ、私たちは<strong style="color: var(--accent-green);">『日常を届けるプロフェッショナル』</strong>であることに、強い誇りと責任を持っています。
             </p>
             <p class="ceo-message-text" style="margin-bottom: 0;">
-              当社は、機動力に優れた2tアルミバン車を中心とした車両構成により、拠点の横浜市を中心に、神奈川県、そして首都圏エリアへと広がるニーズに対して、迅速かつ柔軟にお応えします。そして何より、全従業員が「安全で確実な物流」の精神を胸に刻み、一つひとつの荷物に真心を込めて配送にあたっております。<br>
+              当社は、機動力に優れた2tアルミバン車を中心とした車両構成により、拠点の横浜市を中心に、神奈川県、そして首都圏エリアへと広がるニーズに対して、迅速かつ柔軟にお応えします。そして何より、全従業員が<strong class="ceo-em">「安全で確実な物流」</strong>の精神を胸に刻み、一つひとつの荷物に真心を込めて配送にあたっております。<br>
               これからも、地域の皆様やお客様から「晃和運輸に任せておけば安心だ」と信頼していただける企業であり続けるため、従業員一同、より一層のサービス向上と安全運行に努めてまいります。
             </p>
             

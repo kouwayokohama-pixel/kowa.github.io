@@ -141,13 +141,18 @@
        （よくある質問ページで使っていた手法を全ページに揃えました） */
     .overview-data strong,
     .problem-list strong,
-    .dx-innov-text strong,
     .message-text strong,
     .fleet-card p strong,
     .strength-card p strong {
       color: var(--text-main);
       font-weight: 700;
       border-bottom: 1px solid var(--accent-red);
+    }
+    /* DX紹介の帯だけはゴールドで統一しているので、赤い下線は引きません
+       （帯の中の強調は、金文字＋金の下線がそのまま担当します） */
+    .dx-innov-text strong {
+      color: var(--text-main);
+      font-weight: 700;
     }
   </style>
 </head>

@@ -348,6 +348,23 @@
      }
     /* 本文中の強調：白字のまま目立たせるため、ページのアクセント色で下線を引きます
        （よくある質問ページで使っていた手法を全ページに揃えました） */
+    /* 応募ボタンの下の注記もグレーに（表の※と同じ扱い） */
+    .apply-note {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+    .apply-note strong {
+      color: var(--text-muted);
+      border-bottom: none;
+    }
+    /* 表の中の「※」注記。本文と区別できるようグレーにします */
+    .table-note {
+      padding-left: 1em;
+      text-indent: -1em;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
     .recruit-intro-p strong,
     .highlight-item strong,
     .timeline-card strong,
@@ -566,9 +583,9 @@
                 2t車での学校給食や日用品のルート配送です。下記2つの業務があります。<br>
                 <div style="padding-left: 1.2em; text-indent: -1.2em;">①学校給食への食品配送：神奈川県内（主に横浜市内）へ、学校給食の配送業務</div>
                 <div style="padding-left: 1.2em; text-indent: -1.2em;">②日用品配送：神奈川県内のスーパー・ドラッグストアへ、日用雑貨の配送業務</div><br>
-                <p style="padding-left: 1em; text-indent: -1em;">※平均1日10〜20件程度（コースによる）<br></p>
-                <p style="padding-left: 1em; text-indent: -1em;">※基本的に手積み・手降ろし作業となります。<br></p>
-                <p style="padding-left: 1em; text-indent: -1em;">※全車にバックモニター、デジタコ、ドライブレコーダー、無線機を搭載。</p>
+                <p class="table-note">※平均1日10〜20件程度（コースによる）<br></p>
+                <p class="table-note">※基本的に手積み・手降ろし作業となります。<br></p>
+                <p class="table-note">※全車にバックモニター、デジタコ、ドライブレコーダー、無線機を搭載。</p>
               </td>
             </tr>
             <tr>
@@ -576,7 +593,7 @@
               <td>
                 <strong>本社営業所</strong><br>
                 神奈川県横浜市旭区下川井町2098-1<br><br>
-                ※車、バイク通勤OK（無料駐車場完備）<br>
+                <p class="table-note">※車、バイク通勤OK（無料駐車場完備）</p>
                 <div style="margin-top: 16px;">
                   <a href="/access" style="color: var(--primary-blue); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 700; border-bottom: 1px solid var(--primary-blue); padding-bottom: 2px; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
                     アクセス方法を詳しく見る
@@ -602,9 +619,9 @@
               <th>給与</th>
               <td>
                 <strong>月給 320,000円 以上</strong><br>
-                <div style="padding-left: 1em; text-indent: -1em; color: var(--text-muted); font-size: 0.9rem;">※固定残業時間：50時間分、および固定深夜時間：30時間分を含む。</div>
-                <div style="padding-left: 1em; text-indent: -1em; color: var(--text-muted); font-size: 0.9rem;">※上記超過分は追加で、別途全額支給します。</div>
-                <div style="padding-left: 1em; text-indent: -1em; color: var(--text-muted); font-size: 0.9rem;">※月平均の残業時間：23.5時間、深夜勤務時間：24.3h時間</div><br>
+                <div class="table-note">※固定残業時間：50時間分、および固定深夜時間：30時間分を含む。</div>
+                <div class="table-note">※上記超過分は追加で、別途全額支給します。</div>
+                <div class="table-note">※月平均の残業時間：23.5時間、深夜勤務時間：24.3h時間</div><br>
                 <p style="padding-left: 1em; text-indent: -1em;">・昇給：年1回<br></p>
                 <p style="padding-left: 1em; text-indent: -1em;">・賞与：年2回（前年度実績：年間30万〜70万円支給）<br></p>
                 <p style="padding-left: 1em; text-indent: -1em;">・通勤手当（距離に応じて、月額13,500円まで支給）<br></p>
@@ -621,7 +638,7 @@
                 <div style="padding-left: 1.2em; text-indent: -1.2em;">① 5:00 〜 17:00 （休憩2〜3時間を含む）</div>
                 <div style="padding-left: 1.2em; text-indent: -1.2em;">② 3:00 〜 12:00 （休憩1時間を含む）</div>
                 <div style="padding-left: 1.2em; text-indent: -1.2em;">③ 3:00 〜 10:00 （休憩1時間を含む）</div><br>
-                <div style="color: var(--text-muted); font-size: 0.9rem;">
+                <div class="table-note">
                   ※シフトにより勤務時間は変動します。<br>
                   ※無理のない運行管理を徹底しています。
                 </div>
