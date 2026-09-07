@@ -60,7 +60,7 @@ body {
 /* 表示切り替え用ユーティリティ */
 .pc-only { display: block; }
 .sp-only { display: none !important; }
-.menu-dx { display: none; }
+.menu-badges { display: none; }
 
 /* ページ内リンク（#services など）で飛んだとき、
    固定ヘッダーの下に見出しが潜らないよう余白を確保します */
@@ -265,30 +265,51 @@ body {
   text-shadow: 0 0 12px rgba(0, 128, 255, 0.5); /* ← 影も黄色（ゴールド）のRGBに変更しました！ */ 
 }
 /* ==========================================================================
-   ヘッダーのDXリンク（PC：中央 ／ スマホ：メニュー内の上部）
+   ヘッダーのバッジ（社内DX ／ 求人募集中）
+   PC   ：TEL・お問い合わせと同じ行に、少し間隔をあけて左に並べます
+   スマホ：メニュー内の上部（左＝求人募集中／右＝社内DX）
    ========================================================================== */
-.header-dx {
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 30px;            /* ← バッジ群と、TEL・お問い合わせ群のあいだの余白 */
+}
+.header-badges {
+  display: grid;                        /* ← 2つのバッジを同じ幅に揃えます */
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+.hbadge {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 9px 20px;
-  border: 1px solid #ffd700;
-  border-left: 3px solid #ffd700;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.18) 0%, rgba(255, 215, 0, 0.04) 100%);
+  justify-content: center;
+  gap: 8px;
+  height: 40px;         /* ← TEL・お問い合わせボタンと同じ高さに揃えています */
+  padding: 0 16px;
+  border: 1px solid currentColor;
+  border-left: 3px solid currentColor;
   border-radius: 2px;
-  color: #ffd700;
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 900;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-decoration: none;
   white-space: nowrap;
   overflow: hidden;
-  animation: dxGlow 3s ease-in-out infinite;
   transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
+.hbadge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  flex-shrink: 0;
+  animation: dxPulse 2.4s ease-in-out infinite;
+}
 /* 光の帯がスッと流れる演出 */
-.header-dx::after {
+.hbadge::after {
   content: '';
   position: absolute;
   top: 0;
@@ -300,34 +321,63 @@ body {
   animation: dxShine 4.5s ease-in-out infinite;
   pointer-events: none;
 }
-.header-dx:hover {
+/* 社内DX＝ゴールド */
+.hbadge-dx {
+  color: #ffd700;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.18) 0%, rgba(255, 215, 0, 0.04) 100%);
+  animation: dxGlow 3s ease-in-out infinite;
+}
+.hbadge-dx:hover {
   background: linear-gradient(135deg, rgba(255, 215, 0, 0.34) 0%, rgba(255, 215, 0, 0.12) 100%);
   box-shadow: 0 0 26px rgba(255, 215, 0, 0.5);
+  transform: translateY(-1px);
+}
+/* 求人募集中＝オレンジ（RECRUITのアクセントカラーに合わせています） */
+.hbadge-recruit {
+  color: var(--accent-orange);
+  background: linear-gradient(135deg, rgba(255, 157, 0, 0.18) 0%, rgba(255, 157, 0, 0.04) 100%);
+  animation: recruitGlow 3s ease-in-out infinite;
+  animation-delay: -1.5s;   /* ← 2つが同時に光らないよう半周ずらします */
+}
+.hbadge-recruit::after,
+.hbadge-recruit .hbadge-dot { animation-delay: -1.5s; }
+.hbadge-recruit:hover {
+  background: linear-gradient(135deg, rgba(255, 157, 0, 0.34) 0%, rgba(255, 157, 0, 0.12) 100%);
+  box-shadow: 0 0 26px rgba(255, 157, 0, 0.5);
   transform: translateY(-1px);
 }
 @keyframes dxGlow {
   0%, 100% { box-shadow: 0 0 12px rgba(255, 215, 0, 0.15), inset 0 0 10px rgba(255, 215, 0, 0.05); }
   50%      { box-shadow: 0 0 24px rgba(255, 215, 0, 0.45), inset 0 0 14px rgba(255, 215, 0, 0.10); }
 }
+@keyframes recruitGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(255, 157, 0, 0.15), inset 0 0 10px rgba(255, 157, 0, 0.05); }
+  50%      { box-shadow: 0 0 24px rgba(255, 157, 0, 0.45), inset 0 0 14px rgba(255, 157, 0, 0.10); }
+}
 @keyframes dxShine {
   0%   { left: -60%; }
   45%  { left: 130%; }
   100% { left: 130%; }
 }
-
-
-.dx-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #ffd700;
-  box-shadow: 0 0 8px #ffd700;
-  flex-shrink: 0;
-  animation: dxPulse 2.4s ease-in-out infinite;
-}
 @keyframes dxPulse {
   0%, 100% { opacity: 1; }
   50%      { opacity: 0.3; }
+}
+
+/* --- 幅の狭いPC・タブレット横向き：ロゴとボタン類を段階的に縮めて1行に収めます --- */
+@media (min-width: 769px) and (max-width: 1150px) {
+  .brand { font-size: 2.4rem; }
+  .header-top { gap: 18px; }
+  .header-badges { gap: 8px; }
+  .hbadge { font-size: 0.74rem; padding: 0 12px; letter-spacing: 0.03em; }
+  .header-action-btn { width: 150px; font-size: 0.78rem; }
+}
+@media (min-width: 769px) and (max-width: 920px) {
+  .brand { font-size: 2rem; }
+  .header-top { gap: 12px; }
+  .hbadge { font-size: 0.7rem; padding: 0 10px; gap: 6px; }
+  .header-action-btn { width: 132px; font-size: 0.72rem; }
+}
 }
 
 /* ==========================================================================
@@ -589,7 +639,7 @@ body {
      ロゴの明滅はヘッダーが画面に固定されている＝スクロール中ずっと
      描き直しが走るため、スマホでは止めます（光そのものは残ります） */
   .brand { font-size: 2.1rem; animation: none; }
-  .header-dx { animation: none; }
+  .hbadge { animation: none; }
 
   /* すりガラス（backdrop-filter）はスクロールのたびに背景をぼかし直すため、
      スマホでは不透明な背景に置き換えます（見た目はほぼ同じです） */
@@ -612,28 +662,36 @@ body {
     }
 
   /* スマホは描画負荷を避けるためアニメーションを止めます */
-  .dx-dot { animation: none; }
-  .header-dx::after { display: none; }
+  .hbadge-dot { animation: none; }
+  .hbadge::after { display: none; }
 
-  /* ★スマホ：DXバッジは常時ヘッダーに出さず、メニューの中に置く */
-  .menu-dx {
-    align-self: flex-end;   /* メニュー内の右上に置く */
-    margin-right: 24px;
+  /* ★スマホ：バッジは常時ヘッダーに出さず、メニュー内の上部に置きます
+     （左＝求人募集中／右＝社内DXを推進中） */
+  .menu-badges {
+    display: grid !important;             /* ← 左右2つを同じ幅に揃えます */
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    padding: 0 20px;
     align-items: center;
-    gap: 9px;
-    padding: 11px 24px;
-    border: 1px solid #ffd700;
-    border-left: 3px solid #ffd700;
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.18) 0%, rgba(255, 215, 0, 0.04) 100%);
-    border-radius: 2px;
-    color: #ffd700;
-    font-size: 0.95rem;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-decoration: none;
+    gap: 12px;
     flex: 0 0 auto;
   }
-  .menu-dx .dx-dot { animation: none; }
+  .menu-badges .hbadge {
+    height: 44px;
+    padding: 0 10px;
+    font-size: 0.84rem;
+    letter-spacing: 0.04em;
+  }
+  /* 画面の狭い端末では2つが並びきるように少しだけ小さくします */
+  @media (max-width: 360px) {
+    .menu-badges { padding: 0 14px; gap: 10px; }
+    .menu-badges .hbadge {
+      height: 42px;
+      padding: 0 8px;
+      font-size: 0.75rem;
+      letter-spacing: 0;
+    }
+  }
 
 
   /* ハンバーガーメニュー */
