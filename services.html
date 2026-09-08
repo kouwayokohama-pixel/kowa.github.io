@@ -31,9 +31,9 @@
     .fleet-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: var(--card-pad); backdrop-filter: blur(5px); transition: all 0.4s ease; }
     .fleet-card:hover { border-color: var(--accent-red); box-shadow: 0 0 20px rgba(255, 42, 95, 0.15); transform: translateY(var(--card-lift)); }
     .fleet-icon { color: var(--accent-red); margin-bottom: 16px; }
-    /* 車種名は1行に収め、他のカード見出しと同じく下線で区切ります */
+    /* 車種名は1行に収め、下線ではなくページのアクセント色（赤）の文字で見せます */
     .fleet-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; letter-spacing: normal;
-      display: inline-block; border-bottom: 2px solid var(--accent-red); padding-bottom: 8px; white-space: nowrap; }
+      color: var(--accent-red); white-space: nowrap; }
     .fleet-card p { color: var(--text-main); font-size: 1rem; line-height: 1.6; }
     .fleet-total-box { margin-top: 40px; background: rgba(255, 42, 95, 0.03); border: 1px dashed var(--accent-red); padding: 24px; text-align: center; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.05em; }
     .fleet-total-box span { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; color: var(--accent-red); margin: 0 4px; }
@@ -44,9 +44,8 @@
     .strength-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-top: 4px solid var(--accent-red); padding: var(--card-pad) 24px; text-align: center; transition: all 0.4s ease; backdrop-filter: blur(5px); }
     .strength-card:hover { border-color: var(--accent-red); box-shadow: 0 0 20px rgba(255, 42, 95, 0.15); transform: translateY(var(--card-lift)); }
     .strength-num { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--accent-red); margin-bottom: 12px; letter-spacing: 0.1em; }
-    /* POINTの見出しも、他のカード見出しと同じく下線で区切ります */
-    .strength-card h3 { font-size: 1.4rem; font-weight: 700; color: var(--text-main);
-      display: inline-block; border-bottom: 2px solid var(--accent-red); padding-bottom: 8px; }
+    /* POINTの見出しは、下線ではなくページのアクセント色（赤）の文字で見せます */
+    .strength-card h3 { font-size: 1.4rem; font-weight: 700; color: var(--accent-red); }
     .strength-card p { color: var(--text-main); font-size: 0.95rem; text-align: left; line-height: 1.6; }
     
     /* --- お悩み解決セクション --- */
@@ -349,7 +348,7 @@
             <div class="strength-num">POINT 01</div>
             <h3 style="margin-bottom: 16px;">迅速かつ柔軟な対応力</h3>
             <p>
-              業務のDX化により、リアルタイムな情報共有と効率的な配車を実現。<br>
+              業務のDX化により、<strong>リアルタイムな情報共有と効率的な配車</strong>を実現。<br>
               急なご依頼にも、スピーディかつ柔軟に対応します。
             </p>
           </div>
@@ -357,7 +356,7 @@
             <div class="strength-num">POINT 02</div>
             <h3 style="margin-bottom: 16px;">地場を知り尽くしたプロ</h3>
             <p>
-              横浜を知り尽くしたベテランドライバーが多数在籍。<br>
+              横浜を知り尽くした<strong>ベテランドライバーが多数在籍</strong>。<br>
               道路事情を熟知したプロが、安全で確実な配送をお約束します。
             </p>
           </div>
@@ -366,7 +365,7 @@
             <h3 style="margin-bottom: 16px;">徹底した車両管理と知識</h3>
             <p>
               ドライバーが車両構造の正しい知識を習得済。<br>
-              万全のメンテナンス体制でトラブルを防ぎ、高い輸送品質を保ちます。
+              <strong>万全のメンテナンス体制</strong>でトラブルを防ぎ、高い輸送品質を保ちます。
             </p>
           </div>
         </div>
