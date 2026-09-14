@@ -311,6 +311,9 @@
     }
     .dx-card-shot .mock:not(.mock-wide) > .mock-screen,
     .dx-card-shot .mock:not(.mock-wide) > .mock-screen-dark { flex: 1; }
+    /* 3列のグループ（検品タブレット・納品スマホ・データモニター）は、横幅をスマホと同じ230pxに揃えます。
+       枠の左右の余白が3枚とも同じになり、横長の画面が枠の端に貼り付かなくなります */
+    .dx-cards:not(.two) .mock-wide { --mock-w: 230px; }
 
     .dx-card {
       background: rgba(255, 255, 255, 0.02);
