@@ -297,23 +297,19 @@
       margin-bottom: 72px;
     }
     .dx-cards.two { grid-template-columns: repeat(2, 1fr); }
-    .dx-cards.two .dx-card-shot { height: 420px; }
-    .dx-cards.two .mock { --mock-w: 230px; font-size: 11px; }
-    .dx-cards.two .mock-wide { --mock-w: 275px; }
-    /* スマホ画面の4枚（日報・車両整備・無線・納品）は、グループをまたいで同じ大きさに揃えます。
-       幅と文字サイズを共通にし、画面部分を枠いっぱいに伸ばします（高さは下で固定） */
-    .dx-card-shot .mock:not(.mock-wide) {
+    /* DXのアプリ画面（7枚すべて）を同じ大きさに揃えます。
+       幅230px・高さは一番背の高いGPSトラッカー（約353px）に合わせて「最低356px」。
+       固定ではなく最低値なので、端末によって文字が大きく描かれても中身は切れずに伸びます。
+       画面部分は枠いっぱいに伸ばし、余った部分はアプリの背景色で埋めます */
+    .dx-card-shot .mock {
       --mock-w: 230px;
-      min-height: 350px;   /* いちばん背の高い無線アプリ(約344px)＋余裕。固定にしないので中身は切れません */
+      min-height: 356px;
       font-size: 11px;
       display: flex;
       flex-direction: column;
     }
-    .dx-card-shot .mock:not(.mock-wide) > .mock-screen,
-    .dx-card-shot .mock:not(.mock-wide) > .mock-screen-dark { flex: 1; }
-    /* 3列のグループ（検品タブレット・納品スマホ・データモニター）は、横幅をスマホと同じ230pxに揃えます。
-       枠の左右の余白が3枚とも同じになり、横長の画面が枠の端に貼り付かなくなります */
-    .dx-cards:not(.two) .mock-wide { --mock-w: 230px; }
+    .dx-card-shot .mock > .mock-screen,
+    .dx-card-shot .mock > .mock-screen-dark { flex: 1; }
 
     .dx-card {
       background: rgba(255, 255, 255, 0.02);
@@ -335,7 +331,7 @@
       display: flex;
       justify-content: center;
       border-bottom: 1px solid var(--border-color);
-      height: 420px;   /* 全グループ共通。スマホ画面(最低350px)＋上下の余白 */
+      /* 高さは指定しません。7枚とも同じ大きさなので、画面＋上下24pxの余白で全カード同じ高さになります */
       align-items: center;
     }
     .dx-card-text { padding: 22px 20px 24px; flex-grow: 1; display: flex; flex-direction: column; }
@@ -532,13 +528,10 @@
       }
       /* ★カード1枚がスマホの1画面に収まるよう、画像まわりを詰めます */
       /* 画像枠の縦幅はグループ内で揃えます（中の画像は上下中央） */
-      .dx-cards.two .dx-card-shot,
-      .dx-cards:not(.two) .dx-card-shot { height: 325px; padding: 10px 12px; }
+      .dx-card-shot { padding: 12px 12px; }
       .dx-card-shot > * { zoom: 0.84; }
-      /* 幅の狭い端末（〜360px）では、横長の画面が枠からはみ出さないよう一段小さく表示します */
+      /* 幅の狭い端末（〜360px）では、画面が枠からはみ出さないよう一段小さく表示します */
       @media (max-width: 360px) {
-        .dx-cards.two .dx-card-shot,
-        .dx-cards:not(.two) .dx-card-shot { height: 290px; }
         .dx-card-shot > * { zoom: 0.74; }
       }
       .dx-card-text { padding: 14px 16px 16px; }
@@ -752,7 +745,7 @@
           <!-- 04 GPS -->
           <div class="dx-card">
             <div class="dx-card-shot">
-              <div class="mock mock-wide">
+              <div class="mock">
                 <div class="mock-screen">
                   <div class="mock-bar" style="background:#fff; border-bottom:1px solid #e3e6ee;">
                     <span style="color:#3b4050;">📍 GPSトラッカー</span><div class="mock-sw"></div>
