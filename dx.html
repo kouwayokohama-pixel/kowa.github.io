@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DX・自社開発システム｜検品・納品・GPS・日報アプリ｜有限会社晃和運輸</title>
-  <meta name="description" content="有限会社晃和運輸（横浜市旭区）の自社開発アプリ・DX推進のご紹介。工場での検品自動化から納品管理、GPSリアルタイム運行管理、日報、車両整備まで7領域を自社で企画・開発・運用しています。汎用パッケージではなく、御社の現場に合わせたオーダーメイドでのご提供・共同開発を承ります。" />
+  <title>DX・自社開発システム｜検品・納品・GPS・日報・勤怠・給与｜有限会社晃和運輸</title>
+  <meta name="description" content="有限会社晃和運輸（横浜市旭区）の自社開発アプリ・DX推進のご紹介。工場での検品自動化から納品管理、GPSリアルタイム運行管理、日報、勤怠・給与計算、車両整備まで9領域を自社で企画・開発・運用しています。汎用パッケージではなく、御社の現場に合わせたオーダーメイドでのご提供・共同開発を承ります。" />
   <link rel="canonical" href="https://kowa-yokohama.com/dx" />
   <link rel="stylesheet" href="css/styles.css" />
 
@@ -224,6 +224,52 @@
       border-top: 9px solid var(--dx-gold);
     }
 
+    /* --- ② 打刻 → 勤怠 → 給与 の3段の流れ --- */
+    .fm-chain {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: stretch;
+    }
+    .fm-chain .fm-node { display: flex; flex-direction: column; justify-content: center; }
+    .fm-step {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      color: var(--dx-gold);
+      margin-bottom: 8px;
+    }
+    .fm-arrow {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-width: 96px; padding: 0 10px;
+    }
+    .fm-arrow span { color: var(--text-muted); font-size: 0.82rem; white-space: nowrap; margin-bottom: 8px; }
+    .fm-arrow i { position: relative; display: block; width: 100%; height: 2px; background: var(--dx-gold); }
+    .fm-arrow i::after {
+      content: ''; position: absolute; right: -1px; top: 50%; transform: translateY(-50%);
+      border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 9px solid var(--dx-gold);
+    }
+    .fm-down { padding: 16px 0 6px; }
+    .dx-group-label .nw, .dx-flowchart .nw, .dx-cards-note .nw, .dx-card p .nw { white-space: nowrap; }
+    /* 「給与管理システム」が1行に収まるよう、②の箱は左右の余白とアイコンとの間隔を少し詰めます */
+    .fm-chain .fm-node { padding-left: 12px; padding-right: 12px; }
+    .fm-chain .fm-head { gap: 8px; }
+    .fm-chain .fm-head b { white-space: nowrap; }
+    /* 3つを横に並べると箱が狭くなり、言葉の途中で折り返してしまう幅（〜1080px）では縦に積みます */
+    @media (max-width: 1080px) {
+      .fm-chain { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+      .fm-arrow { position: relative; flex-direction: row; min-width: 0; padding: 12px 0 4px; }
+      .fm-arrow i { width: 2px; height: 26px; }
+      .fm-arrow i::after {
+        right: auto; left: 50%; top: auto; bottom: -1px; transform: translateX(-50%);
+        border-left: 6px solid transparent; border-right: 6px solid transparent;
+        border-top: 9px solid var(--dx-gold); border-bottom: 0;
+      }
+      /* 矢印は中央、文字はその右（矢印が中央からずれないように） */
+      .fm-arrow span { position: absolute; left: 50%; margin: 0 0 0 12px; top: 50%; transform: translateY(-20%); }
+    }
+
     /* --- 強み（3つ） --- */
     .dx-why {
       display: grid;
@@ -310,6 +356,34 @@
     }
     .dx-card-shot .mock > .mock-screen,
     .dx-card-shot .mock > .mock-screen-dark { flex: 1; }
+
+    /* ② 点呼記録簿・給与管理システムは事務所のPCで使う画面なので、横長で表示します */
+    .dx-card-shot .mock.mock-pc {
+      --mock-w: 100%;
+      max-width: 440px;
+      min-height: 290px;
+      border-radius: 6px;
+    }
+    .mock-win { display: flex; gap: 5px; padding: 6px 10px; background: #2a2d34; }
+    .mock-win i { display: block; width: 7px; height: 7px; border-radius: 50%; background: #5b5f69; }
+    .mock-tabs { display: flex; padding: 0 6px; font-size: 8.5px; }
+    .mock-tabs span { padding: 5px 6px; }
+    .mock-tabs .on { color: #fff; font-weight: 700; border-bottom: 2px solid #ffd54f; }
+    .mock-pc .mock-body { padding: 10px 12px; }
+    .mock-table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 9px; }
+    .mock-table th { padding: 4px 2px; font-weight: 700; }
+    .mock-table th:first-child, .mock-table td:first-child { width: 22%; text-align: left; padding-left: 4px; font-weight: 700; }
+    .mock-table td { padding: 5px 2px; text-align: center; border-bottom: 1px solid #e3e6ee; white-space: nowrap; }
+    .mock-table tr:last-child td { border-bottom: 0; }
+    .mock-pay td { text-align: right; padding-right: 5px; }
+    .mock-pay th:last-child { background: #ffcc80; color: #5d4037; }
+    .mock-pay td:last-child { background: #fff3e0; font-weight: 700; }
+    .mock-foot {
+      display: flex; justify-content: space-between;
+      margin-top: 10px; border-radius: 6px; padding: 6px 8px; font-weight: 700; font-size: 9px;
+    }
+    .dx-cards.has-note { margin-bottom: 14px; }
+    .dx-cards-note { color: var(--text-muted); font-size: .9rem; line-height: 1.8; margin-bottom: 72px; }
 
     .dx-card {
       background: rgba(255, 255, 255, 0.02);
@@ -533,6 +607,15 @@
       /* 幅の狭い端末（〜360px）では、画面が枠からはみ出さないよう一段小さく表示します */
       @media (max-width: 360px) {
         .dx-card-shot > * { zoom: 0.74; }
+      }
+      /* 横長のPC画面は縮小すると文字が小さくなりすぎるので、等倍のまま枠いっぱいに表示します */
+      .dx-card-shot > .mock-pc { zoom: 1; }
+      .mock-table { font-size: 8px; }
+      .dx-cards.has-note { margin-bottom: 10px; }
+      .dx-cards-note { font-size: .85rem; margin-bottom: 40px; }
+      /* 幅の狭い端末では給与の列が収まらないので、基本給の列だけ省きます */
+      @media (max-width: 360px) {
+        .mock-pay th:nth-child(2), .mock-pay td:nth-child(2) { display: none; }
       }
       .dx-card-text { padding: 14px 16px 16px; }
       .dx-card h4 { font-size: 1.1rem; margin-bottom: 6px; }
@@ -807,7 +890,7 @@
             <div class="dx-card-text">
               <div class="dx-card-num">SYSTEM 1-2</div>
               <h4>日報アプリ</h4>
-              <p>業務日報をスマホから数タップで報告。<strong>手書き日報も、事務所での転記・集計も不要</strong>になりました。NFCタグ読取で車番・距離の入力も自動化。<strong>社内お知らせの配信</strong>もこのアプリから行えます。</p>
+              <p>業務日報をスマホから数タップで報告。NFCタグ読取で車番・距離の入力も自動化。<strong>社内お知らせの配信</strong>もこのアプリから行えます。</p>
               <div class="dx-tags">
                 <span class="dx-tag">ペーパーレス</span><span class="dx-tag">勤怠自動集計</span><span class="dx-tag">NFC読取</span>
               </div>
@@ -900,8 +983,157 @@
           </div>
         </div>
 
+        <!-- ===================== ② 日報・勤怠・給与の連携 ===================== -->
         <div class="dx-group fade-up">
-          <div class="dx-group-label">② 取引先企業様へご提供したシステム</div>
+          <div class="dx-group-label">② 日報・勤怠・給与管理の<span class="nw">システム</span></div>
+          <h3>タッチ1回の打刻から、月末の給与計算までつながる</h3>
+        </div>
+
+        <div class="dx-flowchart fade-up">
+          <h3>打刻 → 勤怠管理 → <span class="nw">給与計算を、自動化</span></h3>
+          <p class="sub">毎日の記録がそのまま勤怠になり、<span class="nw">給与計算まで</span><span class="nw">自動反映されます</span></p>
+
+          <div class="fm-chain">
+            <div class="fm-node">
+              <span class="fm-step">STEP 1</span>
+              <div class="fm-head">
+                <span class="fm-ico">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="6" y="2" width="12" height="20" rx="2"></rect>
+                    <path d="M10 18h4"></path>
+                    <path d="M9.5 8.5a3.5 3.5 0 0 1 5 0"></path>
+                    <path d="M8 6.5a6 6 0 0 1 8 0"></path>
+                  </svg>
+                </span>
+                <b>日報アプリ</b>
+              </div>
+              <small>始業・終業を記録</small>
+            </div>
+
+            <div class="fm-arrow"><span>勤怠の記録</span><i></i></div>
+
+            <div class="fm-node">
+              <span class="fm-step">STEP 2</span>
+              <div class="fm-head">
+                <span class="fm-ico">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                    <path d="M16 2v4M8 2v4M3 10h18"></path>
+                    <path d="M8 15l2.5 2.5L16 13"></path>
+                  </svg>
+                </span>
+                <b>点呼記録簿</b>
+              </div>
+              <small>勤務時間を自動集計</small>
+            </div>
+
+            <div class="fm-arrow"><span>勤怠データ</span><i></i></div>
+
+            <div class="fm-node">
+              <span class="fm-step">STEP 3</span>
+              <div class="fm-head">
+                <span class="fm-ico">
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M6 9v.01M18 15v.01"></path>
+                  </svg>
+                </span>
+                <b>給与管理システム</b>
+              </div>
+              <small>残業・税金を自動計算</small>
+            </div>
+          </div>
+
+          <div class="fm-link fm-down"><i></i></div>
+
+          <div class="fm-hub">
+            <b>集計・転記・計算の<span class="nw">手間がなくなりました</span></b>
+            <small><span class="nw">タイムカードの集計、</span><span class="nw">Excelへの転記、</span><span class="nw">残業代や社会保険料の計算を、</span><span class="nw">人の手で行う必要がありません。</span></small>
+          </div>
+        </div>
+
+        <div class="dx-cards two has-note fade-up">
+          <!-- 2-2 点呼記録簿（事務所のPC画面なので横長） -->
+          <div class="dx-card">
+            <div class="dx-card-shot">
+              <div class="mock mock-pc">
+                <div class="mock-win"><i></i><i></i><i></i></div>
+                <div class="mock-screen">
+                  <div class="mock-bar" style="background:#00695c; color:#fff;">
+                    <span>点呼記録簿</span><span style="font-weight:400; font-size:8.5px; opacity:.9;">2026年9月</span>
+                  </div>
+                  <div class="mock-tabs" style="background:#004d40;">
+                    <span style="color:#b2dfdb;">日別編集</span><span class="on">月間集計</span><span style="color:#b2dfdb;">個人別</span>
+                  </div>
+                  <div class="mock-body">
+                    <table class="mock-table">
+                      <thead>
+                        <tr style="background:#e0f2f1; color:#00695c;"><th>氏名</th><th>出勤</th><th>拘束</th><th>実働</th><th>残業</th><th>深夜</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>山田 太郎</td><td>21</td><td>196:40</td><td>168:30</td><td>12:15</td><td>3:00</td></tr>
+                        <tr><td>佐藤 健一</td><td>20</td><td>185:10</td><td>161:45</td><td>8:30</td><td>0:00</td></tr>
+                        <tr><td>鈴木 一郎</td><td>22</td><td>204:30</td><td>175:10</td><td>15:40</td><td>4:30</td></tr>
+                        <tr><td>高橋 実</td><td>19</td><td>171:20</td><td>152:00</td><td>5:15</td><td>0:00</td></tr>
+                        <tr><td>田中 花子</td><td>21</td><td>190:00</td><td>168:00</td><td>0:00</td><td>0:00</td></tr>
+                      </tbody>
+                    </table>
+                    <div class="mock-foot" style="background:#e0f2f1; color:#00695c;">
+                      <span>🔒 この月は確定済み</span><span>全日確定</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dx-card-text">
+              <div class="dx-card-num">SYSTEM 2-2</div>
+              <h4>点呼記録簿（勤怠管理）</h4>
+              <p>日報アプリの打刻から、<strong>勤務時間を自動で集計</strong>。運送業に必要な点呼の記録も同じ画面で管理できます。月の勤務が確定すると、<strong>勤怠データが<span class="nw">給与計算へ</span></strong><span class="nw">渡ります。</span></p>
+            </div>
+          </div>
+
+          <!-- 2-3 給与管理システム（事務所のPC画面なので横長） -->
+          <div class="dx-card">
+            <div class="dx-card-shot">
+              <div class="mock mock-pc">
+                <div class="mock-win"><i></i><i></i><i></i></div>
+                <div class="mock-screen">
+                  <div class="mock-bar" style="background:#1565c0; color:#fff;">
+                    <span>💴 給与管理システム</span><span style="font-weight:400; font-size:8.5px; opacity:.9;">2026年9月分</span>
+                  </div>
+                  <div class="mock-tabs" style="background:#0d47a1;">
+                    <span style="color:#bbdefb;">月データ</span><span class="on">給与一覧</span><span style="color:#bbdefb;">賃金表</span>
+                  </div>
+                  <div class="mock-body">
+                    <div class="mock-foot" style="background:#e8f5e9; color:#2e7d32; margin:0 0 8px;">✓ 点呼記録簿の月データを読み込みました</div>
+                    <table class="mock-table mock-pay">
+                      <thead>
+                        <tr style="background:#e8eef5; color:#0d47a1;"><th>氏名</th><th>基本給</th><th>残業手当</th><th>社会保険</th><th>所得税</th><th>差引支給</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>山田 太郎</td><td>280,000</td><td>38,520</td><td>45,310</td><td>4,770</td><td>268,440</td></tr>
+                        <tr><td>佐藤 健一</td><td>270,000</td><td>26,730</td><td>41,875</td><td>3,645</td><td>251,210</td></tr>
+                        <tr><td>鈴木 一郎</td><td>285,000</td><td>49,180</td><td>47,960</td><td>4,315</td><td>281,905</td></tr>
+                        <tr><td>高橋 実</td><td>265,000</td><td>16,510</td><td>39,420</td><td>5,310</td><td>236,780</td></tr>
+                      </tbody>
+                    </table>
+                    <div class="mock-muted" style="margin-top:8px; text-align:center;">残業代・社会保険料・所得税は自動計算</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dx-card-text">
+              <div class="dx-card-num">SYSTEM 2-3</div>
+              <h4>給与管理システム</h4>
+              <p>確定した勤怠データを読み込み、<strong>残業代・社保・税金まで自動で計算</strong>。会社ごとの独自項目の追加も可能。<strong><span class="nw">PDFを始め、</span><span class="nw">様々な形式に</span></strong><span class="nw"><strong>出力</strong>できます。</span></p>
+            </div>
+          </div>
+        </div>
+        <p class="dx-cards-note fade-up">※ 日報アプリについては<span class="nw">「SYSTEM 1-2」をご覧ください。</span></p>
+
+        <div class="dx-group fade-up">
+          <div class="dx-group-label">③ 取引先企業様へご提供したシステム</div>
           <h3>検品・納品・進捗管理を行うシステム</h3>
         </div>
 
@@ -954,10 +1186,7 @@
               <span>事務所</span>
             </div>
             <b>データがリアルタイム反映</b>
-            <small>
-              「工場の出荷数」と「配送先の納品数」をシステムで見比べて管理し、<br class="pc-only">
-              異常をすぐに検知できます。
-            </small>
+            <small><span class="nw">「工場の出荷数」と</span><span class="nw">「配送先の納品数」を</span><span class="nw">システムで見比べて管理し、</span><span class="nw">異常をすぐに検知できます。</span></small>
           </div>
         </div>
 
@@ -990,7 +1219,7 @@
               </div>
             </div>
             <div class="dx-card-text">
-              <div class="dx-card-num">SYSTEM 2-1</div>
+              <div class="dx-card-num">SYSTEM 3-1</div>
               <h4>出荷検品システム</h4>
               <p>工場での検品をQR読取で自動化。<strong>数え間違い・記入漏れが構造的に起きません。</strong>取引先企業様の工場へ導入した実績があります。</p>
               <div class="dx-tags">
@@ -1045,7 +1274,7 @@
               </div>
             </div>
             <div class="dx-card-text">
-              <div class="dx-card-num">SYSTEM 2-2</div>
+              <div class="dx-card-num">SYSTEM 3-2</div>
               <h4>納品アプリ</h4>
               <p>配送先でQRをかざすだけ。<strong>いつ・どこへ・誰が納品したかが自動で記録</strong>され、伝票記入も帰社後の転記も不要です。</p>
               <div class="dx-tags">
@@ -1098,7 +1327,7 @@
               </div>
             </div>
             <div class="dx-card-text">
-              <div class="dx-card-num">SYSTEM 2-3</div>
+              <div class="dx-card-num">SYSTEM 3-3</div>
               <h4>データモニター</h4>
               <p>全コースの進捗を事務所からリアルタイムで確認。<strong>ドライバーへの電話確認が不要</strong>になり、荷主様への報告もそのまま共有できます。</p>
               <div class="dx-tags">
@@ -1146,7 +1375,7 @@
 
         <div class="dx-disclaimer fade-up">
           ※ 掲載している画面イメージは、実際のアプリの構成をもとに作成した<strong style="color: var(--text-main);">サンプル表示</strong>です。
-          氏名・取引先名・納品先名・数量はすべて架空のもので、実在の個人・団体の情報は含まれておりません。
+          氏名・取引先名・納品先名・数量・金額はすべて架空のもので、実在の個人・団体の情報は含まれておりません。
         </div>
 
       </div>
