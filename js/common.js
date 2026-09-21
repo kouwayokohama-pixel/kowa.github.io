@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         <nav class="site-nav">
           <a href="/" id="menu-home" class="nav-home">HOME <span class="nav-ja">ホーム</span></a>
-          <a href="/services" id="menu-services" class="nav-services">SERVICES <span class="nav-ja">事業内容</span></a>
+          <a href="/logistics" id="menu-services" class="nav-services">LOGISTICS <span class="nav-ja">事業内容</span></a>
           <a href="/company" id="menu-company" class="nav-company">COMPANY <span class="nav-ja">会社情報</span></a>
           <a href="/recruit" id="menu-recruit" class="nav-recruit">RECRUIT <span class="nav-ja">採用情報</span></a>
           <a href="/faq" id="menu-faq" class="nav-faq">FAQ <span class="nav-ja">よくある質問</span></a>
@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if (currentPage === "index" || currentPage === "") {
     const el = document.getElementById("menu-home");
     if (el) el.style.color = "var(--accent-cyan)";
-  } else if (currentPage === "services") {
+  } else if (currentPage === "logistics") {
     const el = document.getElementById("menu-services");
     if (el) el.style.color = "var(--accent-red)";
   } else if (currentPage === "company") {
