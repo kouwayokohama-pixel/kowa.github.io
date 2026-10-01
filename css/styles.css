@@ -905,13 +905,13 @@ body {
   z-index: 9999;
   transform: scale(0.08);
   opacity: 0.9;
-  animation: tapDrop 0.75s cubic-bezier(.2,.7,.3,1) forwards;
+  animation: tapDrop 1.4s cubic-bezier(.2,.7,.3,1) forwards;
   will-change: transform, opacity;
 }
 .tap-drop.second {
   border-width: 1px;
   box-shadow: none;
-  animation-delay: 0.12s;
+  animation-delay: 0.3s;
   opacity: 0;
 }
 @keyframes tapDrop {
