@@ -106,7 +106,8 @@ body {
 }
 /* 光沢は「層ごと滑らせる」方式で動かす（transform なのでGPUだけで動き、
    画面全体の描き直しが起きない）。幅広く・弱く・2本で、傷ではなく映り込みに見せる */
-.page-bg::before {
+.page-bg::before,
+.page-bg::after {
   content: "";
   position: absolute;
   /* 光の筋だけの細長い層（画面幅の0.9倍）を斜めに傾けて横切らせる。
@@ -121,6 +122,8 @@ body {
   animation: glossSweep 24s linear infinite;
   will-change: transform;
 }
+/* 2本目の筋を半周期ずらして流す（1本目が左に消えたら、間をあけずに次が来る） */
+.page-bg::after { animation-delay: -12s; }
 
 .page-grid {
   position: fixed;
@@ -961,5 +964,5 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .tap-drop { display: none; }
   /* 「動きを減らす」設定の人には、背景の光沢と格子を止める */
-  .page-bg::before, .page-grid { animation: none; }
+  .page-bg::before, .page-bg::after, .page-grid { animation: none; }
 }
