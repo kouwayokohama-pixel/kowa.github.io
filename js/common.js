@@ -382,3 +382,28 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   }, 100);
 });
+// タッチ・クリックした場所に、水の雫が落ちたような波紋を出す
+// ・操作は一切じゃましない（passive・pointer-events:none・preventDefault なし）
+// ・同時に出すのは最大6つまで。動きを減らす設定の端末では出さない
+(function () {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let alive = 0;
+  function drop(x, y, extra) {
+    if (alive >= 6) return;
+    const el = document.createElement('span');
+    el.className = 'tap-drop' + (extra ? ' second' : '');
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+    el.setAttribute('aria-hidden', 'true');
+    alive++;
+    const done = () => { if (el.parentNode) { el.parentNode.removeChild(el); alive--; } };
+    el.addEventListener('animationend', done);
+    setTimeout(done, 1200); // animationend が来なかったときの保険
+    document.body.appendChild(el);
+  }
+  document.addEventListener('pointerdown', (e) => {
+    if (e.button && e.button !== 0) return; // 右クリックなどは無視
+    drop(e.clientX, e.clientY, false);
+    drop(e.clientX, e.clientY, true);       // 少し遅れてもう1つ（雫の二重の輪）
+  }, { passive: true });
+})();
