@@ -14,7 +14,9 @@
     /* --- ヒーロー --- */
     .hero {
       position: relative;
-      height: 100dvh;
+      height: 100vh;
+      /* スマホのアドレスバーが出入りしても高さが変わらない svh を使う（dvhだとスクロール中に帯がガタつく） */
+      height: 100svh;
       min-height: 600px;
       display: flex;
       flex-direction: column;
