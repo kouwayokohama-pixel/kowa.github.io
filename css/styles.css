@@ -92,10 +92,21 @@ body {
 .page-bg {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(120deg, #050505 40%, #0a192f 60%, #050505 80%);
-  background-size: 200% 200%;
-  animation: gradientMove 15s ease infinite;
+  overflow: hidden;
+  background: #050505;
   z-index: -20;
+  pointer-events: none;
+}
+/* グラデーションは「層ごと滑らせる」方式で動かす（transform なのでGPUだけで動き、
+   画面全体の描き直しが起きない）。以前の background-position のアニメは毎フレーム全画面を
+   描き直していて、トップのマーキーなどがカクつく原因だった（2026-10） */
+.page-bg::before {
+  content: "";
+  position: absolute;
+  top: -50%; left: 0; width: 200%; height: 200%;
+  background: linear-gradient(120deg, #050505 40%, #0a192f 60%, #050505 80%);
+  animation: gradientMove 15s ease infinite;
+  will-change: transform;
 }
 
 .page-grid {
@@ -113,9 +124,9 @@ body {
 }
 
 @keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
 
 @keyframes pageGridMove {
@@ -691,9 +702,9 @@ body {
       animation: none;
     }
 
-  .page-bg {
+  .page-bg::before {
       animation: none;
-      background-position: 100% 50%;
+      transform: translate3d(-50%, 0, 0);
     }
 
   /* スマホは描画負荷を避けるためアニメーションを止めます */
@@ -876,4 +887,37 @@ body {
   
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .footer-policy-split { display: none; }
+}
+
+/* ==========================================================================
+   タッチ・クリックした場所に広がる波紋（js/common.js が作る）
+   transform と opacity だけで動かすので軽い。操作は一切じゃましない。
+   ========================================================================== */
+.tap-drop {
+  position: fixed;
+  left: 0; top: 0;
+  width: 120px; height: 120px;
+  margin: -60px 0 0 -60px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 229, 255, 0.85);
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.45), inset 0 0 10px rgba(0, 229, 255, 0.25);
+  pointer-events: none;
+  z-index: 9999;
+  transform: scale(0.08);
+  opacity: 0.9;
+  animation: tapDrop 0.75s cubic-bezier(.2,.7,.3,1) forwards;
+  will-change: transform, opacity;
+}
+.tap-drop.second {
+  border-width: 1px;
+  box-shadow: none;
+  animation-delay: 0.12s;
+  opacity: 0;
+}
+@keyframes tapDrop {
+  0%   { transform: scale(0.08); opacity: 0.9; }
+  100% { transform: scale(1);    opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tap-drop { display: none; }
 }
