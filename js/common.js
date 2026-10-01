@@ -398,7 +398,7 @@ document.addEventListener("DOMContentLoaded", function() {
     alive++;
     const done = () => { if (el.parentNode) { el.parentNode.removeChild(el); alive--; } };
     el.addEventListener('animationend', done);
-    setTimeout(done, 1200); // animationend が来なかったときの保険
+    setTimeout(done, 2200); // animationend が来なかったときの保険
     document.body.appendChild(el);
   }
   document.addEventListener('pointerdown', (e) => {
