@@ -199,8 +199,26 @@
     ========================================================================== */
     .business-intro { 
       padding: 100px 0; 
-      background-color: rgba(5, 5, 5, 0.6); 
+      /* 背景の金属・格子が透けるよう薄く（2026-10） */
+      background-color: rgba(5, 5, 5, 0.12); 
       overflow: hidden; 
+      position: relative;
+    }
+
+    .business-intro-wrapper { position: relative; z-index: 1; }
+    /* セクションの境目：鋼板の継ぎ目（銀の線を上下の黒で挟む） */
+    .business-intro, .services, .info-section, .contact-section {
+      border-top: 1px solid rgba(210, 225, 240, 0.18);
+      box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.65), 0 -1px 0 rgba(0, 0, 0, 0.6);
+    }
+    .contact-section { border-top-color: rgba(255, 157, 0, 0.28); }
+    /* PCのすりガラスは、光沢が流れるたびに描き直されて重いので、やや濃い塗りに置き換える */
+    @media (min-width: 769px) {
+      .service-card, .info-card, .contact-card {
+        backdrop-filter: none; -webkit-backdrop-filter: none;
+        background: rgba(18, 22, 28, 0.6);
+      }
+      .intro-text-box { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(12, 14, 18, 0.8); }
     }
     
     .business-intro-wrapper {
@@ -264,7 +282,7 @@
     }
 
     /* --- サービスセクション --- */
-    .services { padding: 80px 0; background-color: rgba(30, 15, 15, 0.6); }
+    .services { padding: 80px 0; background-color: rgba(48, 14, 20, 0.26); }
     .services .section-title span { color: var(--accent-red); }
     
     .service-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
@@ -326,7 +344,7 @@
     .btn-outline.orange-version:hover { color: #000; }
 
     /* --- 会社情報＆採用情報セクション --- */
-    .info-section { padding: 80px 0; background-color: rgba(10, 30, 20, 0.6); }
+    .info-section { padding: 80px 0; background-color: rgba(8, 40, 26, 0.26); }
     .info-title span { color: var(--accent-green) !important; }
     .info-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
     .info-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 0; transition: all 0.4s ease; display: flex; flex-direction: column; overflow: hidden; backdrop-filter: blur(5px); }
@@ -352,7 +370,7 @@
     }
 
     /* --- お問い合わせセクション --- */
-    .contact-section { padding: 80px 0; background-color: rgba(30, 20, 5, 0.6); }
+    .contact-section { padding: 80px 0; background-color: rgba(46, 30, 6, 0.26); }
     .contact-title span { color: var(--accent-orange) !important; }
     
     .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
