@@ -338,34 +338,14 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // マーキー（KOWA LOGISTICS の帯）は、必要なときだけ動かします。
-  //  ・画面に入っていないあいだは止める（ページの大半では見えていないため）
-  //  ・スマホではスクロール中も止める（動く帯を見ながらスクロールすることはないので
-  //    見た目に影響はなく、そのぶんスクロールに処理を回せます）
+  // マーキー（KOWA LOGISTICS の帯）は、画面に入っていないあいだだけ止めます。
+  // スクロール中は止めません（GPUで動かしているので重くならず、止めると指を置いたとき帯が固まって見えるため）
   const marquee = document.querySelector('.marquee-text');
   if (marquee) {
-    const pauseWhileScrolling = window.matchMedia('(max-width: 768px)').matches;
-    let onScreen = true;
-    let scrolling = false;
-    let scrollTimer = null;
-
-    const apply = () => {
-      marquee.style.animationPlayState = (onScreen && !scrolling) ? 'running' : 'paused';
-    };
-
     const marqueeObserver = new IntersectionObserver((entries) => {
-      onScreen = entries[0].isIntersecting;
-      apply();
+      marquee.style.animationPlayState = entries[0].isIntersecting ? 'running' : 'paused';
     });
     marqueeObserver.observe(marquee);
-
-    if (pauseWhileScrolling) {
-      window.addEventListener('scroll', () => {
-        if (!scrolling) { scrolling = true; apply(); }
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(() => { scrolling = false; apply(); }, 150);
-      }, { passive: true });
-    }
   }
 
   // スクロールフェードイン
