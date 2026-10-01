@@ -169,7 +169,7 @@
     }
 
     .marquee-text {
-      display: inline-block;
+      display: inline-flex;
       font-family: 'Montserrat', sans-serif;
       font-size: 4rem;
       font-weight: 900;
@@ -183,9 +183,13 @@
       -webkit-backface-visibility: hidden;
     }
 
+    /* 2つの同じ帯を並べ、ちょうど1つ分（-50%）ずらしてループさせる。
+       右側の余白を各帯に持たせるので、継ぎ目でカクッと跳ばない */
+    .marquee-item { flex: none; padding-right: 0.6em; }
+
     @keyframes scrollText {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
     }
 
     /* ==========================================================================
@@ -638,8 +642,8 @@
       <a href="/logistics" class="btn-main">事業内容を見る</a>
     </div>
     <div class="marquee-container">
-      <div class="marquee-text">
-        KOWA LOGISTICS in YOKOHAMA (SINCE 1972) KOWA LOGISTICS in YOKOHAMA (SINCE 1972)
+      <div class="marquee-text" aria-hidden="true">
+        <span class="marquee-item">KOWA LOGISTICS in YOKOHAMA (SINCE 1972)</span><span class="marquee-item">KOWA LOGISTICS in YOKOHAMA (SINCE 1972)</span>
       </div>
     </div>
   </section>
