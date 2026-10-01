@@ -109,14 +109,16 @@ body {
 .page-bg::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; width: 250%; height: 100%;
-  /* はっきり見える細い筋（主役）＋その後ろに幅広く弱い映り込み */
-  background: linear-gradient(112deg,
-    transparent 22%, rgba(235,242,250,.03) 30%, rgba(235,242,250,.07) 36%,
-    rgba(150,175,200,.06) 40%, rgba(220,235,250,.13) 41.5%,
-    rgba(255,255,255,.17) 42%, rgba(220,235,250,.13) 42.5%,
-    rgba(150,175,200,.06) 44%, rgba(235,242,250,.03) 50%, transparent 56%);
-  animation: glossSweep 22s linear infinite;
+  /* 光の筋だけの細長い層（画面幅の0.9倍）を斜めに傾けて横切らせる。
+     以前は画面の2.5倍の巨大な層を動かしていて、iPhoneではスクロール中に止まっていた */
+  top: 0; left: 0; width: 90vw; height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%, rgba(235,242,250,.03) 23.5%, rgba(235,242,250,.07) 41%,
+    rgba(150,175,200,.06) 53%, rgba(220,235,250,.13) 57.4%,
+    rgba(255,255,255,.17) 58.8%, rgba(220,235,250,.13) 60.3%,
+    rgba(150,175,200,.06) 64.7%, rgba(235,242,250,.03) 82.4%, transparent 100%);
+  transform: translate3d(110vw, 0, 0) skewX(-22deg);
+  animation: glossSweep 24s linear infinite;
   will-change: transform;
 }
 
@@ -136,13 +138,8 @@ body {
 
 /* 光沢は右から入って左へ抜ける片道。往復より金属の映り込みらしい */
 @keyframes glossSweep {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(-60%, 0, 0); }
-}
-
-@keyframes glossSweepSp {
-  from { transform: translate3d(0, 0, 0); }
-  to   { transform: translate3d(-50%, 0, 0); }
+  from { transform: translate3d(110vw, 0, 0) skewX(-22deg); }
+  to   { transform: translate3d(-115vw, 0, 0) skewX(-22deg); }
 }
 
 @keyframes pageGridMove {
@@ -744,8 +741,8 @@ body {
       background-size: 48px 48px;
     }
 
-  /* 背景の光沢はスマホでも流す（transformだけなので軽い）。層は小さめに */
-  .page-bg::before { width: 200%; animation-name: glossSweepSp; }
+  /* 背景の光沢はスマホでも流す（transformだけなので軽い） */
+
 
 
   /* スマホは描画負荷を避けるためアニメーションを止めます */
