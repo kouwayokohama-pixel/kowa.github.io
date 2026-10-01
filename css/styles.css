@@ -540,8 +540,8 @@ body {
   width: min(22vw, 350px); /* 高さ200px以下＝ヘッダー（126px）の下に収まる */
   opacity: .10;
 }
-/* 見出しが長いページ（Privacy Policy）は、タブレット幅で見出しに届くので出さない */
-@media (min-width: 769px) and (max-width: 1199px) { .subpage-hero .bg-truck-narrow { display: none; } }
+/* 見出しが長いページ（Privacy Policy）は、タブレット・スマホ幅で見出しに届くので出さない */
+@media (max-width: 1199px) { .subpage-hero .bg-truck-narrow { display: none; } }
 
 /* ★h1をキーワードを含む見出し全体にまとめるための入れ物（見た目には影響しません） */
 .subpage-heading {
@@ -890,8 +890,9 @@ body {
   .nav-faq .nav-ja      { color: #b026ff; } 
   .nav-access .nav-ja   { color: var(--primary-blue); }
    
-  .subpage-hero { padding: 120px 0 calc(27vw + 16px); } /* スマホはタイトルの下にトラック分の余白 */
-  .subpage-hero .bg-truck { width: 48vw; right: 4%; bottom: 0; opacity: .12; }
+  .subpage-hero { padding: 120px 0 40px; }
+  /* スマホは見出し部の高さを変えず、右下の隅に小さく置く */
+  .subpage-hero .bg-truck { width: min(24vw, 120px); right: 3%; bottom: 4px; opacity: .14; }
   .subpage-title { font-size: 2.2rem; }
   .section-title { font-size: 1.8rem; margin-bottom: 24px; }
 
