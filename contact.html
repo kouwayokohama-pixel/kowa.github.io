@@ -423,6 +423,11 @@
         <div class="contact-form-panel fade-up">
           <!-- onsubmit属性を削除。送信制御はJSで行います -->
           <form id="cyber-contact-form">
+            <!-- 迷惑送信よけ：人には見えない入力欄。ここに何か入っていたら送信しない -->
+            <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+              <label for="form-website">ウェブサイト（入力しないでください）</label>
+              <input type="text" id="form-website" name="website" tabindex="-1" autocomplete="off" />
+            </div>
             
             <div class="form-group">
               <div class="form-label-area">
@@ -444,7 +449,7 @@
                 <label class="form-label" for="form-name">お名前</label>
                 <span class="badge-required">必須</span>
               </div>
-              <input type="text" class="form-control" id="form-name" placeholder="例：晃和 太郎" required />
+              <input type="text" class="form-control" id="form-name" placeholder="例：晃和 太郎" required maxlength="50" />
             </div>
 
             <div class="form-group">
@@ -452,7 +457,7 @@
                 <label class="form-label" for="form-kana">フリガナ</label>
                 <span class="badge-required">必須</span>
               </div>
-              <input type="text" class="form-control" id="form-kana" placeholder="例：コウワ タロウ" required />
+              <input type="text" class="form-control" id="form-kana" placeholder="例：コウワ タロウ" required maxlength="50" />
             </div>
 
             <!-- 電話番号とメールアドレスは、JSで「どちらか必須」の制御を行うため、HTMLのrequiredは外します -->
@@ -462,7 +467,7 @@
                 <!-- バッジを「どちらか必須」に変更 -->
                 <span class="badge-required" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: #fff;">電話かメールどちらか必須</span>
               </div>
-              <input type="tel" class="form-control contact-method" id="form-tel" inputmode="tel" placeholder="例：045-954-3111" />
+              <input type="tel" class="form-control contact-method" id="form-tel" inputmode="tel" placeholder="例：045-954-3111" maxlength="20" />
             </div>
 
             <div class="form-group">
@@ -470,7 +475,7 @@
                 <label class="form-label" for="form-email">メールアドレス</label>
                 <span class="badge-required" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: #fff;">電話かメールどちらか必須</span>
               </div>
-              <input type="email" class="form-control contact-method" id="form-email" inputmode="email" placeholder="例：info@example.com" />
+              <input type="email" class="form-control contact-method" id="form-email" inputmode="email" placeholder="例：info@example.com" maxlength="100" />
               <!-- 入力エラーメッセージ用 -->
               <div id="contact-method-error" class="contact-error">※電話番号、またはメールアドレスのどちらかを必ずご入力ください。</div>
             </div>
@@ -509,14 +514,14 @@
                 <span class="badge-required" id="message-badge">必須</span>
               </div>
               <!-- ★ JSでrequiredを操作するため、初期状態のみrequiredをつけておきます -->
-              <textarea class="form-control" id="form-message" rows="6" placeholder="詳細な内容をご記入ください。" required></textarea>
+              <textarea class="form-control" id="form-message" rows="6" placeholder="詳細な内容をご記入ください。" required maxlength="2000"></textarea>
             </div>
             
             <div class="form-group form-privacy">
               <label class="privacy-label">
                 <input type="checkbox" id="form-privacy-check" required>
                 <span class="checkbox-custom"></span>
-                <span class="privacy-text"><a href="policy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する</span>
+                <span class="privacy-text"><a href="/sitepolicy" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する</span>
               </label>
             </div>
 
@@ -625,6 +630,20 @@
       // どちらかが入力されていればエラーを隠して送信処理へ
       errorMsg.style.display = 'none';
 
+      // 迷惑送信よけ：見えない欄が埋まっていたら機械による送信とみなし、
+      // 送ったように見せて実際には送らない
+      const trap = document.getElementById('form-website');
+      if (trap && trap.value.trim() !== '') {
+        document.getElementById('cyber-contact-form').style.display = 'none';
+        document.getElementById('success-message').style.display = 'block';
+        return;
+      }
+
+      // 同じ画面から短い間に何度も送れないようにする（30秒）
+      const now = Date.now();
+      if (window.__lastSentAt && now - window.__lastSentAt < 30000) return;
+      window.__lastSentAt = now;
+
 
       const submitBtn = document.getElementById('submit-btn');
       const successMsg = document.getElementById('success-message');
@@ -695,6 +714,7 @@
         // 失敗したことと、電話番号を画面にはっきり出します。
         // 入力内容は消さずに残すので、直ったあとに送り直せます。
         console.error('送信エラー:', error);
+        window.__lastSentAt = 0; // 失敗したときはすぐ送り直せるように
         errorMsgBox.style.display = 'block';
         errorMsgBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
         submitBtn.disabled = false;
