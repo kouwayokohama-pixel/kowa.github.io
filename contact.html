@@ -425,8 +425,8 @@
           <form id="cyber-contact-form">
             <!-- 迷惑送信よけ：人には見えない入力欄。ここに何か入っていたら送信しない -->
             <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
-              <label for="form-website">ウェブサイト（入力しないでください）</label>
-              <input type="text" id="form-website" name="website" tabindex="-1" autocomplete="off" />
+              <label for="hp_x7k2">この欄は空のままにしてください</label>
+              <input type="text" id="hp_x7k2" name="hp_x7k2" tabindex="-1" autocomplete="off" data-1p-ignore data-lpignore="true" data-bwignore data-form-type="other" />
             </div>
             
             <div class="form-group">
@@ -467,7 +467,7 @@
                 <!-- バッジを「どちらか必須」に変更 -->
                 <span class="badge-required" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: #fff;">電話かメールどちらか必須</span>
               </div>
-              <input type="tel" class="form-control contact-method" id="form-tel" inputmode="tel" placeholder="例：045-954-3111" maxlength="20" />
+              <input type="tel" class="form-control contact-method" id="form-tel" inputmode="tel" placeholder="例：045-954-3111" maxlength="30" />
             </div>
 
             <div class="form-group">
@@ -632,7 +632,7 @@
 
       // 迷惑送信よけ：見えない欄が埋まっていたら機械による送信とみなし、
       // 送ったように見せて実際には送らない
-      const trap = document.getElementById('form-website');
+      const trap = document.getElementById('hp_x7k2');
       if (trap && trap.value.trim() !== '') {
         document.getElementById('cyber-contact-form').style.display = 'none';
         document.getElementById('success-message').style.display = 'block';
