@@ -260,8 +260,10 @@ body {
   transition: all 0.3s ease;
 }
 .header-action-btn:hover {
-  background-color: rgba(255, 157, 0, 0.297);
+  /* 枠と同じシアンをごく薄く敷く（以前はオレンジで、枠の色と喧嘩していた） */
+  background-color: rgba(0, 229, 255, 0.08);
   border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
   box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
 }
 
