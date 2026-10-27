@@ -8,7 +8,7 @@
   <meta name="description" content="横浜市旭区を拠点にする運送会社「有限会社晃和運輸」の公式サイトです。2t車による学校給食や日用品のルート配送、引越・什器搬入など、地域に根差した安全・確実な物流サービスを提供しています。現在、2t車ドライバー（正社員）を募集中！" />
   <link rel="canonical" href="https://kowa-yokohama.com/" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20261014-1" />
+  <link rel="stylesheet" href="css/styles.css?v=20261026-1" />
 
   <style>
     /* --- ヒーロー --- */
@@ -445,6 +445,17 @@
       .service-card p, .info-card p { font-size: 0.95rem; }
 
       .dx-banner-sub { font-size: clamp(12px, 4.25vw, 17px); }
+
+      /* ボタンの文字が途中で折れないよう、幅の狭い端末では左右の余白を詰めます（幅376px以上は今と同じ48px） */
+      .btn-outline {
+        padding-left: clamp(16px, calc((100vw - 280px) / 2), 48px);
+        padding-right: clamp(16px, calc((100vw - 280px) / 2), 48px);
+        max-width: 100%;
+      }
+      /* 電話番号は途中で折らない（幅320px以上は今と同じ大きさ） */
+      /* 拡大して幅がとても狭い時だけ、キャッチコピーを折り返して画面内に収めます（100%では1行のまま） */
+      @media (max-width: 300px) { .hero-catch { white-space: normal; } }
+      .contact-btn.tel-btn { white-space: nowrap; font-size: min(0.8rem, 4vw); }
     }
     .dx-banner-more {
       display: inline-block;
@@ -584,7 +595,7 @@
   <div id="header-placeholder">
     <header class="site-header" id="header">
       <div class="header-inner">
-        <a href="/" class="brand">(有)晃和運輸</a>
+        <a href="/" class="brand"><span class="keep-text">(有)</span><span class="keep-text">晃和運輸</span></a>
 
 
         <div class="header-right" id="header-right">
@@ -855,7 +866,7 @@
           <h3>お電話</h3>
           <p class="pc-only">営業時間<br>8:30 - 19:00</p>
           <p class="sp-only">営業時間<br>8:30 - 19:00</p>
-          <a href="tel:045-954-3111" class="btn-outline orange-version contact-btn">045-954-3111</a>
+          <a href="tel:045-954-3111" class="btn-outline orange-version contact-btn tel-btn">045-954-3111</a>
         </div>
 
         <div class="contact-card">
@@ -876,6 +887,6 @@
   </section>
 
   <div id="footer-placeholder"></div>
-  <script src="js/common.js?v=20261014-1"></script>
+  <script src="js/common.js?v=20261026-1"></script>
 </body>
 </html>

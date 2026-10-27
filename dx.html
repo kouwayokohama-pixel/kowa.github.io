@@ -6,7 +6,7 @@
   <title>DX・自社開発システム｜検品・納品・GPS・日報・勤怠・給与｜有限会社晃和運輸</title>
   <meta name="description" content="有限会社晃和運輸（横浜市旭区）の自社開発アプリ・DX推進のご紹介。工場での検品自動化から納品管理、GPSリアルタイム運行管理、日報、勤怠・給与計算、車両整備まで9領域を自社で企画・開発・運用しています。汎用パッケージではなく、御社の現場に合わせたオーダーメイドでのご提供・共同開発を承ります。" />
   <link rel="canonical" href="https://kowa-yokohama.com/dx" />
-  <link rel="stylesheet" href="css/styles.css?v=20261014-1" />
+  <link rel="stylesheet" href="css/styles.css?v=20261026-1" />
 
   <style>
     /* ==========================================================================
@@ -251,11 +251,16 @@
       border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 9px solid var(--dx-gold);
     }
     .fm-down { padding: 16px 0 6px; }
-    .dx-group-label .nw, .dx-flowchart .nw, .dx-cards-note .nw, .dx-card p .nw { white-space: nowrap; }
+    /* 言葉のまとまりで折り返します。枠より長くなった時（文字を大きくした時など）だけ、そのまとまりの中で折り返します */
+    .dx-group-label .nw, .dx-flowchart .nw, .dx-cards-note .nw, .dx-card p .nw { display: inline-block; max-width: 100%; }
     /* 「給与管理システム」が1行に収まるよう、②の箱は左右の余白とアイコンとの間隔を少し詰めます */
     .fm-chain .fm-node { padding-left: 12px; padding-right: 12px; }
     .fm-chain .fm-head { gap: 8px; }
     .fm-chain .fm-head b { white-space: nowrap; }
+    /* 枠が狭い時（拡大時など）は「給与／管理／システム」の区切りでだけ折り返します */
+    @media (max-width: 300px) {
+      .fm-chain .fm-head b { white-space: normal; word-break: keep-all; overflow-wrap: anywhere; }
+    }
     /* 3つを横に並べると箱が狭くなり、言葉の途中で折り返してしまう幅（〜1080px）では縦に積みます */
     @media (max-width: 1080px) {
       .fm-chain { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
@@ -634,6 +639,14 @@
       .dx-flow-step span { font-size: 0.92rem; }
 
       .dx-cta-btn { width: 100%; padding: 16px 0; font-size: .98rem; }
+
+      /* 拡大して幅が狭くなった時だけ見出しを小さくし、1〜2文字ずつの細切れを防ぎます（幅320px以上は今と同じ大きさ） */
+      .dx-inhouse h3 { font-size: min(1.4rem, 7vw); }
+      .dx-flowchart h3, .dx-group h3 { font-size: min(1.3rem, 6.5vw); }
+      .dx-offer h2 { font-size: min(1.4rem, 7vw); }
+      .fm-hub b { font-size: min(1.1rem, 5.5vw); }
+      /* STEP4の説明：幅320pxでも「人の手で行う必要がありません。」が枠に収まる大きさにします（375px以上は今と同じ） */
+      .fm-hub small { font-size: min(0.95rem, 4.25vw); }
     }
   </style>
 </head>
@@ -645,7 +658,7 @@
   <div id="header-placeholder">
     <header class="site-header" id="header">
       <div class="header-inner">
-        <a href="/" class="brand">(有)晃和運輸</a>
+        <a href="/" class="brand"><span class="keep-text">(有)</span><span class="keep-text">晃和運輸</span></a>
 
 
         <div class="header-right" id="header-right">
@@ -1040,7 +1053,7 @@
                     <path d="M6 9v.01M18 15v.01"></path>
                   </svg>
                 </span>
-                <b>給与管理システム</b>
+                <b>給与<wbr>管理<wbr>システム</b>
               </div>
               <small>残業・税金を自動計算</small>
             </div>
@@ -1384,6 +1397,6 @@
   </main>
 
   <div id="footer-placeholder"></div>
-  <script src="js/common.js?v=20261014-1"></script>
+  <script src="js/common.js?v=20261026-1"></script>
 </body>
 </html>

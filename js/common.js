@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const headerHTML = `
   <header class="site-header" id="header">
     <div class="header-inner">
-      <a href="/" class="brand">(有)晃和運輸</a>
+      <a href="/" class="brand"><span class="keep-text">(有)</span><span class="keep-text">晃和運輸</span></a>
       
 
       <div class="header-right" id="header-right">
@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <div class="footer-top fade-up">
         
         <div class="footer-left">
-          <a href="/" class="footer-brand">有限会社 晃和運輸</a>
+          <a href="/" class="footer-brand"><span class="keep-text">有限会社</span> <span class="keep-text">晃和運輸</span></a>
           <p class="footer-info">
             <a href="https://maps.google.com/?q=神奈川県横浜市旭区下川井町2098−1" target="_blank" rel="noopener noreferrer" class="footer-map-link">
               〒241-0806<br>神奈川県横浜市旭区下川井町2098−1

@@ -7,7 +7,7 @@
 
   <meta name="description" content="有限会社晃和運輸の事業内容をご紹介します。横浜市旭区を拠点に、神奈川県内の学校給食の配送、スーパー・ドラッグストアへの日用品ルート配送、引越や什器搬入まで、2t車の機動力を活かした幅広い物流サービスをご提供します。" />
   <link rel="canonical" href="https://kowa-yokohama.com/logistics" />
-  <link rel="stylesheet" href="css/styles.css?v=20261014-1" />
+  <link rel="stylesheet" href="css/styles.css?v=20261026-1" />
 
   <style>
     /* --- 事業概要 --- */
@@ -134,6 +134,11 @@
       
       .problem-title h3 { font-size: 1.3rem; gap: 12px; }
       .problem-title h3::before, .problem-title h3::after { width: 30px; }
+      /* 拡大して幅が狭い時だけ文字を小さくし、両脇の線を消して細切れを防ぎます（幅320px以上は今と同じ） */
+      .problem-title h3 { font-size: min(1.3rem, 6.5vw); }
+      @media (max-width: 300px) {
+        .problem-title h3::before, .problem-title h3::after { display: none; }
+      }
       .problem-box { padding: 24px 16px; }
       .problem-list { gap: 20px; }
       .problem-list li { flex-direction: column; align-items: center; text-align: center; }
@@ -177,7 +182,7 @@
   <div id="header-placeholder">
     <header class="site-header" id="header">
       <div class="header-inner">
-        <a href="/" class="brand">(有)晃和運輸</a>
+        <a href="/" class="brand"><span class="keep-text">(有)</span><span class="keep-text">晃和運輸</span></a>
 
 
         <div class="header-right" id="header-right">
@@ -533,6 +538,6 @@
   </main>
 
   <div id="footer-placeholder"></div>
-  <script src="js/common.js?v=20261014-1"></script>
+  <script src="js/common.js?v=20261026-1"></script>
 </body>
 </html>

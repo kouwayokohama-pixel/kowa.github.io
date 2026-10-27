@@ -7,7 +7,7 @@
   <meta name="description" content="横浜市旭区にある有限会社晃和運輸へのアクセス・地図情報です。本社営業所、および車庫のGoogleマップを掲載。保土ヶ谷バイパス「下川井IC」より車で2分、相鉄線・横浜線からの各種アクセス方法をご案内します。" />
   <link rel="canonical" href="https://kowa-yokohama.com/access" />
 
-  <link rel="stylesheet" href="css/styles.css?v=20261014-1" />
+  <link rel="stylesheet" href="css/styles.css?v=20261026-1" />
 
   <style>
     /* ==========================================================================
@@ -285,7 +285,9 @@
     /* スマホ用レスポンシブ */
     @media (max-width: 768px) {
       /* --- 文字サイズの統一（スマホ） --- */
-      .map-title, .transport-title { font-size: 1.3rem; }
+      /* 拡大して幅が狭い時だけ小さくします（幅320px以上は今と同じ1.3rem） */
+      .map-title, .transport-title { font-size: min(1.3rem, 6.5vw); }
+      @media (max-width: 300px) { .transport-title { flex-wrap: wrap; } }
       .map-address, .route-group-name { font-size: 0.95rem; }
 
       .map-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -322,7 +324,7 @@
   <div id="header-placeholder">
     <header class="site-header" id="header">
       <div class="header-inner">
-        <a href="/" class="brand">(有)晃和運輸</a>
+        <a href="/" class="brand"><span class="keep-text">(有)</span><span class="keep-text">晃和運輸</span></a>
 
 
         <div class="header-right" id="header-right">
@@ -537,6 +539,6 @@
   </main>
 
   <div id="footer-placeholder"></div>
-  <script src="js/common.js?v=20261014-1"></script>
+  <script src="js/common.js?v=20261026-1"></script>
 </body>
 </html>
